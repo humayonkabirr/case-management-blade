@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->text('avatar')->nullable();
             $table->text('address')->nullable();
-            $table->string('phone')->uniqid()->nullable();
+            $table->string('phone')->unique()->nullable();
+            $table->string('type')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
