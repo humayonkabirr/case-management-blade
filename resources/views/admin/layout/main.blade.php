@@ -44,8 +44,10 @@
         /*/<starter kit design>*/
 
     </style>
-
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+
+
+    @stack('css')
 
 </head>
 <body>
@@ -90,10 +92,6 @@
     </script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
-
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-
-
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+    @stack('js')
 </body>
 </html>
