@@ -14,8 +14,16 @@ class SiteController extends Controller
      */
     public function index()
     {
+        return view('welcome');
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function dashboard()
+    {
         try {
-            if (Gate::allows('productCategory.index')) {
+            if (Gate::allows('super-user.index')) {
 
                 return response()->json(['status' => 200]);
             } else {

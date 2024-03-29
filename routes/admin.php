@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\backend\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::resource('/n', SiteController::class);
+    // Route::resource('/', SiteController::class);
+
+    Route::resource('/a', DashboardController::class);
 
 });
 

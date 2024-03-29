@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
@@ -12,7 +13,21 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //
+        dd(Gate::allows('dashboard.index'));
+        try {
+            if (Gate::allows('super-user.index')) {
+                return view('admin.dashboard');
+            } else {
+
+                return  response()->json(['status' => 403, 'message' => 'Access Denied 403']);
+            }
+        } catch (\Throwable $e) {
+            return response()->json([
+                'status' => 500,
+                'message' => 'Technical error!',
+                'error' => $e->getMessage()
+            ]);
+        }
     }
 
     /**

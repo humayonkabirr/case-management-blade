@@ -17,7 +17,7 @@ use Inertia\Inertia;
 */
 
 
-// Route::resource('/n', SiteController::class);
+Route::resource('/', SiteController::class);
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [

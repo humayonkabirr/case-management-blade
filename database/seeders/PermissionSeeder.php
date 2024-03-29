@@ -34,5 +34,11 @@ class PermissionSeeder extends Seeder
         Permission::insert(['unique_key' => mt_rand(1000000000, 9999999999), 'module_id' => '3', 'name' => 'Add Role', 'slug' => 'role.create', 'status' => 1, 'created_at' => now()]);
         Permission::insert(['unique_key' => mt_rand(1000000000, 9999999999), 'module_id' => '3', 'name' => 'Edit Role', 'slug' => 'role.edit', 'status' => 1, 'created_at' => now()]);
         Permission::insert(['unique_key' => mt_rand(1000000000, 9999999999), 'module_id' => '3', 'name' => 'delete Role', 'slug' => 'role.destroy', 'status' => 1, 'created_at' => now()]);
+
+        Permission::insert(['unique_key' => mt_rand(1000000000, 9999999999), 'module_id' => '4', 'name' => 'View Dashboard', 'slug' => 'dashboard.index', 'status' => 1, 'created_at' => now()]);
+        Permission::insert(['unique_key' => mt_rand(1000000000, 9999999999), 'module_id' => '4', 'name' => 'Show Dashboard', 'slug' => 'dashboard.show', 'status' => 1, 'created_at' => now()]);
+        Permission::insert(['unique_key' => mt_rand(1000000000, 9999999999), 'module_id' => '4', 'name' => 'Add Dashboard', 'slug' => 'dashboard.create', 'status' => 1, 'created_at' => now()]);
+        Permission::insert(['unique_key' => mt_rand(1000000000, 9999999999), 'module_id' => '4', 'name' => 'Edit Dashboard', 'slug' => 'dashboard.edit', 'status' => 1, 'created_at' => now()]);
+        Permission::insert(['unique_key' => mt_rand(1000000000, 9999999999), 'module_id' => '4', 'name' => 'delete Dashboard', 'slug' => 'dashboard.destroy', 'status' => 1, 'created_at' => now()]);
     }
 }
