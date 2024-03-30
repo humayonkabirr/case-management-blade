@@ -17,6 +17,11 @@ class ModuleSeeder extends Seeder
         Module::insert([
             [
                 'unique_key' => mt_rand(1000000000, 9999999999),
+                'name' => 'Dashboard Management',
+                'created_at' => now()
+            ],
+            [
+                'unique_key' => mt_rand(1000000000, 9999999999),
                 'name' => 'Super User Management',
                 'created_at' => now()
             ],

@@ -67,8 +67,8 @@
                                                         </svg>
                                                     </a>
                                                     @endcan
-                                                    
-                                                </td> 
+
+                                                </td>
                                         </tr>
                                     @endif
                                 @endforeach
