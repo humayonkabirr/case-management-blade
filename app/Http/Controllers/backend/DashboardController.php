@@ -13,9 +13,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        dd(Gate::allows('dashboard.index'));
         try {
-            if (Gate::allows('super-user.index')) {
+            if (Gate::allows('dashboard.index')) {
                 return view('admin.dashboard');
             } else {
 

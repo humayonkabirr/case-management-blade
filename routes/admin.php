@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RoleController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\backend\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
     // Route::resource('/', SiteController::class);
 
-    Route::resource('/a', DashboardController::class);
+    Route::resource('/', DashboardController::class);
+
+    Route::resource('/role', RoleController::class );
 
 });
 

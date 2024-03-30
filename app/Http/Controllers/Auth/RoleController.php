@@ -22,17 +22,11 @@ class RoleController extends Controller
     {
         try {
             if (Gate::allows('role.index')) {
-                $data['totalRoles'] = Role::count();
-                $data['totalPermission'] = Permission::count();
-                $data['modules'] = Module::select('id', 'unique_key', 'name')->get();
+                $data['roles'] = Role::where('status',1)->get();
 
-                foreach ($data['modules'] as $key => $value) {
-                    $data['moduleName'] = $value->name;
-                    $data['permission'] = $value->permissions;
-                }
-                return response()->json(['status' => 200, 'data' => $data]);
+                return view('admin.roles.index',$data);
             } else {
-                return  response()->json(['status' => 403, 'message' => 'Access Denied 403']);
+                abort(403);
             }
         } catch (\Throwable $e) {
             return $e->getMessage();
@@ -50,16 +44,9 @@ class RoleController extends Controller
         if (Gate::allows('role.create')) {
             $data['modules'] = Module::all();
             $data['permissions'] = Permission::all();
-            $data['totals'] = Permission::count();
-
-            return response()->json(['status' => 200, 'data' => $data]);
+            return view('admin.roles.form',$data);
         } else {
-            if (Auth::check()) {
-                // abort(403);
-                return response()->json(['status' => 403, 'message' => 'Access Denied 403']);
-            } else {
-                return redirect('login');
-            }
+            abort(403);
         }
     }
 
@@ -71,12 +58,17 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $role = Role::create(['name' => $request->name, 'slug' => str_replace(' ', '_', $request->name), 'status' => 1]);
-        foreach ($request->permissions as $permission) {
-            RolePermission::create(['role_id' => $role->id, 'permission_id' => $permission]);
+        // 
+        if (Gate::allows('role.create')) {
+            $role = Role::create(['unique_key' => mt_rand(1000000000, 9999999999),'name'=>$request->name, 'slug'=>str_replace(' ','_',$request->name), 'status'=>1]);
+        foreach($request->permissions as $permission)
+        {
+            RolePermission::create(['unique_key' => mt_rand(1000000000, 9999999999), 'role_id'=>$role->id, 'permission_id'=>$permission]);
         }
-        return redirect(route('role.index'))->with('success', 'Role created Successfully!!!');
+        return redirect(route('admin.role.index'))->with('success', 'Role created Successfully!!!');
+        } else {
+            abort(403);
+        }  
     }
 
     /**
@@ -103,7 +95,7 @@ class RoleController extends Controller
             $data['role'] = $role;
             $data['modules'] = Module::all();
             $data['permissions'] = Permission::all();
-            return view('super_admin.roles.form', $data)->with('success', 'appointment created Successfully!!!');
+            return view('admin.roles.form', $data);
         } else {
             if (Auth::check()) {
                 abort(403);
@@ -123,12 +115,17 @@ class RoleController extends Controller
     public function update(Request $request, Role $role, $id = null)
     {
         //
-        $role::find($id)->update(['name' => $request->name, 'slug' => str_replace(' ', '_', $request->name), 'status' => 1]);
+        dd('hello!');
+        if (Gate::allows('role.edit')) {
+            $role::find($id)->update(['unique_key' => mt_rand(1000000000, 9999999999),'name' => $request->name, 'slug' => str_replace(' ', '_', $request->name), 'status' => 1]);
         RolePermission::where('role_id', $id)->delete();
         foreach ($request->permissions as $permission) {
-            RolePermission::create(['role_id' => $id, 'permission_id' => $permission]);
+            RolePermission::create(['unique_key' => mt_rand(1000000000, 9999999999),'role_id' => $id, 'permission_id' => $permission]);
         }
         return redirect(route('role.index'))->with('success', 'Role update Successfully!!!');
+        } else { 
+                abort(403); return redirect('login');
+        }  
     }
 
     /**
