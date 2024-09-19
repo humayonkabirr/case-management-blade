@@ -14,6 +14,7 @@ class SiteController extends Controller
      */
     public function index()
     {
+        dd('Hello!\nWelcome to Home Page');
         return view('welcome');
     }
 

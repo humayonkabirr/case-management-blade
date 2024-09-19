@@ -23,7 +23,6 @@ class RoleController extends Controller
         try {
             if (Gate::allows('role.index')) {
                 $data['roles'] = Role::where('status',1)->get();
-
                 return view('admin.roles.index',$data);
             } else {
                 abort(403);
@@ -58,7 +57,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        //
         if (Gate::allows('role.create')) {
             $role = Role::create(['unique_key' => mt_rand(1000000000, 9999999999),'name'=>$request->name, 'slug'=>str_replace(' ','_',$request->name), 'status'=>1]);
         foreach($request->permissions as $permission)
@@ -68,7 +67,7 @@ class RoleController extends Controller
         return redirect(route('admin.role.index'))->with('success', 'Role created Successfully!!!');
         } else {
             abort(403);
-        }  
+        }
     }
 
     /**
@@ -123,9 +122,9 @@ class RoleController extends Controller
             RolePermission::create(['unique_key' => mt_rand(1000000000, 9999999999),'role_id' => $id, 'permission_id' => $permission]);
         }
         return redirect(route('role.index'))->with('success', 'Role update Successfully!!!');
-        } else { 
+        } else {
                 abort(403); return redirect('login');
-        }  
+        }
     }
 
     /**

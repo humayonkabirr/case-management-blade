@@ -16,10 +16,9 @@ class DashboardController extends Controller
         try {
             if (Gate::allows('dashboard.index')) {
                 return view('admin.dashboard');
-            } else {
-
-                return  response()->json(['status' => 403, 'message' => 'Access Denied 403']);
             }
+            return  response()->json(['status' => 403, 'message' => 'Access Denied 403']);
+            
         } catch (\Throwable $e) {
             return response()->json([
                 'status' => 500,
