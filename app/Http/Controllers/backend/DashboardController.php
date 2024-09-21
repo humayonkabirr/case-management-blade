@@ -15,16 +15,12 @@ class DashboardController extends Controller
     {
         try {
             if (Gate::allows('dashboard.index')) {
-                return view('admin.dashboard');
+                return view('layout.master');
             }
-            return  response()->json(['status' => 403, 'message' => 'Access Denied 403']);
-            
+            return view('messages.error-403');
         } catch (\Throwable $e) {
-            return response()->json([
-                'status' => 500,
-                'message' => 'Technical error!',
-                'error' => $e->getMessage()
-            ]);
+            $errorMessage = $e->getMessage(); // Define the error message variable
+            return view('messages.technical-error', compact('errorMessage'));
         }
     }
 
