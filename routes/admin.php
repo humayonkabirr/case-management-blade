@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RoleController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\Backend\UserManageController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -21,8 +22,11 @@ Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
     // Dashboard Route
     Route::resource('/', DashboardController::class);
 
-    // Role Route 
+    // Role Route
     Route::resource('/role', RoleController::class );
+
+    // User-Manage
+    Route::resource('user', UserManageController::class);
 
 });
 

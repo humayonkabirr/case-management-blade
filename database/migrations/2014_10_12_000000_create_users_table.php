@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('unique_key')->unique(); // mt_rand(1000000000, 9999999999);
             $table->string('name');
             $table->string('username')->nullable();
             $table->text('avatar')->nullable();
-            $table->text('address')->nullable();
             $table->string('phone')->unique()->nullable();
             $table->string('type')->nullable();
             $table->string('email')->unique();

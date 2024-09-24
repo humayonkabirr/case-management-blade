@@ -1,27 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\EmergencyContact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
-class DashboardController extends Controller
+class EmergencyContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        try {
-            if (Gate::allows('dashboard.index')) {
-                return view('layout.master');
-            }
-            return view('errors.403');
-        } catch (\Throwable $e) {
-            $errorMessage = $e->getMessage(); // Define the error message variable
-            return view('errors.technical-error', compact('errorMessage'));
-        }
+        //
     }
 
     /**
@@ -43,7 +34,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(EmergencyContact $emergencyContact)
     {
         //
     }
@@ -51,7 +42,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(EmergencyContact $emergencyContact)
     {
         //
     }
@@ -59,7 +50,7 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, EmergencyContact $emergencyContact)
     {
         //
     }
@@ -67,7 +58,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(EmergencyContact $emergencyContact)
     {
         //
     }
