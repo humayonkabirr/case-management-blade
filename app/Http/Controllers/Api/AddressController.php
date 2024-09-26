@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserManageController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('backend.user-manage.index');
+        //
     }
 
     /**
@@ -20,7 +20,7 @@ class UserManageController extends Controller
      */
     public function create()
     {
-        return view('backend.user-manage.form');
+        //
     }
 
     /**

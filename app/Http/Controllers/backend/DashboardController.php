@@ -20,7 +20,7 @@ class DashboardController extends Controller
             return view('errors.403');
         } catch (\Throwable $e) {
             $errorMessage = $e->getMessage(); // Define the error message variable
-            return view('errors.technical-error', compact('errorMessage'));
+            return view('errors.500', compact('errorMessage'));
         }
     }
 
