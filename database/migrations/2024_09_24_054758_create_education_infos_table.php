@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('education_infos', function (Blueprint $table) {
             $table->id();
+            $table->string('institute');
+            $table->string('degree');
+            $table->string('major_subject')->nullable();
+            $table->string('board_university');
+            $table->string('education_level'); // SSC, HSC, Bachelors, Masters, PhD
+            $table->string('accreditation')->nullable(); // National/International accreditation
+            $table->year('admission_year')->nullable();
+            $table->year('graduation_year')->nullable();
+            $table->decimal('gpa', 5, 2)->nullable(); // GPA or percentage
+            $table->string('honors_awards')->nullable(); // Any honors or awards
+            $table->string('location')->nullable(); // City, country
             $table->timestamps();
         });
     }

@@ -26,57 +26,83 @@
                 </div>
             </div>
             <div class="widget-content widget-content-area">
-                <form class="simple-example" action="javascript:void(0);" novalidate>
+                    <x-form action="{{ route('admin.user.store') }}" method="POST" class="simple-example">
                     <div id="circle-basic" class="">
                         <h3>Genarel Info</h3>
                         <section>
                             <div class="row">
-                                <div class="mb-4 col-md-4">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="enter first name" value="" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill the first name
-                                    </div>
-                                </div>
-                                <div class="mb-4 col-md-4">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="enter last name" value="" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill the last name
-                                    </div>
-                                </div>
-                                <div class="mb-4 col-md-4">
-                                    <label for="mobileNumber">Mobile Number</label>
-                                    <input type="text" class="form-control" id="mobileNumber" placeholder="enter mobile number" value="" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill the mobile number
-                                    </div>
-                                </div>
-                                <div class="mb-4 col-md-4">
-                                    <label for="email">Email Adress</label>
-                                    <input type="text" class="form-control" id="email" placeholder="email adress" value="" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill the email adress
-                                    </div>
-                                </div>
+                                <x-input.text class="col-md-4" label="First Name" name="first_name" value="" id="first_name" placeholder="enter first name" required />
+
+                                <x-input.text class="col-md-4" label="Last Name" name="last_name" value="" id="last_name" placeholder="enter last name" />
+
+                                <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value="" id="mobile" placeholder="enter moble no" required />
+
+                                <x-input.email class="col-md-4" label="Email" name="email" value="" id="email" placeholder="enter email" />
+
+                                <x-input.date class="col-md-4" label="Birth of Date" name="birthday" value="" id="birthday" placeholder="enter birth of date" required />
+
+                                <x-input.select class="col-md-4" label="Religion" name="religion" value="" id="religion" placeholder="Select Religion" required >
+                                    <option value="">Islam</option>
+                                    <option value="">Hindu</option>
+                                    <option value="">Others</option>
+                                </x-input.select>
+
+                                <x-input.select class="col-md-4" label="Gender" name="gender" value="" id="gender" placeholder="Select Gender" required >
+                                    <option value="">Male</option>
+                                    <option value="">Female</option>
+                                    <option value="">Others</option>
+                                </x-input.select>
+
+                                <x-input.select class="col-md-4" label="Nationality" name="nationality" value="" id="nationality" placeholder="Select Nationality" required >
+                                    <option value="">Bangladeshi</option>
+                                    <option value="">Others</option>
+                                </x-input.select>
+
+                                <x-input.select class="col-md-4" label="Mother Tongue" name="mother_tongue" value="" id="mother_tongue" placeholder="Select Mother Tongue" required >
+                                    <option value="">Bangla</option>
+                                    <option value="">English</option>
+                                    <option value="">Others</option>
+                                </x-input.select>
+
                             </div>
                         </section>
 
                         <h3>Educational Info</h3>
                         <section>
-                            <p>Wonderful transition Educational Info.</p>
+                            <div class="row">
+                                <x-input.text class="col-md-12" label="Institute Name" name="institute_name" value="" id="institute_name" placeholder="enter institute name" required />
+
+                                <x-input.text class="col-md-4" label="Degree" name="degree" value="" id="degree" placeholder="enter Degree" />
+
+                                <x-input.text class="col-md-4" label="Subject" name="subject" value="" id="subject" placeholder="enter Subject" />
+
+                                <x-input.text class="col-md-4" label="Major Subject" name="major_subject" value="" id="major_subject" placeholder="enter Major Subject" />
+
+                                <x-input.select class="col-md-4" label="Board" name="board" value="" id="board" placeholder="Select Board" required >
+                                    <option value="">Islam</option>
+                                    <option value="">Hindu</option>
+                                    <option value="">Others</option>
+                                </x-input.select>
+
+                                <x-input.select class="col-md-4" label="Is Government" name="is_government" value="" id="is_government" placeholder="Select One" required >
+                                    <option value="">Yes</option>
+                                    <option value="">No</option>
+                                </x-input.select>
+
+                                <x-input.select class="col-md-4" label="GPA/CGPA" name="gpa_cgpa" value="" id="gpa_cgpa" placeholder="Select GPA/CGPA" required >
+                                    <option value="">Bangla</option>
+                                    <option value="">English</option>
+                                    <option value="">Others</option>
+                                </x-input.select>
+
+                                <x-input.text class="col-md-4" label="Admission Year" name="admission_year" value="" id="admission_year" placeholder="enter Admission Year" />
+
+                                <x-input.text class="col-md-4" label="Passing Year" name="passing_year" value="" id="passing_year" placeholder="enter Passing Year" />
+
+                                <x-input.text class="col-md-12" label="Location" name="location" value="" id="location" placeholder="enter location" required />
+
+
+                            </div>
                         </section>
 
                         <h3>Experience</h3>
@@ -94,7 +120,7 @@
                             <p>The next and previous buttons help you to navigate through your content. Address</p>
                         </section>
                     </div>
-                </form>
+                </x-form>
             </div>
         </div>
     </div>
