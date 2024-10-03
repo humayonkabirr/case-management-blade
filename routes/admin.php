@@ -31,3 +31,10 @@ Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
 });
 
 
+
+
+Route::fallback(function () {
+    return view('errors.404');
+});
+
+
