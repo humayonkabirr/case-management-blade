@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
 
     protected $commands = [
         \App\Console\Commands\MakeDynamicResources::class,
+        \App\Console\Commands\RemoveDynamicResources::class,
     ];
 
 }
