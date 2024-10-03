@@ -92,9 +92,9 @@ class MakeDynamicResources extends Command
         <?php
 
         namespace App\Services;
-        use App\Models\{$name};
+        use App\Models\\{$name};
 
-        class $name.Service
+        class {$name}Service
         {
             public function getAll(){
                 {$name}::get();
