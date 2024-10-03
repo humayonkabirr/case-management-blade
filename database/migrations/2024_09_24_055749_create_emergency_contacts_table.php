@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('emergency_contacts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id'); // Assuming each emergency contact is associated with a user
+            $table->string('first_name');
+            $table->string('last_name')->nullable();
+            $table->string('relationship'); // E.g., parent, sibling, friend, etc.
+            $table->string('phone_number');
+            $table->string('email')->nullable();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('country')->nullable();
+            $table->timestamps(); 
         });
     }
 
