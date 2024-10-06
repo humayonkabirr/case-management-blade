@@ -193,7 +193,7 @@
 
                         <h3>Contact</h3>
                         <section>
-                            <p>The next and previous buttons help you to navigate through your content. Experience</p>
+                            <p>The next and previous buttons help you to navigate through your content. Contact</p>
                         </section>
 
                         <h3>Address</h3>
