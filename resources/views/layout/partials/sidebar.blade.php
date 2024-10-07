@@ -39,7 +39,7 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="submenu" data-parent="#accordionExample">
                             <li>
-                                <a href="javascript:void(0);"> Role Manage </a>
+                                <a href="{{ route('admin.role.index') }}"> Role Manage </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);"> Permission Manage </a>

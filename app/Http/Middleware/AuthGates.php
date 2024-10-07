@@ -43,8 +43,7 @@ class AuthGates
                 }
             }
         }
-
-
+ 
         return $next($request);
     }
 }

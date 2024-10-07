@@ -113,7 +113,7 @@ class MakeDynamicResources extends Command
         $pathForm = resource_path("views/{$name}/form.blade.php");
 
         $content = <<<EOT
-        @extends('layouts.app')
+        @extends('layout.master')
 
         @section('content')
             <h1>{$name} Index</h1>
@@ -121,7 +121,7 @@ class MakeDynamicResources extends Command
         EOT;
 
         $contentForm = <<<EOT
-        @extends('layouts.app')
+        @extends('layout.master')
 
         @section('content')
             <h1>{$name} Form</h1>
