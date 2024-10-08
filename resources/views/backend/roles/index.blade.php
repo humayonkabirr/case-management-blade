@@ -30,7 +30,7 @@
                                     <td>{{ $role->name }}</td>
                                     <td>
                                         @foreach ($role->rolePermissions as $permission)
-                                            <span class="mb-2 badge badge-info">{{ $permission->permission->name }}</span>
+                                            <span class="my-1 badge badge-info">{{ $permission->permission->name }}</span>
                                         @endforeach
                                     </td>
                                     </td>
@@ -58,7 +58,6 @@
                         {{ $roles->links() }} <!-- This will render pagination links -->
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
