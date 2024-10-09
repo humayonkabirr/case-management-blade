@@ -1,6 +1,6 @@
 <div class="mb-4 {{$class ?? ''}}">
     <label for="{{$id ?? ''}}">{{$label ?? ''}}</label>
-    <input type="email" class="form-control" id="{{$id ?? ''}}"  name="{{$id ?? ''}}" placeholder="{{$placeholder ?? ''}}"  {{$otherattr ?? ''}} value="{{$value ?? ''}}">
+    <input type="email" class="form-control" id="{{$id ?? ''}}"  name="{{$name ?? ''}}" placeholder="{{$placeholder ?? ''}}"  {{$otherattr ?? ''}} value="{{$value ?? ''}}">
 
     <div class="valid-feedback">
         Looks good!

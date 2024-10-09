@@ -12,7 +12,7 @@
                         </a>
                     </li>
                     <li class="nav-item theme-text">
-                        <a href="{{ route('admin.index') }}" class="nav-link"> CMS </a>
+                        <a href="{{ route('admin.index') }}" class="nav-link"> Dashboard </a>
                     </li>
                 </ul>
 

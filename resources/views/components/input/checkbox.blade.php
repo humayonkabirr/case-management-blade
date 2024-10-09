@@ -1,0 +1,7 @@
+<div class="mb-4 {{$class ?? ''}}">
+            <input type="checkbox" class="form-check-input" for="{{$id ?? ''}}" {{$otherattr ?? ''}} value="{{$value ?? ''}}">
+            <label id="{{$id ?? ''}}">
+                <h6> <strong>{{ $label }}</strong> </h5>
+            </label>
+</div>
+
