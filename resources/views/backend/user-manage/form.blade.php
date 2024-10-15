@@ -21,12 +21,12 @@
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        <h4>Default</h4>
+                        <h4>User Registration</h4>
                     </div>
                 </div>
             </div>
             <div class="widget-content widget-content-area">
-                <x-form action="{{ route('admin.user.store') }}" method="POST" class="simple-example">
+                <x-form action="{{ route('admin.user.store') }}" method="POST" class="form-example" id="form-submitted">
                     <div id="circle-basic" class="">
                         <h3>Genarel Info</h3>
                         <section>
@@ -167,8 +167,8 @@
                                     <option value="Volunteer">Volunteer</option>
                                 </x-input.select>
 
-                                <x-input.select class="col-md-2" label="Is Current" name="is_current"
-                                    value="" id="is_current" placeholder="Select One" required>
+                                <x-input.select class="col-md-2" label="Is Current" name="is_current" value=""
+                                    id="is_current" placeholder="Select One" required>
                                     <option value="">Yes</option>
                                     <option value="">No</option>
                                 </x-input.select>
@@ -182,8 +182,8 @@
                                 <x-input.text class="col-md-2" label="Salary" name="salary" value=""
                                     id="salary" placeholder="Enter Salary" />
 
-                                <x-input.textarea class="col-md-12" label="Responsibilities" name="responsibilities" value=""
-                                    id="responsibilities" placeholder="enter responsibilities"  required />
+                                <x-input.textarea class="col-md-12" label="Responsibilities" name="responsibilities"
+                                    value="" id="responsibilities" placeholder="enter responsibilities" required />
 
                                 <x-input.number class="col-md-12" label="Location" name="location" value=""
                                     id="location" placeholder="enter location" required />
@@ -217,4 +217,5 @@
     <!--  BEGIN CUSTOM SCRIPTS FILE  -->
     <script src="{{ asset('backend/assets/js/forms/bootstrap_validation/bs_validation_script.js') }}"></script>
     <!--  END CUSTOM SCRIPTS FILE  -->
+
 @endpush
