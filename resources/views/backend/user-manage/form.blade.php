@@ -208,6 +208,7 @@
 @endsection
 
 
+
 @push('js')
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="{{ asset('backend/plugins/jquery-step/jquery.steps.min.js') }}"></script>
