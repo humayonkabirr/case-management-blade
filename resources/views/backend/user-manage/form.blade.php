@@ -218,5 +218,4 @@
     <!--  BEGIN CUSTOM SCRIPTS FILE  -->
     <script src="{{ asset('backend/assets/js/forms/bootstrap_validation/bs_validation_script.js') }}"></script>
     <!--  END CUSTOM SCRIPTS FILE  -->
-
 @endpush
