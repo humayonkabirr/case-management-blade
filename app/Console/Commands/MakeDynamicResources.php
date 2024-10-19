@@ -91,16 +91,26 @@ class MakeDynamicResources extends Command
         $content = <<<EOT
         <?php
 
-        namespace App\Services;
-        use App\Models\\{$name};
+            namespace App\Services;
 
-        class {$name}Service
-        {
-            public function getAll(){
-                {$name}::get();
+            use App\Models\\{$name};
+
+            class {$name}Service
+            {
+                protected \${$name} \$model;
+
+                public function __construct({$name} \$model)
+                {
+                    \$this->model = \$model;
+                }
+
+                public function list()
+                {
+                    return \$this->model::all(); // Example method to list all models
+                }
+
+                // Add your service methods here
             }
-            // Add your service methods here
-        }
         EOT;
 
         File::ensureDirectoryExists(app_path('Services'));

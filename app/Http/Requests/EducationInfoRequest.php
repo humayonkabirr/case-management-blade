@@ -25,7 +25,7 @@ class EducationInfoRequest extends FormRequest
         return [
             'user_id' => 'required|exists:users,id',
             'institute' => 'required|string|max:255',
-            'degree' => 'required|integer',
+            'degree' => 'required|string|max:255',
             'education_level_id' => 'required|exists:education_levels,id',
             'major_subject' => 'nullable|string|max:255',
             'board_university' => 'required|string|max:255',

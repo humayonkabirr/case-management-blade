@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserManageController extends Controller
 {
@@ -12,25 +13,49 @@ class UserManageController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('backend.user-manage.index');
+    { 
+        try {
+            if (Gate::allows('dashboard.index')) {
+                return view('backend.user-manage.index');
+            }
+            return view('errors.403');
+        } catch (\Throwable $e) {
+            $errorMessage = $e->getMessage(); // Define the error message variable
+            return view('errors.500', compact('errorMessage'));
+        }
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('backend.user-manage.form');
+    { 
+        try {
+            if (Gate::allows('dashboard.index')) {
+                return view('backend.user-manage.form');
+            }
+            return view('errors.403');
+        } catch (\Throwable $e) {
+            $errorMessage = $e->getMessage(); // Define the error message variable
+            return view('errors.500', compact('errorMessage'));
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(UserRequest $request)
-    { 
-        $validatedData = $request->validated();
-        dd($validatedData);
+    {
+        try {
+            if (Gate::allows('dashboard.index')) {
+                $validatedData = $request->validated();
+                dd($validatedData);
+            }
+            return view('errors.403');
+        } catch (\Throwable $e) {
+            $errorMessage = $e->getMessage(); // Define the error message variable
+            return view('errors.500', compact('errorMessage'));
+        }
     }
 
     /**
