@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 
-class UserManageController extends Controller
+class EducationLevelController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('backend.user-manage.index');
+        //
     }
 
     /**
@@ -21,16 +19,15 @@ class UserManageController extends Controller
      */
     public function create()
     {
-        return view('backend.user-manage.form');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserRequest $request)
-    { 
-        $validatedData = $request->validated();
-        dd($validatedData);
+    public function store(Request $request)
+    {
+        //
     }
 
     /**

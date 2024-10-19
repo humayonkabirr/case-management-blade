@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_roles', function (Blueprint $table) {
-            $table->id('id');
-            $table->unsignedBigInteger('unique_key')->unique()->nullable(); // mt_rand(1000000000, 9999999999);
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('role_id')->constrained();
-            $table->timestamps();
+        Schema::create('education_levels', function (Blueprint $table) {
+            $table->id();
+            $table->string('level');
+            $table->string('bn_level');
+            $table->unsignedInteger('status')->default(1);
+            $table->timestamps(); 
             $table->softDeletes();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists('education_levels');
     }
 };

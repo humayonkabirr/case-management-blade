@@ -26,28 +26,46 @@
                 </div>
             </div>
             <div class="widget-content widget-content-area">
+
+                @if (count($errors) > 0)
+                    <div class="row">
+                        @foreach ($errors->all() as $error)
+                            <div class="col-md-4">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <ul class="p-0 m-0" style="list-style: none;">
+                                        <li>{{ $error }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
                 <x-form action="{{ route('admin.user.store') }}" method="POST" class="form-example" id="form-submitted">
                     <div id="circle-basic" class="">
                         <h3>Genarel Info</h3>
                         <section>
                             <div class="row">
                                 <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
-                                    id="first_name" placeholder="enter first name" required />
+                                    id="first_name" placeholder="enter first name"  />
 
                                 <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
                                     id="last_name" placeholder="enter last name" />
 
                                 <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value="" id="mobile"
-                                    placeholder="enter moble no" required />
+                                    placeholder="enter moble no"  />
 
                                 <x-input.email class="col-md-4" label="Email" name="email" value="" id="email"
                                     placeholder="enter email" />
 
                                 <x-input.date class="col-md-4" label="Birth of Date" name="birthday" value=""
-                                    id="birthday" placeholder="enter birth of date" required />
+                                    id="birthday" placeholder="enter birth of date"  />
 
                                 <x-input.select class="col-md-2" label="Blood Group" name="blood_group" value=""
-                                    id="blood_group" placeholder="Select Blood Group" required>
+                                    id="blood_group" placeholder="Select Blood Group" >
                                     <option value="A+">A+</option>
                                     <option value="A-">A-</option>
                                     <option value="B+">B+</option>
@@ -59,7 +77,7 @@
                                 </x-input.select>
 
                                 <x-input.select class="col-md-2" label="Religion" name="religion" value=""
-                                    id="religion" placeholder="Select Religion" required>
+                                    id="religion" placeholder="Select Religion" >
                                     <option value="Islam">Islam</option>
                                     <option value="Christianity">Christianity</option>
                                     <option value="Hinduism">Hinduism</option>
@@ -70,23 +88,23 @@
                                 </x-input.select>
 
                                 <x-input.select class="col-md-4" label="Gender" name="gender" value="" id="gender"
-                                    placeholder="Select Gender" required>
-                                    <option value="">Male</option>
-                                    <option value="">Female</option>
-                                    <option value="">Others</option>
+                                    placeholder="Select Gender" >
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
                                 </x-input.select>
 
                                 <x-input.select class="col-md-4" label="Nationality" name="nationality" value=""
-                                    id="nationality" placeholder="Select Nationality" required>
-                                    <option value="">Bangladeshi</option>
-                                    <option value="">Others</option>
+                                    id="nationality" placeholder="Select Nationality" >
+                                    <option value="0">Bangladeshi</option>
+                                    <option value="1">Others</option>
                                 </x-input.select>
 
-                                <x-input.select class="col-md-4" label="Mother Tongue" name="mother_tongue" value=""
-                                    id="mother_tongue" placeholder="Select Mother Tongue" required>
-                                    <option value="">Bangla</option>
-                                    <option value="">English</option>
-                                    <option value="">Others</option>
+                                <x-input.select class="col-md-4" label="Mother Tongue" name="mother_tongue"
+                                    value="" id="mother_tongue" placeholder="Select Mother Tongue" >
+                                    <option value="Bangla">Bangla</option>
+                                    <option value="English">English</option>
+                                    <option value="Others">Others</option>
                                 </x-input.select>
 
                             </div>
@@ -96,7 +114,14 @@
                         <section>
                             <div class="row">
                                 <x-input.text class="col-md-12" label="Institute Name" name="institute_name"
-                                    value="" id="institute_name" placeholder="enter institute name" required />
+                                    value="" id="institute_name" placeholder="enter institute name" />
+
+                                <x-input.select class="col-md-4" label="Education Level" name="education_level" value=""
+                                    id="education_level" placeholder="Select Education Level">
+                                    <option value="">Islam</option>
+                                    <option value="">Hindu</option>
+                                    <option value="">Others</option>
+                                </x-input.select>
 
                                 <x-input.text class="col-md-4" label="Degree" name="degree" value=""
                                     id="degree" placeholder="enter Degree" />
@@ -108,20 +133,20 @@
                                     id="major_subject" placeholder="enter Major Subject" />
 
                                 <x-input.select class="col-md-4" label="Board" name="board" value=""
-                                    id="board" placeholder="Select Board" required>
+                                    id="board" placeholder="Select Board" >
                                     <option value="">Islam</option>
                                     <option value="">Hindu</option>
                                     <option value="">Others</option>
                                 </x-input.select>
 
                                 <x-input.select class="col-md-4" label="Is Government" name="is_government"
-                                    value="" id="is_government" placeholder="Select One" required>
+                                    value="" id="is_government" placeholder="Select One" >
                                     <option value="">Yes</option>
                                     <option value="">No</option>
                                 </x-input.select>
 
                                 <x-input.select class="col-md-4" label="GPA/CGPA" name="gpa_cgpa" value=""
-                                    id="gpa_cgpa" placeholder="Select GPA/CGPA" required>
+                                    id="gpa_cgpa" placeholder="Select GPA/CGPA" >
                                     <option value="">Bangla</option>
                                     <option value="">English</option>
                                     <option value="">Others</option>
@@ -134,7 +159,7 @@
                                     id="passing_year" placeholder="enter Passing Year" />
 
                                 <x-input.text class="col-md-12" label="Location" name="location" value=""
-                                    id="location" placeholder="enter location" required />
+                                    id="location" placeholder="enter location"  />
 
 
                             </div>
@@ -144,7 +169,7 @@
                         <section>
                             <div class="row">
                                 <x-input.text class="col-md-12" label="Company Name" name="company_name" value=""
-                                    id="company_name" placeholder="Enter Company Name" required />
+                                    id="company_name" placeholder="Enter Company Name"  />
 
                                 <x-input.text class="col-md-4" label="Job Title" name="job_title" value=""
                                     id="job_title" placeholder="Enter Job Title" />
@@ -156,7 +181,7 @@
                                     value="" id="supervisor_contact" placeholder="enter supervisor contact" />
 
                                 <x-input.select class="col-md-4" label="Employment Type" name="employment_type"
-                                    value="" id="employment_type" placeholder="Select employment type" required>
+                                    value="" id="employment_type" placeholder="Select employment type" >
                                     <option value="" disabled selected>Select Employment Type</option>
                                     <option value="Full-time">Full-time</option>
                                     <option value="Part-time">Part-time</option>
@@ -168,7 +193,7 @@
                                 </x-input.select>
 
                                 <x-input.select class="col-md-2" label="Is Current" name="is_current" value=""
-                                    id="is_current" placeholder="Select One" required>
+                                    id="is_current" placeholder="Select One" >
                                     <option value="">Yes</option>
                                     <option value="">No</option>
                                 </x-input.select>
@@ -183,10 +208,10 @@
                                     id="salary" placeholder="Enter Salary" />
 
                                 <x-input.textarea class="col-md-12" label="Responsibilities" name="responsibilities"
-                                    value="" id="responsibilities" placeholder="enter responsibilities" required />
+                                    value="" id="responsibilities" placeholder="enter responsibilities"  />
 
                                 <x-input.number class="col-md-12" label="Location" name="location" value=""
-                                    id="location" placeholder="enter location" required />
+                                    id="location" placeholder="enter location"  />
 
                             </div>
                         </section>
@@ -214,8 +239,4 @@
     <script src="{{ asset('backend/plugins/jquery-step/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/jquery-step/custom-jquery.steps.js') }}"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
-
-    <!--  BEGIN CUSTOM SCRIPTS FILE  -->
-    <script src="{{ asset('backend/assets/js/forms/bootstrap_validation/bs_validation_script.js') }}"></script>
-    <!--  END CUSTOM SCRIPTS FILE  -->
 @endpush

@@ -1,16 +1,12 @@
-<div class="mb-4 {{$class ?? ''}}">
-    <label for="{{$id ?? ''}}">{{$label ?? ''}}</label>
-    <select class="form-control" id="{{$id ?? ''}}"  name="{{$name ?? ''}}"  {{$otherattr ?? ''}} value="{{$value ?? ''}}">
-        <option value="" selected>{{$placeholder ?? '-- Select One --'}}</option>
+<div class="mb-4 {{ $class ?? '' }}">
+    <label for="{{ $id ?? '' }}">{{ $label ?? '' }}</label>
+    <select class="form-control" id="{{ $id ?? '' }}" name="{{ $name ?? '' }}" {{ $otherattr ?? '' }}
+        value="{{ $value ?? '' }}">
+        <option value="" selected>{{ $placeholder ?? '-- Select One --' }}</option>
         {{ $slot ?? '' }}
     </select>
 
-    <div class="valid-feedback">
-        Looks good!
-    </div>
-
-    <div class="invalid-feedback">
-        Please fill the {{$label ?? ''}}
-    </div>
+    @error($name)
+        <div class="error">{{ $message }}</div>
+    @enderror
 </div>
-
