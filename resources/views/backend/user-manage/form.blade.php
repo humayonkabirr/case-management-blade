@@ -11,6 +11,13 @@
         #example-vertical.wizard>.content {
             min-height: 24.5em;
         }
+
+        .wizard>.content {
+            background: unset!important; 
+        }
+        .education-info-container{
+            background-color: #f1f2f3;
+        }
     </style>
     <!--  END CUSTOM STYLE FILE  -->
 @endpush
@@ -50,22 +57,22 @@
                         <section>
                             <div class="row">
                                 <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
-                                    id="first_name" placeholder="enter first name"  />
+                                    id="first_name" placeholder="enter first name" />
 
                                 <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
                                     id="last_name" placeholder="enter last name" />
 
                                 <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value="" id="mobile"
-                                    placeholder="enter moble no"  />
+                                    placeholder="enter moble no" />
 
                                 <x-input.email class="col-md-4" label="Email" name="email" value="" id="email"
                                     placeholder="enter email" />
 
                                 <x-input.date class="col-md-4" label="Birth of Date" name="birthday" value=""
-                                    id="birthday" placeholder="enter birth of date"  />
+                                    id="birthday" placeholder="enter birth of date" />
 
                                 <x-input.select class="col-md-2" label="Blood Group" name="blood_group" value=""
-                                    id="blood_group" placeholder="Select Blood Group" >
+                                    id="blood_group" placeholder="Select Blood Group">
                                     <option value="A+">A+</option>
                                     <option value="A-">A-</option>
                                     <option value="B+">B+</option>
@@ -77,7 +84,7 @@
                                 </x-input.select>
 
                                 <x-input.select class="col-md-2" label="Religion" name="religion" value=""
-                                    id="religion" placeholder="Select Religion" >
+                                    id="religion" placeholder="Select Religion">
                                     <option value="Islam">Islam</option>
                                     <option value="Christianity">Christianity</option>
                                     <option value="Hinduism">Hinduism</option>
@@ -88,20 +95,20 @@
                                 </x-input.select>
 
                                 <x-input.select class="col-md-4" label="Gender" name="gender" value="" id="gender"
-                                    placeholder="Select Gender" >
+                                    placeholder="Select Gender">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Others">Others</option>
                                 </x-input.select>
 
                                 <x-input.select class="col-md-4" label="Nationality" name="nationality" value=""
-                                    id="nationality" placeholder="Select Nationality" >
+                                    id="nationality" placeholder="Select Nationality">
                                     <option value="0">Bangladeshi</option>
                                     <option value="1">Others</option>
                                 </x-input.select>
 
                                 <x-input.select class="col-md-4" label="Mother Tongue" name="mother_tongue"
-                                    value="" id="mother_tongue" placeholder="Select Mother Tongue" >
+                                    value="" id="mother_tongue" placeholder="Select Mother Tongue">
                                     <option value="Bangla">Bangla</option>
                                     <option value="English">English</option>
                                     <option value="Others">Others</option>
@@ -112,56 +119,58 @@
 
                         <h3>Educational Info</h3>
                         <section>
-                            <div class="row">
-                                <x-input.text class="col-md-12" label="Institute Name" name="institute_name"
-                                    value="" id="institute_name" placeholder="enter institute name" />
+                            <div id="education-info-container">
+                                <div class="row education-info-set">
+                                    <x-input.text class="col-md-12" label="Institute Name" name="educationInfo[].institute"
+                                        value="" id="educationInfo[].institute" placeholder="enter institute name" />
 
-                                <x-input.select class="col-md-4" label="Education Level" name="education_level" value=""
-                                    id="education_level" placeholder="Select Education Level">
-                                    <option value="">Islam</option>
-                                    <option value="">Hindu</option>
-                                    <option value="">Others</option>
-                                </x-input.select>
+                                    <x-input.select class="col-md-4" label="Education Level" name="educationInfo[].education_level_id"
+                                        value="" id="educationInfo[].education_level_id" placeholder="Select Education Level">
+                                        @foreach ($educationLevels as $item)
+                                            <option value="{{ $item->id }}">{{ $item->level }}</option>
+                                        @endforeach
+                                    </x-input.select>
 
-                                <x-input.text class="col-md-4" label="Degree" name="degree" value=""
-                                    id="degree" placeholder="enter Degree" />
+                                    <x-input.text class="col-md-4" label="Degree" name="educationInfo[].degree" value=""
+                                        id="educationInfo[].degree" placeholder="enter Degree" />
 
-                                <x-input.text class="col-md-4" label="Major Subject" name="major_subject" value=""
-                                    id="major_subject" placeholder="enter Major Subject" />
+                                    <x-input.text class="col-md-4" label="Major Subject" name="educationInfo[].major_subject"
+                                        value="" id="educationInfo[].major_subject" placeholder="enter Major Subject" />
 
-                                <x-input.text class="col-md-8" label="Board/University" name="board_university"
-                                    value="" id="board_university" placeholder="enter board university" />
+                                    <x-input.text class="col-md-8" label="Board/University" name="educationInfo[].board_university"
+                                        value="" id="educationInfo[].board_university" placeholder="enter board university" />
 
-                                <x-input.select class="col-md-4" label="Accreditation" name="accreditation"
-                                    value="" id="accreditation" placeholder="Select Accreditation" >
-                                    <option value="Private">Private</option>
-                                    <option value="Public">Public</option>
-                                    <option value="National ">National</option>
-                                    <option value="International">International</option>
-                                    <option value="Others">Others</option>
-                                </x-input.select> 
+                                    <x-input.select class="col-md-4" label="Accreditation" name="educationInfo[].accreditation"
+                                        value="" id="educationInfo[].accreditation" placeholder="Select Accreditation">
+                                        <option value="Private">Private</option>
+                                        <option value="Public">Public</option>
+                                        <option value="National ">National</option>
+                                        <option value="International">International</option>
+                                        <option value="Others">Others</option>
+                                    </x-input.select>
 
-                                <x-input.number class="col-md-4" label="GPA/CGPA" name="gpa_cgpa"
-                                    value="" id="gpa_cgpa" placeholder="enter GPA/CGPA (4.08)" />
+                                    <x-input.number class="col-md-4" label="GPA/CGPA" name="educationInfo[].gpa_cgpa" value=""
+                                        id="educationInfo[].gpa_cgpa" placeholder="enter GPA/CGPA (4.08)" />
 
-                                <x-input.years class="col-md-4" label="Admission Year" name="admission_year"
-                                    value="" id="admission_year" placeholder="enter Admission Year" />
+                                    <x-input.years class="col-md-4" label="Admission Year" name="educationInfo[].admission_year"
+                                        value="" id="educationInfo[].admission_year" placeholder="enter Admission Year" />
 
-                                <x-input.years class="col-md-4" label="graduation Year" name="graduation_year" value=""
-                                    id="graduation_year" placeholder="enter graduation year" />
+                                    <x-input.years class="col-md-4" label="graduation Year" name="educationInfo[].graduation_year"
+                                        value="" id="educationInfo[].graduation_year" placeholder="enter graduation year" />
 
-                                <x-input.text class="col-md-12" label="Location" name="location" value=""
-                                    id="location" placeholder="enter location"  />
-
-
+                                    <x-input.text class="col-md-12" label="Location" name="educationInfo[].location" value=""
+                                        id="educationInfo[].location" placeholder="enter location" /> 
+                                </div>
+                                <hr>
                             </div>
+                            <button type="button" class="btn btn-secondary" id="add-more-education">Add More</button>
                         </section>
 
                         <h3>Experience</h3>
                         <section>
                             <div class="row">
                                 <x-input.text class="col-md-12" label="Company Name" name="company_name" value=""
-                                    id="company_name" placeholder="Enter Company Name"  />
+                                    id="company_name" placeholder="Enter Company Name" />
 
                                 <x-input.text class="col-md-4" label="Job Title" name="job_title" value=""
                                     id="job_title" placeholder="Enter Job Title" />
@@ -173,7 +182,7 @@
                                     value="" id="supervisor_contact" placeholder="enter supervisor contact" />
 
                                 <x-input.select class="col-md-4" label="Employment Type" name="employment_type"
-                                    value="" id="employment_type" placeholder="Select employment type" >
+                                    value="" id="employment_type" placeholder="Select employment type">
                                     <option value="" disabled selected>Select Employment Type</option>
                                     <option value="Full-time">Full-time</option>
                                     <option value="Part-time">Part-time</option>
@@ -185,7 +194,7 @@
                                 </x-input.select>
 
                                 <x-input.select class="col-md-2" label="Is Current" name="is_current" value=""
-                                    id="is_current" placeholder="Select One" >
+                                    id="is_current" placeholder="Select One">
                                     <option value="">Yes</option>
                                     <option value="">No</option>
                                 </x-input.select>
@@ -200,10 +209,10 @@
                                     id="salary" placeholder="Enter Salary" />
 
                                 <x-input.textarea class="col-md-12" label="Responsibilities" name="responsibilities"
-                                    value="" id="responsibilities" placeholder="enter responsibilities"  />
+                                    value="" id="responsibilities" placeholder="enter responsibilities" />
 
                                 <x-input.number class="col-md-12" label="Location" name="location" value=""
-                                    id="location" placeholder="enter location"  />
+                                    id="location" placeholder="enter location" />
 
                             </div>
                         </section>
@@ -231,4 +240,26 @@
     <script src="{{ asset('backend/plugins/jquery-step/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/jquery-step/custom-jquery.steps.js') }}"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
+
+
+    <script>
+        document.getElementById('add-more-education').addEventListener('click', function() {
+            // Get the container where we want to add new education info sets
+            const container = document.getElementById('education-info-container');
+
+            // Clone the first set of fields
+            const newEducationInfoSet = container.querySelector('.education-info-set').cloneNode(true);
+
+            // Clear the values of the cloned fields
+            const inputs = newEducationInfoSet.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.value = '';
+                // Optional: reset the id if needed (to avoid duplicate ids)
+                input.id = input.name + '_' + (container.children.length + 1); // Example: institute_name_2
+            });
+
+            // Append the new set to the container
+            container.appendChild(newEducationInfoSet);
+        });
+    </script>
 @endpush
