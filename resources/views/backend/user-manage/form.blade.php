@@ -126,37 +126,29 @@
                                 <x-input.text class="col-md-4" label="Degree" name="degree" value=""
                                     id="degree" placeholder="enter Degree" />
 
-                                <x-input.text class="col-md-4" label="Subject" name="subject" value=""
-                                    id="subject" placeholder="enter Subject" />
-
                                 <x-input.text class="col-md-4" label="Major Subject" name="major_subject" value=""
                                     id="major_subject" placeholder="enter Major Subject" />
 
-                                <x-input.select class="col-md-4" label="Board" name="board" value=""
-                                    id="board" placeholder="Select Board" >
-                                    <option value="">Islam</option>
-                                    <option value="">Hindu</option>
-                                    <option value="">Others</option>
-                                </x-input.select>
+                                <x-input.text class="col-md-8" label="Board/University" name="board_university"
+                                    value="" id="board_university" placeholder="enter board university" />
 
-                                <x-input.select class="col-md-4" label="Is Government" name="is_government"
-                                    value="" id="is_government" placeholder="Select One" >
-                                    <option value="">Yes</option>
-                                    <option value="">No</option>
-                                </x-input.select>
+                                <x-input.select class="col-md-4" label="Accreditation" name="accreditation"
+                                    value="" id="accreditation" placeholder="Select Accreditation" >
+                                    <option value="Private">Private</option>
+                                    <option value="Public">Public</option>
+                                    <option value="National ">National</option>
+                                    <option value="International">International</option>
+                                    <option value="Others">Others</option>
+                                </x-input.select> 
 
-                                <x-input.select class="col-md-4" label="GPA/CGPA" name="gpa_cgpa" value=""
-                                    id="gpa_cgpa" placeholder="Select GPA/CGPA" >
-                                    <option value="">Bangla</option>
-                                    <option value="">English</option>
-                                    <option value="">Others</option>
-                                </x-input.select>
+                                <x-input.number class="col-md-4" label="GPA/CGPA" name="gpa_cgpa"
+                                    value="" id="gpa_cgpa" placeholder="enter GPA/CGPA (4.08)" />
 
-                                <x-input.text class="col-md-4" label="Admission Year" name="admission_year"
+                                <x-input.years class="col-md-4" label="Admission Year" name="admission_year"
                                     value="" id="admission_year" placeholder="enter Admission Year" />
 
-                                <x-input.text class="col-md-4" label="Passing Year" name="passing_year" value=""
-                                    id="passing_year" placeholder="enter Passing Year" />
+                                <x-input.years class="col-md-4" label="graduation Year" name="graduation_year" value=""
+                                    id="graduation_year" placeholder="enter graduation year" />
 
                                 <x-input.text class="col-md-12" label="Location" name="location" value=""
                                     id="location" placeholder="enter location"  />
