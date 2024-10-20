@@ -13,10 +13,14 @@
         }
 
         .wizard>.content {
-            background: unset!important; 
+            background: unset !important;
         }
-        .education-info-container{
+
+        .education-info-container {
             background-color: #f1f2f3;
+        }
+        .education-info-set{
+            border: 1px solid gray;
         }
     </style>
     <!--  END CUSTOM STYLE FILE  -->
@@ -120,51 +124,61 @@
                         <h3>Educational Info</h3>
                         <section>
                             <div id="education-info-container">
-                                <div class="row education-info-set">
-                                    <x-input.text class="col-md-12" label="Institute Name" name="educationInfo[].institute"
-                                        value="" id="educationInfo[].institute" placeholder="enter institute name" />
+                                <div class="mb-4 row education-info-set">
+                                    <x-input.text class="mt-2 col-md-12" label="Institute Name"
+                                        name="educationInfo[0][institute]" value="" id="educationInfo[0][institute]"
+                                        placeholder="Enter institute name" />
 
-                                    <x-input.select class="col-md-4" label="Education Level" name="educationInfo[].education_level_id"
-                                        value="" id="educationInfo[].education_level_id" placeholder="Select Education Level">
+                                    <x-input.select class="col-md-4" label="Education Level"
+                                        name="educationInfo[0][education_level_id]" value=""
+                                        id="educationInfo[0][education_level_id]" placeholder="Select Education Level">
                                         @foreach ($educationLevels as $item)
                                             <option value="{{ $item->id }}">{{ $item->level }}</option>
                                         @endforeach
                                     </x-input.select>
 
-                                    <x-input.text class="col-md-4" label="Degree" name="educationInfo[].degree" value=""
-                                        id="educationInfo[].degree" placeholder="enter Degree" />
+                                    <x-input.text class="col-md-4" label="Degree" name="educationInfo[0][degree]"
+                                        value="" id="educationInfo[0][degree]" placeholder="Enter degree" />
 
-                                    <x-input.text class="col-md-4" label="Major Subject" name="educationInfo[].major_subject"
-                                        value="" id="educationInfo[].major_subject" placeholder="enter Major Subject" />
+                                    <x-input.text class="col-md-4" label="Major Subject"
+                                        name="educationInfo[0][major_subject]" value=""
+                                        id="educationInfo[0][major_subject]" placeholder="Enter major subject" />
 
-                                    <x-input.text class="col-md-8" label="Board/University" name="educationInfo[].board_university"
-                                        value="" id="educationInfo[].board_university" placeholder="enter board university" />
+                                    <x-input.text class="col-md-8" label="Board/University"
+                                        name="educationInfo[0][board_university]" value=""
+                                        id="educationInfo[0][board_university]" placeholder="Enter board/university" />
 
-                                    <x-input.select class="col-md-4" label="Accreditation" name="educationInfo[].accreditation"
-                                        value="" id="educationInfo[].accreditation" placeholder="Select Accreditation">
+                                    <x-input.select class="col-md-4" label="Accreditation"
+                                        name="educationInfo[0][accreditation]" value=""
+                                        id="educationInfo[0][accreditation]" placeholder="Select Accreditation">
                                         <option value="Private">Private</option>
                                         <option value="Public">Public</option>
-                                        <option value="National ">National</option>
+                                        <option value="National">National</option>
                                         <option value="International">International</option>
                                         <option value="Others">Others</option>
                                     </x-input.select>
 
-                                    <x-input.number class="col-md-4" label="GPA/CGPA" name="educationInfo[].gpa_cgpa" value=""
-                                        id="educationInfo[].gpa_cgpa" placeholder="enter GPA/CGPA (4.08)" />
+                                    <x-input.number class="col-md-4" label="GPA/CGPA" name="educationInfo[0][gpa_cgpa]"
+                                        value="" id="educationInfo[0][gpa_cgpa]" otherattr='min="2.00" max="5.00" step="0.01"' placeholder="enter GPA/CGPA (2.00 to 5.00)" />
 
-                                    <x-input.years class="col-md-4" label="Admission Year" name="educationInfo[].admission_year"
-                                        value="" id="educationInfo[].admission_year" placeholder="enter Admission Year" />
+                                    <x-input.years class="col-md-4" label="Admission Year"
+                                        name="educationInfo[0][admission_year]" value=""
+                                        id="educationInfo[0][admission_year]" placeholder="Enter admission year" />
 
-                                    <x-input.years class="col-md-4" label="graduation Year" name="educationInfo[].graduation_year"
-                                        value="" id="educationInfo[].graduation_year" placeholder="enter graduation year" />
+                                    <x-input.years class="col-md-4" label="Graduation Year"
+                                        name="educationInfo[0][graduation_year]" value=""
+                                        id="educationInfo[0][graduation_year]" placeholder="Enter graduation year" />
 
-                                    <x-input.text class="col-md-12" label="Location" name="educationInfo[].location" value=""
-                                        id="educationInfo[].location" placeholder="enter location" /> 
+                                    <x-input.text class="col-md-12" label="Location" name="educationInfo[0][location]"
+                                        value="" id="educationInfo[0][location]" placeholder="Enter location" />
+                                    
+                                    <hr>
                                 </div>
-                                <hr>
+                               
                             </div>
-                            <button type="button" class="btn btn-secondary" id="add-more-education">Add More</button>
+                            <button type="button" class="float-right btn btn-secondary" id="add-more-education">Add More</button>
                         </section>
+
 
                         <h3>Experience</h3>
                         <section>
@@ -242,24 +256,34 @@
     <!-- END PAGE LEVEL SCRIPTS -->
 
 
-    <script>
+    <script> 
+
         document.getElementById('add-more-education').addEventListener('click', function() {
-            // Get the container where we want to add new education info sets
+            // Get the education info container
             const container = document.getElementById('education-info-container');
 
-            // Clone the first set of fields
-            const newEducationInfoSet = container.querySelector('.education-info-set').cloneNode(true);
+            // Get the current number of education info sets (this will help us assign the right index)
+            const index = container.getElementsByClassName('education-info-set').length;
 
-            // Clear the values of the cloned fields
-            const inputs = newEducationInfoSet.querySelectorAll('input, select');
-            inputs.forEach(input => {
-                input.value = '';
-                // Optional: reset the id if needed (to avoid duplicate ids)
-                input.id = input.name + '_' + (container.children.length + 1); // Example: institute_name_2
+            // Clone the first set of fields
+            const newSet = document.querySelector('.education-info-set').cloneNode(true);
+
+            // Update the name and id attributes for each input field in the cloned set
+            newSet.querySelectorAll('input, select').forEach(function(field) {
+                // Update the 'name' attribute (replace index 0 with the current index)
+                const nameAttr = field.getAttribute('name').replace(/\[0\]/g, `[${index}]`);
+                field.setAttribute('name', nameAttr);
+
+                // Update the 'id' attribute (replace index 0 with the current index)
+                const idAttr = field.getAttribute('id').replace(/\[0\]/g, `[${index}]`);
+                field.setAttribute('id', idAttr);
+
+                // Clear the value in the cloned input fields
+                field.value = '';
             });
 
             // Append the new set to the container
-            container.appendChild(newEducationInfoSet);
+            container.appendChild(newSet);
         });
     </script>
 @endpush
