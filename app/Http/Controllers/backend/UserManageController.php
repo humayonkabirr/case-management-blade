@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EducationInfoRequest;
+use App\Http\Requests\ExperienceRequest;
 use App\Http\Requests\UserRequest;
 use App\Services\EducationLevelService;
 use Illuminate\Http\Request;
@@ -55,13 +56,14 @@ class UserManageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserRequest $request, EducationInfoRequest $educationInfoRequest)
+    public function store(UserRequest $userRequest, EducationInfoRequest $educationInfoRequest, ExperienceRequest $experienceRequest)
     {
         try {
             if (Gate::allows('dashboard.index')) {
-                $validatedData = $request->validated();
-                $educationInfoRequestData = $educationInfoRequest->validated();
-                dd($educationInfoRequestData);
+                $userRequest = $userRequest->validated();
+                $educationInfoRequest = $educationInfoRequest->validated();
+                $experienceRequest = $experienceRequest->validated();
+                dd($experienceRequest);
             }
             return view('errors.403');
         } catch (\Throwable $e) {

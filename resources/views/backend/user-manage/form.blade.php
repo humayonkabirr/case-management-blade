@@ -22,6 +22,9 @@
         .education-info-set{
             border: 1px solid gray;
         }
+        .experience-info-set{
+            border: 1px solid gray;
+        }
     </style>
     <!--  END CUSTOM STYLE FILE  -->
 @endpush
@@ -178,57 +181,62 @@
                             </div>
                             <button type="button" class="float-right btn btn-secondary" id="add-more-education">Add More</button>
                         </section>
-
-
+                        
                         <h3>Experience</h3>
                         <section>
-                            <div class="row">
-                                <x-input.text class="col-md-12" label="Company Name" name="company_name" value=""
-                                    id="company_name" placeholder="Enter Company Name" />
-
-                                <x-input.text class="col-md-4" label="Job Title" name="job_title" value=""
-                                    id="job_title" placeholder="Enter Job Title" />
-
-                                <x-input.text class="col-md-4" label="Supervisor Name" name="supervisor_name"
-                                    value="" id="supervisor_name" placeholder="enter supervisor name" />
-
-                                <x-input.tel class="col-md-4" label="supervisor contact" name="supervisor_contact"
-                                    value="" id="supervisor_contact" placeholder="enter supervisor contact" />
-
-                                <x-input.select class="col-md-4" label="Employment Type" name="employment_type"
-                                    value="" id="employment_type" placeholder="Select employment type">
-                                    <option value="" disabled selected>Select Employment Type</option>
-                                    <option value="Full-time">Full-time</option>
-                                    <option value="Part-time">Part-time</option>
-                                    <option value="Contract">Contract</option>
-                                    <option value="Freelance">Freelance</option>
-                                    <option value="Temporary">Temporary</option>
-                                    <option value="Internship">Internship</option>
-                                    <option value="Volunteer">Volunteer</option>
-                                </x-input.select>
-
-                                <x-input.select class="col-md-2" label="Is Current" name="is_current" value=""
-                                    id="is_current" placeholder="Select One">
-                                    <option value="">Yes</option>
-                                    <option value="">No</option>
-                                </x-input.select>
-
-                                <x-input.date class="col-md-2" label="Start Date" name="start_date" value=""
-                                    id="start_date" placeholder="Enter start date" />
-
-                                <x-input.date class="col-md-2" label="End Date" name="end_date" value=""
-                                    id="end_date" placeholder="Enter End Date" />
-
-                                <x-input.text class="col-md-2" label="Salary" name="salary" value=""
-                                    id="salary" placeholder="Enter Salary" />
-
-                                <x-input.textarea class="col-md-12" label="Responsibilities" name="responsibilities"
-                                    value="" id="responsibilities" placeholder="enter responsibilities" />
-
-                                <x-input.number class="col-md-12" label="Location" name="location" value=""
-                                    id="location" placeholder="enter location" />
-
+                            <div id="experience-info-container">
+                                <div class="mb-4 row experience-info-set">
+                                    <x-input.text class="col-md-8" label="Company Name" name="experience[0][company_name]" value=""
+                                        id="experience[0][company_name]" placeholder="Enter Company Name" />
+    
+                                    <x-input.text class="col-md-4" label="Job Title" name="experience[0][job_title]" value=""
+                                        id="experience[0][job_title]" placeholder="Enter Job Title" />
+    
+                                    <x-input.text class="col-md-4" label="Supervisor Name" name="experience[0][supervisor_name]"
+                                        value="" id="experience[0][supervisor_name]" placeholder="enter supervisor name" />
+    
+                                    <x-input.tel class="col-md-4" label="Supervisor Mobile" name="experience[0][supervisor_mobile]"
+                                        value="" id="experience[0][supervisor_mobile]" placeholder="enter supervisor mobile" />
+                                    
+                                    <x-input.tel class="col-md-4" label="Supervisor Email" name="experience[0][supervisor_email]"
+                                        value="" id="experience[0][supervisor_email]" placeholder="enter supervisor email" />
+    
+                                    <x-input.select class="col-md-4" label="Employment Type" name="experience[0][employment_type]"
+                                        value="" id="experience[0][employment_type]" placeholder="Select employment type">
+                                        <option value="" disabled selected>Select Employment Type</option>
+                                        <option value="Full-time">Full-time</option>
+                                        <option value="Part-time">Part-time</option>
+                                        <option value="Contract">Contract</option>
+                                        <option value="Freelance">Freelance</option>
+                                        <option value="Temporary">Temporary</option>
+                                        <option value="Internship">Internship</option>
+                                        <option value="Volunteer">Volunteer</option>
+                                    </x-input.select>
+    
+                                    <x-input.select class="col-md-2" label="Is Current" name="experience[0][is_current]" value=""
+                                        id="experience[0][is_current]" placeholder="Select One">
+                                        <option value="">Yes</option>
+                                        <option value="">No</option>
+                                    </x-input.select>
+    
+                                    <x-input.date class="col-md-2" label="Start Date" name="experience[0][start_date]" value=""
+                                        id="experience[0][start_date]" placeholder="Enter start date" />
+    
+                                    <x-input.date class="col-md-2" label="End Date" name="experience[0][end_date]" value=""
+                                        id="experience[0][end_date]" placeholder="Enter End Date" />
+    
+                                    <x-input.text class="col-md-2" label="Salary" name="experience[0][salary]" value=""
+                                        id="experience[0][salary]" placeholder="Enter Salary" />
+    
+                                    <x-input.textarea class="col-md-12" label="Responsibilities" name="experience[0][responsibilities]"
+                                        value="" id="experience[0][responsibilities]" placeholder="enter responsibilities" />
+    
+                                    <x-input.number class="col-md-12" label="Location" name="experience[0][location]" value=""
+                                        id="experience[0][location]" placeholder="enter location" />
+    
+                                </div>
                             </div>
+                            <button type="button" class="float-right btn btn-secondary" id="add-more-experience">Add More</button>
                         </section>
 
                         <h3>Contact</h3>
@@ -267,6 +275,35 @@
 
             // Clone the first set of fields
             const newSet = document.querySelector('.education-info-set').cloneNode(true);
+
+            // Update the name and id attributes for each input field in the cloned set
+            newSet.querySelectorAll('input, select').forEach(function(field) {
+                // Update the 'name' attribute (replace index 0 with the current index)
+                const nameAttr = field.getAttribute('name').replace(/\[0\]/g, `[${index}]`);
+                field.setAttribute('name', nameAttr);
+
+                // Update the 'id' attribute (replace index 0 with the current index)
+                const idAttr = field.getAttribute('id').replace(/\[0\]/g, `[${index}]`);
+                field.setAttribute('id', idAttr);
+
+                // Clear the value in the cloned input fields
+                field.value = '';
+            });
+
+            // Append the new set to the container
+            container.appendChild(newSet);
+        });
+
+        // this part for experience-info
+        document.getElementById('add-more-experience').addEventListener('click', function() {
+            // Get the experience info container
+            const container = document.getElementById('experience-info-container');
+
+            // Get the current number of experience info sets (this will help us assign the right index)
+            const index = container.getElementsByClassName('experience-info-set').length;
+
+            // Clone the first set of fields
+            const newSet = document.querySelector('.experience-info-set').cloneNode(true);
 
             // Update the name and id attributes for each input field in the cloned set
             newSet.querySelectorAll('input, select').forEach(function(field) {
