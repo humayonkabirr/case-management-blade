@@ -2,20 +2,20 @@
 
 namespace App\Services\Api;
 
-use App\Models\Union;
+use App\Models\Address;
 
-class UnionService
+class AddressService
 {
     protected $model;
 
-    public function __construct(Union $model)
+    public function __construct(Address $model)
     {
         $this->model = $model;
     }
 
     public function list()
     {
-        return $this->model::all(); // Example method to list all models
+        return $this->model;
     }
 
     // Add your service methods here

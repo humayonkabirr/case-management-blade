@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AddressController extends Controller
 {
      public function divisions() {
-
+          echo 'echo';
      }
 
      public function districts() {

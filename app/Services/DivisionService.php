@@ -6,7 +6,7 @@
 
     class DivisionService
     {
-        protected $Division $model;
+        protected $model;
 
         public function __construct(Division $model)
         {

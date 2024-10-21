@@ -3,63 +3,41 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Services\Api\DistrictService;
+use App\Services\Api\DivisionService;
+use App\Services\Api\UnionService;
+use App\Services\Api\UpazilaService;
 use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected $divisionService, $districtService, $upazilaService, $unionService;
+
+    public function __construct(DivisionService $divisionService, DistrictService $districtService, UpazilaService $upazilaService, UnionService $unionService)
     {
-        //
+        $this->divisionService = $divisionService;
+        $this->districtService = $districtService;
+        $this->upazilaService = $upazilaService;
+        $this->unionService = $unionService;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function divisions()
     {
-        //
+           return response()->json($this->divisionService->list());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function districts()
     {
-        //
+        return response()->json($this->districtService->list());
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function upazilas()
     {
-        //
+        return response()->json($this->upazilaService->list());
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function unions()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return response()->json($this->unionService->list());
     }
 }

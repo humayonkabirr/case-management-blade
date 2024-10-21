@@ -6,7 +6,7 @@
 
     class DistrictService
     {
-        protected $District $model;
+        protected $model;
 
         public function __construct(District $model)
         {

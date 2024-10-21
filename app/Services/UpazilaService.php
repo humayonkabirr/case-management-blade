@@ -6,7 +6,7 @@
 
     class UpazilaService
     {
-        protected $Upazila $model;
+        protected $model;
 
         public function __construct(Upazila $model)
         {
