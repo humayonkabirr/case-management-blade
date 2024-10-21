@@ -19,7 +19,6 @@ return new class extends Migration
             $table->decimal('lat', 10, 7); // Latitude
             $table->decimal('lon', 10, 7); // Longitude
             $table->string('url')->nullable(); // URL for the district
-            $table->timestamps();
             $table->unsignedInteger('status')->default(1);
             $table->timestamps(); 
             $table->softDeletes(); 

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
-            $table->foreignId('division_id')->constrained()->onDelete('cascade');
-            $table->foreignId('district_id')->constrained()->onDelete('cascade');
-            $table->foreignId('_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('division_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('district_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('_id')->constrained()->onDelete('cascade');
             
             $table->unsignedInteger('status')->default(1);
             $table->timestamps(); 
