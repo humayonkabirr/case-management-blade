@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             UserRoleSeeder::class,
             RolePermissionSeeder::class,
+            DivisionSeeder::class,
+            DistrictSeeder::class,
             EducationLevelSeeder::class,
             EducationInfoSeeder::class,
         ]);
