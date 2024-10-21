@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             RolePermissionSeeder::class,
             DivisionSeeder::class,
             DistrictSeeder::class,
+            UpazilaSeeder::class,
             EducationLevelSeeder::class,
             EducationInfoSeeder::class,
         ]);
