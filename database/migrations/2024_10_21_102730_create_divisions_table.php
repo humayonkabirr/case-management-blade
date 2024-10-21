@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('addresses', function (Blueprint $table) {
+        Schema::create('divisions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-
-            $table->foreignId('division_id')->constrained()->onDelete('cascade');
-            $table->foreignId('district_id')->constrained()->onDelete('cascade');
-            $table->foreignId('_id')->constrained()->onDelete('cascade');
-            
+            $table->string('name'); // Division name
+            $table->string('bn_name')->nullable(); // Bengali division name
+            $table->string('url')->nullable(); // URL for the division
             $table->unsignedInteger('status')->default(1);
             $table->timestamps(); 
-            $table->softDeletes();
+            $table->softDeletes(); 
         });
     }
 
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('divisions');
     }
 };
