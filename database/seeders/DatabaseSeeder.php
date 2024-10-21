@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             DivisionSeeder::class,
             DistrictSeeder::class,
             UpazilaSeeder::class,
+            UnionSeeder::class,
             EducationLevelSeeder::class,
             EducationInfoSeeder::class,
         ]);
