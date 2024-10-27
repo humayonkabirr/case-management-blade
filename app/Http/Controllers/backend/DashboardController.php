@@ -17,10 +17,10 @@ class DashboardController extends Controller
             if (Gate::allows('dashboard.index')) {
                 return view('layout.master');
             }
-            return view('messages.error-403');
+            return view('errors.403');
         } catch (\Throwable $e) {
             $errorMessage = $e->getMessage(); // Define the error message variable
-            return view('messages.technical-error', compact('errorMessage'));
+            return view('errors.500', compact('errorMessage'));
         }
     }
 

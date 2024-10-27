@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AddressController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// Address-Manage
+Route::group(['prefix'=>'address','as' => 'api.'],  function () {
+    Route::get('divisions', [AddressController::class, 'divisions'])->name('divisions');
+    Route::get('districts', [AddressController::class, 'districts'])->name('districts');
+    Route::get('upazilas', [AddressController::class, 'upazilas'])->name('upazilas');
+    Route::get('unions', [AddressController::class, 'unions'])->name('unions');
 });

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) { 
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('unique_key')->unique(); // mt_rand(1000000000, 9999999999);
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id('id');
+            $table->unsignedBigInteger('unique_key')->unique()->nullable(); // mt_rand(1000000000, 9999999999);
             $table->string('name');
             $table->string('slug');
             $table->integer('status');

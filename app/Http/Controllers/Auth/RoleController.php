@@ -7,12 +7,21 @@ use App\Models\Auth\Module;
 use App\Models\Auth\Permission;
 use App\Models\Auth\Role;
 use App\Models\Auth\RolePermission;
+use App\Services\RoleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
 {
+
+    protected $roleService;
+
+    public function __construct(RoleService $roleService)
+    {
+        $this->roleService = $roleService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,12 +29,13 @@ class RoleController extends Controller
      */
     public function index()
     {
+
         try {
             if (Gate::allows('role.index')) {
-                $data['roles'] = Role::where('status',1)->get();
-                return view('admin.roles.index',$data);
+                $data['roles'] = $this->roleService->list()->paginate(15);
+                return view('backend.roles.index', $data);
             } else {
-                abort(403);
+                return view('errors.403');
             }
         } catch (\Throwable $e) {
             return $e->getMessage();
@@ -43,7 +53,7 @@ class RoleController extends Controller
         if (Gate::allows('role.create')) {
             $data['modules'] = Module::all();
             $data['permissions'] = Permission::all();
-            return view('admin.roles.form',$data);
+            return view('admin.roles.form', $data);
         } else {
             abort(403);
         }
@@ -59,12 +69,11 @@ class RoleController extends Controller
     {
         //
         if (Gate::allows('role.create')) {
-            $role = Role::create(['unique_key' => mt_rand(1000000000, 9999999999),'name'=>$request->name, 'slug'=>str_replace(' ','_',$request->name), 'status'=>1]);
-        foreach($request->permissions as $permission)
-        {
-            RolePermission::create(['unique_key' => mt_rand(1000000000, 9999999999), 'role_id'=>$role->id, 'permission_id'=>$permission]);
-        }
-        return redirect(route('admin.role.index'))->with('success', 'Role created Successfully!!!');
+            $role = Role::create(['unique_key' => mt_rand(1000000000, 9999999999), 'name' => $request->name, 'slug' => str_replace(' ', '_', $request->name), 'status' => 1]);
+            foreach ($request->permissions as $permission) {
+                RolePermission::create(['unique_key' => mt_rand(1000000000, 9999999999), 'role_id' => $role->id, 'permission_id' => $permission]);
+            }
+            return redirect(route('admin.role.index'))->with('success', 'Role created Successfully!!!');
         } else {
             abort(403);
         }
@@ -94,7 +103,7 @@ class RoleController extends Controller
             $data['role'] = $role;
             $data['modules'] = Module::all();
             $data['permissions'] = Permission::all();
-            return view('admin.roles.form', $data);
+            return view('backend.roles.form', $data);
         } else {
             if (Auth::check()) {
                 abort(403);
@@ -116,14 +125,15 @@ class RoleController extends Controller
         //
         dd('hello!');
         if (Gate::allows('role.edit')) {
-            $role::find($id)->update(['unique_key' => mt_rand(1000000000, 9999999999),'name' => $request->name, 'slug' => str_replace(' ', '_', $request->name), 'status' => 1]);
-        RolePermission::where('role_id', $id)->delete();
-        foreach ($request->permissions as $permission) {
-            RolePermission::create(['unique_key' => mt_rand(1000000000, 9999999999),'role_id' => $id, 'permission_id' => $permission]);
-        }
-        return redirect(route('role.index'))->with('success', 'Role update Successfully!!!');
+            $role::find($id)->update(['unique_key' => mt_rand(1000000000, 9999999999), 'name' => $request->name, 'slug' => str_replace(' ', '_', $request->name), 'status' => 1]);
+            RolePermission::where('role_id', $id)->delete();
+            foreach ($request->permissions as $permission) {
+                RolePermission::create(['unique_key' => mt_rand(1000000000, 9999999999), 'role_id' => $id, 'permission_id' => $permission]);
+            }
+            return redirect(route('role.index'))->with('success', 'Role update Successfully!!!');
         } else {
-                abort(403); return redirect('login');
+            abort(403);
+            return redirect('login');
         }
     }
 
