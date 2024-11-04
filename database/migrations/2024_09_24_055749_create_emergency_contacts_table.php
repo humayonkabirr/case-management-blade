@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('relationship'); // E.g., parent, sibling, friend, etc.
             $table->string('mobile');
+            $table->string('gender');
             $table->string('email')->nullable();
             $table->string('address')->nullable(); 
             $table->unsignedInteger('status')->default(1);
