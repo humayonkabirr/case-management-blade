@@ -80,7 +80,7 @@
                 <use xlink:href="#tornillo" y="60"></use>
             </g>
         </svg>
-        <h1>You are not allowed to enter here</h1>
+        <h1>The Page You Are Looking For Not Available!</h1>
         <h2>Go <a href="{{ route('admin.index') }}">Back!</a></h2>
     </div>
 @endsection

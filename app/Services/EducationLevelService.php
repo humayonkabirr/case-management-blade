@@ -14,7 +14,7 @@ class EducationLevelService
 
     public function list()
     {
-        return $this->model;
+        return $this->model->get();
     }
     // Add your service methods here
 }

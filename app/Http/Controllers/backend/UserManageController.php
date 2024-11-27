@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EducationInfoRequest;
 use App\Http\Requests\ExperienceRequest;
 use App\Http\Requests\UserRequest;
+use App\Services\DivisionService;
 use App\Services\EducationLevelService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -13,11 +14,12 @@ use Illuminate\Support\Facades\Log;
 
 class UserManageController extends Controller
 {
-    protected $educationService;
+    protected $educationService, $divisionService;
 
-    public function __construct(EducationLevelService $educationService)
+    public function __construct(EducationLevelService $educationService, DivisionService $divisionService)
     {
         $this->educationService = $educationService;
+        $this->divisionService = $divisionService;
     }
 
     /**
@@ -43,7 +45,8 @@ class UserManageController extends Controller
     { 
         try {
             if (Gate::allows('dashboard.index')) {
-                $data['educationLevels'] = $this->educationService->list()->paginate(15); 
+                $data['educationLevels'] = $this->educationService->list(); 
+                $data['divisions'] = $this->divisionService->list(); 
                 return view('backend.user-manage.form', $data);
             }
             return view('errors.403');

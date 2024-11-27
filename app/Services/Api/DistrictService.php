@@ -13,6 +13,11 @@ class DistrictService
         $this->model = $model;
     }
 
+    public function listByDivision($id)
+    {
+        return $this->model::where('division_id', $id)->get(['id', 'name']); // Method to list all districts
+    }
+
     public function list()
     {
         return $this->model::all(); // Method to list all districts

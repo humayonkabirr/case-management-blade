@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('first_name');
             $table->string('last_name')->nullable();
-            $table->string('relationship'); // E.g., parent, sibling, friend, etc.
+            $table->string('relationship'); // E.g., 'Father', 'Mother', 'Brother', 'Sister', 'Spouse', 'Uncle', 'Aunty', 'Cousin', 'Friend', 'Neighbor', 'Colleague', 'Guardian', 'Other' etc.
             $table->string('mobile');
             $table->string('gender');
             $table->string('email')->nullable();

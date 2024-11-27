@@ -19,10 +19,12 @@
         .education-info-container {
             background-color: #f1f2f3;
         }
-        .education-info-set{
+
+        .education-info-set {
             border: 1px solid gray;
         }
-        .experience-info-set{
+
+        .experience-info-set {
             border: 1px solid gray;
         }
     </style>
@@ -129,8 +131,8 @@
                             <div id="education-info-container">
                                 <div class="mb-4 row education-info-set">
                                     <x-input.text class="mt-2 col-md-12" label="Institute Name"
-                                        name="educationInfo[0][institute]" value="" id="educationInfo[0][institute]"
-                                        placeholder="Enter institute name" />
+                                        name="educationInfo[0][institute]" value=""
+                                        id="educationInfo[0][institute]" placeholder="Enter institute name" />
 
                                     <x-input.select class="col-md-4" label="Education Level"
                                         name="educationInfo[0][education_level_id]" value=""
@@ -162,7 +164,9 @@
                                     </x-input.select>
 
                                     <x-input.number class="col-md-4" label="GPA/CGPA" name="educationInfo[0][gpa_cgpa]"
-                                        value="" id="educationInfo[0][gpa_cgpa]" otherattr='min="2.00" max="5.00" step="0.01"' placeholder="enter GPA/CGPA (2.00 to 5.00)" />
+                                        value="" id="educationInfo[0][gpa_cgpa]"
+                                        otherattr='min="2.00" max="5.00" step="0.01"'
+                                        placeholder="enter GPA/CGPA (2.00 to 5.00)" />
 
                                     <x-input.years class="col-md-4" label="Admission Year"
                                         name="educationInfo[0][admission_year]" value=""
@@ -174,35 +178,41 @@
 
                                     <x-input.text class="col-md-12" label="Location" name="educationInfo[0][location]"
                                         value="" id="educationInfo[0][location]" placeholder="Enter location" />
-                                    
+
                                     <hr>
                                 </div>
-                               
+
                             </div>
-                            <button type="button" class="float-right btn btn-secondary" id="add-more-education">Add More</button>
+                            <button type="button" class="float-right btn btn-secondary" id="add-more-education">Add
+                                More</button>
                         </section>
-                        
+
                         <h3>Experience</h3>
                         <section>
                             <div id="experience-info-container">
                                 <div class="mb-4 row experience-info-set">
-                                    <x-input.text class="col-md-8" label="Company Name" name="experience[0][company_name]" value=""
+                                    <x-input.text class="col-md-8" label="Company Name"
+                                        name="experience[0][company_name]" value=""
                                         id="experience[0][company_name]" placeholder="Enter Company Name" />
-    
-                                    <x-input.text class="col-md-4" label="Job Title" name="experience[0][job_title]" value=""
-                                        id="experience[0][job_title]" placeholder="Enter Job Title" />
-    
-                                    <x-input.text class="col-md-4" label="Supervisor Name" name="experience[0][supervisor_name]"
-                                        value="" id="experience[0][supervisor_name]" placeholder="enter supervisor name" />
-    
-                                    <x-input.tel class="col-md-4" label="Supervisor Mobile" name="experience[0][supervisor_mobile]"
-                                        value="" id="experience[0][supervisor_mobile]" placeholder="enter supervisor mobile" />
-                                    
-                                    <x-input.tel class="col-md-4" label="Supervisor Email" name="experience[0][supervisor_email]"
-                                        value="" id="experience[0][supervisor_email]" placeholder="enter supervisor email" />
-    
-                                    <x-input.select class="col-md-4" label="Employment Type" name="experience[0][employment_type]"
-                                        value="" id="experience[0][employment_type]" placeholder="Select employment type">
+
+                                    <x-input.text class="col-md-4" label="Job Title" name="experience[0][job_title]"
+                                        value="" id="experience[0][job_title]" placeholder="Enter Job Title" />
+
+                                    <x-input.text class="col-md-4" label="Supervisor Name"
+                                        name="experience[0][supervisor_name]" value=""
+                                        id="experience[0][supervisor_name]" placeholder="enter supervisor name" />
+
+                                    <x-input.tel class="col-md-4" label="Supervisor Mobile"
+                                        name="experience[0][supervisor_mobile]" value=""
+                                        id="experience[0][supervisor_mobile]" placeholder="enter supervisor mobile" />
+
+                                    <x-input.tel class="col-md-4" label="Supervisor Email"
+                                        name="experience[0][supervisor_email]" value=""
+                                        id="experience[0][supervisor_email]" placeholder="enter supervisor email" />
+
+                                    <x-input.select class="col-md-4" label="Employment Type"
+                                        name="experience[0][employment_type]" value=""
+                                        id="experience[0][employment_type]" placeholder="Select employment type">
                                         <option value="" disabled selected>Select Employment Type</option>
                                         <option value="Full-time">Full-time</option>
                                         <option value="Part-time">Part-time</option>
@@ -212,31 +222,33 @@
                                         <option value="Internship">Internship</option>
                                         <option value="Volunteer">Volunteer</option>
                                     </x-input.select>
-    
-                                    <x-input.select class="col-md-2" label="Is Current" name="experience[0][is_current]" value=""
-                                        id="experience[0][is_current]" placeholder="Select One">
+
+                                    <x-input.select class="col-md-2" label="Is Current" name="experience[0][is_current]"
+                                        value="" id="experience[0][is_current]" placeholder="Select One">
                                         <option value="">Yes</option>
                                         <option value="">No</option>
                                     </x-input.select>
-    
-                                    <x-input.date class="col-md-2" label="Start Date" name="experience[0][start_date]" value=""
-                                        id="experience[0][start_date]" placeholder="Enter start date" />
-    
-                                    <x-input.date class="col-md-2" label="End Date" name="experience[0][end_date]" value=""
-                                        id="experience[0][end_date]" placeholder="Enter End Date" />
-    
-                                    <x-input.text class="col-md-2" label="Salary" name="experience[0][salary]" value=""
-                                        id="experience[0][salary]" placeholder="Enter Salary" />
-    
-                                    <x-input.textarea class="col-md-12" label="Responsibilities" name="experience[0][responsibilities]"
-                                        value="" id="experience[0][responsibilities]" placeholder="enter responsibilities" />
-    
-                                    <x-input.number class="col-md-12" label="Location" name="experience[0][location]" value=""
-                                        id="experience[0][location]" placeholder="enter location" />
-    
+
+                                    <x-input.date class="col-md-2" label="Start Date" name="experience[0][start_date]"
+                                        value="" id="experience[0][start_date]" placeholder="Enter start date" />
+
+                                    <x-input.date class="col-md-2" label="End Date" name="experience[0][end_date]"
+                                        value="" id="experience[0][end_date]" placeholder="Enter End Date" />
+
+                                    <x-input.text class="col-md-2" label="Salary" name="experience[0][salary]"
+                                        value="" id="experience[0][salary]" placeholder="Enter Salary" />
+
+                                    <x-input.textarea class="col-md-12" label="Responsibilities"
+                                        name="experience[0][responsibilities]" value=""
+                                        id="experience[0][responsibilities]" placeholder="enter responsibilities" />
+
+                                    <x-input.number class="col-md-12" label="Location" name="experience[0][location]"
+                                        value="" id="experience[0][location]" placeholder="enter location" />
+
                                 </div>
                             </div>
-                            <button type="button" class="float-right btn btn-secondary" id="add-more-experience">Add More</button>
+                            <button type="button" class="float-right btn btn-secondary" id="add-more-experience">Add
+                                More</button>
                         </section>
 
                         <h3>Emergency Contact</h3>
@@ -248,33 +260,38 @@
                                 <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
                                     id="last_name" placeholder="enter last name" />
 
-                                <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value="" id="mobile"
-                                    placeholder="enter moble no" />
+                                <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value=""
+                                    id="mobile" placeholder="enter moble no" />
 
-                                <x-input.email class="col-md-4" label="Email" name="email" value="" id="email"
-                                    placeholder="enter email" /> 
+                                <x-input.email class="col-md-4" label="Email" name="email" value=""
+                                    id="email" placeholder="enter email" />
 
                                 <x-input.select class="col-md-4" label="Relationship" name="relationship" value=""
                                     id="relationship" placeholder="Select Relationship">
-                                    <option value="A+">A+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="B-">B-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="AB-">AB-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="O-">O-</option>
-                                </x-input.select> 
+                                    <option value="Father">Father</option>
+                                    <option value="Mother">Mother</option>
+                                    <option value="Brother">Brother</option>
+                                    <option value="Sister">Sister</option>
+                                    <option value="Spouse">Spouse</option>
+                                    <option value="Uncle">Uncle</option>
+                                    <option value="Aunty">Aunty</option>
+                                    <option value="Cousin">Cousin</option>
+                                    <option value="Friend">Friend</option>
+                                    <option value="Neighbor">Neighbor</option>
+                                    <option value="Colleague">Colleague</option>
+                                    <option value="Guardian">Guardian</option>
+                                    <option value="Other">Other</option>
+                                </x-input.select>
 
-                                <x-input.select class="col-md-4" label="Gender" name="gender" value="" id="gender"
-                                    placeholder="Select Gender">
+                                <x-input.select class="col-md-4" label="Gender" name="gender" value=""
+                                    id="gender" placeholder="Select Gender">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Others">Others</option>
-                                </x-input.select> 
+                                </x-input.select>
 
-                                <x-input.email class="col-md-12" label="Address" name="address" value="" id="address"
-                                    placeholder="enter address" /> 
+                                <x-input.email class="col-md-12" label="Address" name="address" value=""
+                                    id="address" placeholder="enter address" />
 
                             </div>
                         </section>
@@ -282,65 +299,29 @@
                         <h3>Address</h3>
                         <section>
                             <div class="row">
-                                <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
-                                    id="first_name" placeholder="enter first name" />
-
-                                <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
-                                    id="last_name" placeholder="enter last name" />
-
-                                <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value="" id="mobile"
-                                    placeholder="enter moble no" />
-
-                                <x-input.email class="col-md-4" label="Email" name="email" value="" id="email"
-                                    placeholder="enter email" />
-
-                                <x-input.date class="col-md-4" label="Birth of Date" name="birthday" value=""
-                                    id="birthday" placeholder="enter birth of date" />
-
-                                <x-input.select class="col-md-2" label="Blood Group" name="blood_group" value=""
-                                    id="blood_group" placeholder="Select Blood Group">
-                                    <option value="A+">A+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="B-">B-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="AB-">AB-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="O-">O-</option>
+                                <x-input.select class="col-md-4" label="Division" name="division_id" value=""
+                                    id="division_id" placeholder="Select Division">
+                                    @foreach ($divisions as $division)
+                                        <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                    @endforeach
                                 </x-input.select>
 
-                                <x-input.select class="col-md-2" label="Religion" name="religion" value=""
-                                    id="religion" placeholder="Select Religion">
-                                    <option value="Islam">Islam</option>
-                                    <option value="Christianity">Christianity</option>
-                                    <option value="Hinduism">Hinduism</option>
-                                    <option value="Buddhism">Buddhism</option>
-                                    <option value="Judaism">Judaism</option>
-                                    <option value="Sikhism">Sikhism</option>
-                                    <option value="Other">Other</option>
+                                <x-input.select class="col-md-4" label="District" name="district_id" value=""
+                                    id="district_id" placeholder="Select District">
                                 </x-input.select>
 
-                                <x-input.select class="col-md-4" label="Gender" name="gender" value="" id="gender"
-                                    placeholder="Select Gender">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Others">Others</option>
+                                <x-input.select class="col-md-4" label="Upazila" name="upazila_id" value=""
+                                    id="upazila_id" placeholder="Select Upazila">
                                 </x-input.select>
 
-                                <x-input.select class="col-md-4" label="Nationality" name="nationality" value=""
-                                    id="nationality" placeholder="Select Nationality">
-                                    <option value="0">Bangladeshi</option>
-                                    <option value="1">Others</option>
+                                <x-input.select class="col-md-4" label="Union" name="union_id" value=""
+                                    id="union_id" placeholder="Select Union">
                                 </x-input.select>
 
-                                <x-input.select class="col-md-4" label="Mother Tongue" name="mother_tongue"
-                                    value="" id="mother_tongue" placeholder="Select Mother Tongue">
-                                    <option value="Bangla">Bangla</option>
-                                    <option value="English">English</option>
-                                    <option value="Others">Others</option>
-                                </x-input.select>
-
+                                <x-input.text class="col-md-8" label="Location" name="location" value=""
+                                    id="location" placeholder="enter location" />
                             </div>
+
                         </section>
                     </div>
                 </x-form>
@@ -357,9 +338,71 @@
     <script src="{{ asset('backend/plugins/jquery-step/custom-jquery.steps.js') }}"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
 
+    <script>
+        $(document).ready(function() {
+            // Generic function to populate any dropdown based on API response
+            function populateDropdown(triggerDropdownId, targetDropdownId, apiUrl, placeholder = "Select Option") {
+                $(triggerDropdownId).change(function() {
+                    let selectedValue = $(this).val(); // Get the selected value from the trigger dropdown
+                    console.log(`Selected value from ${triggerDropdownId}: ${selectedValue}`);
 
-    <script> 
+                    // Clear the target dropdown before populating it
+                    $(targetDropdownId).html(`<option value="">${placeholder}</option>`);
 
+                    // Check if a value is selected in the trigger dropdown
+                    if (selectedValue) {
+                        // Construct the URL dynamically with the selected value
+                        let url = apiUrl.replace(':id', selectedValue);
+                        console.log(`API Request URL: ${url}`);
+
+                        // Make the API call
+                        $.ajax({
+                            url: url, // Dynamically constructed URL
+                            method: 'GET',
+                            dataType: 'json', // Expecting JSON response
+                            success: function(response) {
+                                console.log(`API Response for ${targetDropdownId}:`, response);
+
+                                // Check if response contains data and populate the target dropdown
+                                if (Array.isArray(response) && response.length > 0) {
+                                    response.forEach(function(option) {
+                                        $(targetDropdownId).append(
+                                            `<option value="${option.id}">${option.name}</option>`
+                                        );
+                                    });
+                                } else {
+                                    $(targetDropdownId).append(
+                                        `<option value="">No data available</option>`
+                                    );
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(`Error fetching data for ${targetDropdownId}:`,
+                                    error);
+                            }
+                        });
+                    } else {
+                        // If no value is selected, clear the target dropdown
+                        $(targetDropdownId).html(`<option value="">${placeholder}</option>`);
+                    }
+                });
+            }
+
+            // Example usage:
+            // Populate districts based on selected division
+            populateDropdown('#division_id', '#district_id', `{{ route('api.districts', ':id') }}`,
+                'Select District');
+
+            // Populate upazilas based on selected district
+            populateDropdown('#district_id', '#upazila_id', `{{ route('api.upazilas', ':id') }}`,
+            'Select Upazila');
+
+            // Populate unions based on selected upazila
+            populateDropdown('#upazila_id', '#union_id', `{{ route('api.unions', ':id') }}`, 'Select Union');
+        });
+    </script>
+
+    <script>
         document.getElementById('add-more-education').addEventListener('click', function() {
             // Get the education info container
             const container = document.getElementById('education-info-container');
