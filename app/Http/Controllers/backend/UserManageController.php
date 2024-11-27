@@ -7,20 +7,28 @@ use App\Http\Requests\EducationInfoRequest;
 use App\Http\Requests\EmergencyContactRequest;
 use App\Http\Requests\ExperienceRequest;
 use App\Http\Requests\UserRequest;
+use App\Services\Api\AddressService;
 use App\Services\DivisionService;
 use App\Services\EducationLevelService;
+use App\Services\emergencyContactService;
+use App\Services\ExperienceService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 
 class UserManageController extends Controller
 {
-    protected $educationService, $divisionService;
+    protected $educationService, $divisionService, $userService, $experienceService, $addressService, $emergencyContactService;
 
-    public function __construct(EducationLevelService $educationService, DivisionService $divisionService)
+    public function __construct(EducationLevelService $educationService, DivisionService $divisionService, UserService $userService, ExperienceService $experienceService, AddressService $addressService, EmergencyContactService $emergencyContactService)
     {
-        $this->educationService = $educationService;
-        $this->divisionService = $divisionService;
+        $this->educationService             = $educationService;
+        $this->divisionService              = $divisionService;
+        $this->userService                  = $userService;
+        $this->experienceService            = $experienceService;
+        $this->addressService               = $addressService;
+        $this->emergencyContactService      = $emergencyContactService;
     }
 
     /**
