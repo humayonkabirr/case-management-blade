@@ -206,7 +206,7 @@
                                         name="experience[0][supervisor_mobile]" value=""
                                         id="experience[0][supervisor_mobile]" placeholder="enter supervisor mobile" />
 
-                                    <x-input.tel class="col-md-4" label="Supervisor Email"
+                                    <x-input.email class="col-md-4" label="Supervisor Email"
                                         name="experience[0][supervisor_email]" value=""
                                         id="experience[0][supervisor_email]" placeholder="enter supervisor email" />
 
@@ -225,8 +225,8 @@
 
                                     <x-input.select class="col-md-2" label="Is Current" name="experience[0][is_current]"
                                         value="" id="experience[0][is_current]" placeholder="Select One">
-                                        <option value="">Yes</option>
-                                        <option value="">No</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     </x-input.select>
 
                                     <x-input.date class="col-md-2" label="Start Date" name="experience[0][start_date]"
@@ -235,7 +235,7 @@
                                     <x-input.date class="col-md-2" label="End Date" name="experience[0][end_date]"
                                         value="" id="experience[0][end_date]" placeholder="Enter End Date" />
 
-                                    <x-input.text class="col-md-2" label="Salary" name="experience[0][salary]"
+                                    <x-input.number class="col-md-2" label="Salary" name="experience[0][salary]"
                                         value="" id="experience[0][salary]" placeholder="Enter Salary" />
 
                                     <x-input.textarea class="col-md-12" label="Responsibilities"

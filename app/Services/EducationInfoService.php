@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Models\Address;
+use App\Models\EducationInfo;
 
-class AddressService
+class EducationInfoService
 {
     protected $model;
 
-    public function __construct(Address $model)
+    public function __construct(EducationInfo $model)
     {
         $this->model = $model;
     }
@@ -27,7 +27,7 @@ class AddressService
      * Get a single education level by its ID.
      *
      * @param int $id
-     * @return \App\Models\Address|null
+     * @return \App\Models\EducationInfo|null
      */
     public function findById($id)
     {
@@ -38,7 +38,7 @@ class AddressService
      * Create a new education level.
      *
      * @param array $data
-     * @return \App\Models\Address
+     * @return \App\Models\EducationInfo
      */
     public function create(array $data)
     {
@@ -50,17 +50,17 @@ class AddressService
      *
      * @param int $id
      * @param array $data
-     * @return \App\Models\Address
+     * @return \App\Models\EducationInfo
      */
     public function update($id, array $data)
     {
-        $address = $this->findById($id);
+        $educationInfo = $this->findById($id);
 
-        if ($address) {
-            $address->update($data); // Update record
+        if ($educationInfo) {
+            $educationInfo->update($data); // Update record
         }
 
-        return $address;
+        return $educationInfo;
     }
 
     /**
@@ -71,10 +71,10 @@ class AddressService
      */
     public function delete($id)
     {
-        $address = $this->findById($id);
+        $educationInfo = $this->findById($id);
 
-        if ($address) {
-            return $address->delete(); // Soft delete record
+        if ($educationInfo) {
+            return $educationInfo->delete(); // Soft delete record
         }
 
         return false; // Return false if not found
@@ -88,10 +88,10 @@ class AddressService
      */
     public function deletePermanently($id)
     {
-        $address = $this->findById($id);
+        $educationInfo = $this->findById($id);
 
-        if ($address) {
-            return $address->forceDelete(); // Delete record permanently
+        if ($educationInfo) {
+            return $educationInfo->forceDelete(); // Delete record permanently
         }
 
         return false; // Return false if not found
@@ -105,10 +105,10 @@ class AddressService
      */
     public function restore($id)
     {
-        $address = $this->model->onlyTrashed()->find($id);
+        $educationInfo = $this->model->onlyTrashed()->find($id);
 
-        if ($address) {
-            return $address->restore(); // Restore soft deleted record
+        if ($educationInfo) {
+            return $educationInfo->restore(); // Restore soft deleted record
         }
 
         return false; // Return false if not found

@@ -23,13 +23,13 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|exists:users,id',
-            'division_id' => 'nullable|exists:divisions,id',
-            'district_id' => 'nullable|exists:districts,id',
-            'upazila_id' => 'nullable|exists:upazilas,id',
-            'union_id' => 'nullable|exists:unions,id',
-            'location' => 'nullable|string|max:255',
-            'status' => 'nullable|in:0,1',  // assuming status can only be 0 or 1
+            // 'user_id'           => 'required|exists:users,id',
+            'division_id'       => 'nullable|exists:divisions,id',
+            'district_id'       => 'nullable|exists:districts,id',
+            'upazila_id'        => 'nullable|exists:upazilas,id',
+            'union_id'          => 'nullable|exists:unions,id',
+            'location'          => 'nullable|string|max:255',
+            'status'            => 'nullable|in:0,1',  // assuming status can only be 0 or 1
         ];
     }
 
@@ -41,15 +41,15 @@ class AddressRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_id.required' => 'The user ID is required.',
-            'user_id.exists' => 'The selected user is invalid.',
-            'division_id.exists' => 'The selected division is invalid.',
-            'district_id.exists' => 'The selected district is invalid.',
-            'upazila_id.exists' => 'The selected upazila is invalid.',
-            'union_id.exists' => 'The selected union is invalid.',
-            'location.string' => 'The location must be a string.',
-            'location.max' => 'The location may not be greater than 255 characters.',
-            'status.in' => 'The status must be either 0 or 1.',
+            // 'user_id.required'          => 'The user ID is required.',
+            // 'user_id.exists'            => 'The selected user is invalid.',
+            'division_id.exists'        => 'The selected division is invalid.',
+            'district_id.exists'        => 'The selected district is invalid.',
+            'upazila_id.exists'         => 'The selected upazila is invalid.',
+            'union_id.exists'           => 'The selected union is invalid.',
+            'location.string'           => 'The location must be a string.',
+            'location.max'              => 'The location may not be greater than 255 characters.',
+            'status.in'                 => 'The status must be either 0 or 1.',
         ];
     }
 }

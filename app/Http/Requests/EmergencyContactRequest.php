@@ -11,7 +11,7 @@ class EmergencyContactRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,12 +25,12 @@ class EmergencyContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id'       => 'required|exists:users,id',
+            'user_id'       => 'nullable|exists:users,id',
             'first_name'    => 'required|string|max:255',
             'last_name'     => 'nullable|string|max:255',
             'relationship'  => 'required|string|max:100',
             'mobile'        => 'required|string|max:15|regex:/^[0-9+\-\(\) ]+$/',
-            'gender'        => 'required|in:male,female,other',
+            'gender'        => 'required|in:Male,Female,Other',
             'email'         => 'nullable|email|max:255',
             'address'       => 'nullable|string|max:255',
             'status'        => 'nullable|integer|in:0,1',
@@ -43,7 +43,7 @@ class EmergencyContactRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_id.required'      => 'User ID is required.',
+            'user_id.nullable'      => 'User ID is required.',
             'user_id.exists'        => 'The selected user ID does not exist.',
             'first_name.required'   => 'First name is required.',
             'first_name.string'     => 'First name must be a string.',
@@ -58,7 +58,7 @@ class EmergencyContactRequest extends FormRequest
             'mobile.max'            => 'Mobile number cannot exceed 15 characters.',
             'mobile.regex'          => 'Mobile number contains invalid characters.',
             'gender.required'       => 'Gender is required.',
-            'gender.in'             => 'Gender must be either male, female, or other.',
+            'gender.in'             => 'Gender must be either Male, Female, or Other.',
             'email.email'           => 'Email must be a valid email address.',
             'email.max'             => 'Email cannot exceed 255 characters.',
             'address.string'        => 'Address must be a string.',
