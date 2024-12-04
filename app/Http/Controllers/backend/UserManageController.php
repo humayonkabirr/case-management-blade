@@ -43,7 +43,8 @@ class UserManageController extends Controller
     {
         try {
             if (Gate::allows('dashboard.index')) {
-                return view('backend.user-manage.index');
+                $data['users'] = $this->userService->list()->paginate(15);
+                return view('backend.user-manage.index', $data);
             }
             return view('errors.403');
         } catch (\Throwable $e) {

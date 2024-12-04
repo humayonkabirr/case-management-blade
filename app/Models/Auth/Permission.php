@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Permission extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
+    protected $guarded = ['_token'];
 
     public function rolePermissions()
     {
@@ -21,6 +21,4 @@ class Permission extends Model
     {
         return $this->hasOne(Module::class, 'id', 'module_id');
     }
-
-
 }

@@ -20,7 +20,7 @@ class UserService
      */
     public function list()
     {
-        return $this->model->all(); // Get all records
+        return $this->model; // Get all records
     }
 
     /**

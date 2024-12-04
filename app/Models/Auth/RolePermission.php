@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class RolePermission extends Model
 {
     protected $guarded = ['_token'];
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory,  SoftDeletes;
 
      public function permissionByRole($role_id)
      {

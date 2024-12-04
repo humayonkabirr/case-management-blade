@@ -22,66 +22,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex">
-                                        <div class="mr-2 usr-img-frame">
-                                            <img alt="avatar" class="img-fluid" src="{{ asset('backend/assets/img/90x90.jpg') }}">
+                            @foreach ($users as $key => $user)
+                                <tr>
+                                    <td>
+                                        <div class="d-flex">
+                                            <div class="mr-2 usr-img-frame">
+                                                <img alt="avatar" class="img-fluid"
+                                                    src="{{ asset('backend/assets/img/90x90.jpg') }}">
+                                            </div>
+                                            <p class="mb-0 align-self-center">{{ $user->first_name . ' '. $user->last_name }}</p>
                                         </div>
-                                        <p class="mb-0 align-self-center">Shaun</p>
-                                    </div>
-                                </td>
-                                <td>10/08/2020</td>
-                                <td>320</td>
-                                <td class="text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex">
-                                        <div class="mr-2 usr-img-frame">
-                                            <img alt="avatar" class="img-fluid" src="{{ asset('backend/assets/img/90x90.jpg') }}">
+                                    </td>
+                                    <td>10/08/2020</td>
+                                    <td>320</td>
+                                    <td class="text-center">
+                                        <div class="dropdown custom-dropdown">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                                            </a>
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                                <a class="dropdown-item" href="javascript:void(0);">View</a>
+                                                <a class="dropdown-item" href="javascript:void(0);">Edit</a>
+                                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                            </div>
                                         </div>
-                                        <p  class="mb-0 align-self-center">Alma</p>
-                                    </div>
-                                </td>
-                                <td>11/08/2020</td>
-                                <td>420</td>
-                                <td class="text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex">
-                                        <div class="mr-2 usr-img-frame">
-                                            <img alt="avatar" class="img-fluid" src="{{ asset('backend/assets/img/90x90.jpg') }}">
-                                        </div>
-                                        <p  class="mb-0 align-self-center">Kelly</p>
-                                    </div>
-                                </td>
-                                <td>12/08/2020</td>
-                                <td>130</td>
-                                <td class="text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex">
-                                        <div class="mr-2 usr-img-frame">
-                                            <img alt="avatar" class="img-fluid" src="{{ asset('backend/assets/img/90x90.jpg') }}">
-                                        </div>
-                                        <p  class="mb-0 align-self-center">Vincent</p>
-                                    </div>
-                                </td>
-                                <td>13/08/2020</td>
-                                <td>260</td>
-                                <td class="text-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
