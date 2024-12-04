@@ -15,8 +15,8 @@
                     <table class="table mb-4 table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Date</th>
+                                <th>Name / Type</th>
+                                <th>Mobile / Email</th>
                                 <th>Sale</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -30,15 +30,37 @@
                                                 <img alt="avatar" class="img-fluid"
                                                     src="{{ asset('backend/assets/img/90x90.jpg') }}">
                                             </div>
-                                            <p class="mb-0 align-self-center">{{ $user->first_name . ' '. $user->last_name }}</p>
+                                            <div class="line-height-none">
+                                                <p class="mb-0 font-weight-bold text-nowrap">
+                                                    {{ $user->first_name . ' ' . $user->last_name }}
+                                                </p>
+                                                <small class="text-muted">
+                                                    {{ $user->type ?? 'N/A' }}
+                                                </small>
+                                            </div>
                                         </div>
                                     </td>
-                                    <td>10/08/2020</td>
+                                    <td class="line-height-none">
+                                        <p class="mb-0 font-weight-bold text-nowrap">
+                                            {{ $user->mobile ?? 'N/A' }}
+                                        </p>
+                                        <small class="text-muted">
+                                            {{ $user->email ?? 'N/A' }}
+                                        </small>
+                                    </td>
                                     <td>320</td>
                                     <td class="text-center">
                                         <div class="dropdown custom-dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-more-horizontal">
+                                                    <circle cx="12" cy="12" r="1"></circle>
+                                                    <circle cx="19" cy="12" r="1"></circle>
+                                                    <circle cx="5" cy="12" r="1"></circle>
+                                                </svg>
                                             </a>
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
