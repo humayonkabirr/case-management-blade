@@ -86,18 +86,24 @@ class UserManageController extends Controller
             $educationInfoData    = $educationInfoRequest->validated();
             $experienceData       = $experienceRequest->validated();
             $emergencyContactData = $emergencyContactRequest->validated();
-            $addressData          = $addressRequest->validated();
-            dd($educationInfoData);
+            $addressData          = $addressRequest->validated(); 
+
             // Insert data into related services
             $user = $this->userService->create($userData + ['password' => Hash::make(12345678)]); // Assuming this returns the created user
             
-            $this->educationInfoService->create($educationInfoData + ['user_id' => $user->id]);
-            $this->experienceService->create($experienceData + ['user_id' => $user->id]);
+            foreach ($educationInfoData as $key => $educationInfo) { 
+                $this->educationInfoService->create($educationInfo[0] + ['user_id' => $user->id]);
+            }
+            
+            foreach ($experienceData as $key => $experience) {
+                $this->experienceService->create($experience[0] + ['user_id' => $user->id]);
+            }
+  
             $this->emergencyContactService->create($emergencyContactData + ['user_id' => $user->id]);
             $this->addressService->create($addressData + ['user_id' => $user->id]);
 
             DB::commit(); // Commit the transaction if everything succeeds
-            return redirect()->route('admin.user.index')->with('success', 'Data stored successfully.');
+            return redirect()->route('admin.user.index')->with('success', 'User create successfully.');
         } catch (\Throwable $e) {
             DB::rollBack(); // Rollback the transaction if any exception occurs
             Log::error('Error in store method', [

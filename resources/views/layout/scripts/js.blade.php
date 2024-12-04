@@ -34,13 +34,19 @@
 
             // Display success message
             @if (session('success'))
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: "{{ session('success') }}",
-                    timer: 5000, // Auto close after 5 seconds
-                    showConfirmButton: false, // No need for confirm button
+                // Swal.fire({
+                //     icon: 'success',
+                //     title: 'Success',
+                //     text: "{{ session('success') }}",
+                //     timer: 5000, // Auto close after 5 seconds
+                //     showConfirmButton: false, // No need for confirm button
+                // });
+
+                Toast.fire({
+                    icon: "success",
+                    title: "{{ session('success') }}"
                 });
+
             @endif
 
             // Display error message with no auto close
