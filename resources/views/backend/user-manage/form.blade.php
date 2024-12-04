@@ -41,25 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="widget-content widget-content-area">
-
-                @if (count($errors) > 0)
-                    <div class="row">
-                        @foreach ($errors->all() as $error)
-                            <div class="col-md-4">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <ul class="p-0 m-0" style="list-style: none;">
-                                        <li>{{ $error }}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-
+            <div class="widget-content widget-content-area"> 
                 <x-form action="{{ route('admin.user.store') }}" method="POST" class="form-example" id="form-submitted">
                     <div id="circle-basic" class="">
                         <h3>Genarel Info</h3>
