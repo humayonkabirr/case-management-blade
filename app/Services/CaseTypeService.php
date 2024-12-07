@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Services;
-use App\Models\Category;
+use App\Models\CaseType;
 
-class CategoryService
+class CaseTypeService
 {
-    protected Category $model;
+    protected CaseType $model;
     
-    public function __construct(Category $model)
+    public function __construct(CaseType $model)
     {
         $this->model = $model;
     }
     
 
     /**
-     * Get all Category data.
+     * Get all CaseType data.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -25,10 +25,10 @@ class CategoryService
 
 
     /**
-     * Get a single Category data by its ID.
+     * Get a single CaseType data by its ID.
      *
      * @param int $id
-     * @return \App\Models\{{ Category }}|null
+     * @return \App\Models\{{ CaseType }}|null
      */
     public function find($id)
     {
@@ -37,10 +37,10 @@ class CategoryService
 
 
     /**
-     * Create a new Category .
+     * Create a new CaseType .
      *
      * @param array $data
-     * @return \App\Models\Category
+     * @return \App\Models\CaseType
      */
     public function create(array $data)
     {
@@ -49,11 +49,11 @@ class CategoryService
 
     
     /** 
-     *  Update an Category data by its ID.
+     *  Update an CaseType data by its ID.
      *
      * @param int $id
      * @param array $data
-     * @return \App\Models\Category
+     * @return \App\Models\CaseType
      */
     public function update($id, array $data)
     {
@@ -66,7 +66,7 @@ class CategoryService
 
 
     /**
-     * Delete an Category data by its ID.
+     * Delete an CaseType data by its ID.
      *
      * @param int $id
      * @return bool|null
@@ -82,7 +82,7 @@ class CategoryService
 
 
     /**
-     * Soft delete an Category data by its ID.
+     * Soft delete an CaseType data by its ID.
      *
      * @param int $id
      * @return bool|null
@@ -98,7 +98,7 @@ class CategoryService
 
 
     /**
-     * Restore a soft-deleted Category data by its ID.
+     * Restore a soft-deleted CaseType data by its ID.
      *
      * @param int $id
      * @return bool|null

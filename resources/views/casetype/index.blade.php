@@ -1,5 +1,5 @@
 @extends('layout.master')
 
 @section('content')
-    <h1>category Form</h1>
+    <h1>casetype Index</h1>
 @endsection

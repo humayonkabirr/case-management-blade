@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             UnionSeeder::class,
             EducationLevelSeeder::class,
             EducationInfoSeeder::class,
+            CaseTypeSeeder::class,
         ]);
     }
 }
