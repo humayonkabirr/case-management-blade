@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RoleController;
-use App\Http\Controllers\SiteController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\Backend\UserManageController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
