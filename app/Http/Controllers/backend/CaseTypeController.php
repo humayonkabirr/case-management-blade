@@ -64,7 +64,7 @@ class CaseTypeController extends Controller
             }
             // Validate incoming requests
             $caseTypeData             = $caseTypeRequest->validated();
-             
+
             // Insert data into related services
             $caseTypeData = $this->caseTypeService->create($caseTypeData);
 
@@ -96,7 +96,24 @@ class CaseTypeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try {
+            if (!Gate::allows('dashboard.index')) {
+                return view('errors.403');
+            } 
+
+            $data['caseTypes'] = $this->caseTypeService->list()->paginate(15);
+            $data['caseType'] = $this->caseTypeService->find($id); 
+
+            return view('backend.case-type.form', $data);
+        } catch (\Throwable $e) {
+            DB::rollBack(); // Rollback the transaction if any exception occurs
+            Log::error('Error in store method', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return view('errors.500', ['errorMessage' => $e->getMessage()]);
+        }
     }
 
     /**

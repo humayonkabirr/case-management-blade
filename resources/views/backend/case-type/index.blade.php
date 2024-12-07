@@ -9,17 +9,7 @@
                         <h4>Case Type List</h4>
                     </div>
                 </div>
-            </div>
-
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            </div> 
 
             <div class="widget-content widget-content-area">
                 <div class="table-responsive">
@@ -58,7 +48,7 @@
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                                                 <a class="dropdown-item" href="javascript:void(0);">View</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Edit</a>
+                                                <a class="dropdown-item" href="{{ route('admin.case-type.edit', $type->id) }}">Edit</a>
                                                 <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                             </div>
                                         </div>

@@ -77,13 +77,13 @@
             </div>
             <div class="widget-content widget-content-area">
                 <x-form action="{{ route('admin.case-type.store') }}" method="POST" class="row">
-                    <x-input.text class="col-md-12" label="Name" name="name" value="" id="name"
+                    <x-input.text class="col-md-12" label="Name" name="name" value="{{ $caseType->name }}" id="name"
                         placeholder="Enter Case Type Name" required />
                     
-                        <x-input.text class="col-md-12" label="Name (BN)" name="bn_name" value="" id="bn_name"
+                        <x-input.text class="col-md-12" label="Name (BN)" name="bn_name" value="{{ $caseType->bn_name }}" id="bn_name"
                         placeholder="Enter Case Type Name (bn)" required />
                     
-                        <x-input.number class="col-md-12" label="Serial No" name="serial" value="" id="serial"
+                        <x-input.number class="col-md-12" label="Serial No" name="serial" value="{{ $caseType->serial }}" id="serial"
                         placeholder="Enter Case Type Serial" required />
 
 
