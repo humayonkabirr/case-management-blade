@@ -123,14 +123,16 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         //
-        if (Gate::allows('role.edit')) { 
+        if (Gate::allows('role.edit')) {
             $role->update(['unique_key' => mt_rand(1000000000, 9999999999), 'name' => $request->name, 'slug' => str_replace(' ', '_', $request->name), 'status' => 1]);
-           
-             RolePermission::where('role_id', $role->id)->delete();
-             
+
+            RolePermission::where('role_id', $role->id)->delete();
+
             foreach ($request->permissions as $permission) {
                 RolePermission::create(['unique_key' => mt_rand(1000000000, 9999999999), 'role_id' => $role->id, 'permission_id' => $permission]);
             }
+            // Log the change
+            __activity('Updated Role Permission', $role);
             return redirect(route('admin.role.index'))->with('success', 'Role update Successfully!!!');
         } else {
             abort(403);

@@ -4,24 +4,15 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
-class DashboardController extends Controller
+class OrganizationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        try {
-            if (Gate::allows('dashboard.index')) {
-                return view('layout.master');
-            }
-            return view('errors.403');
-        } catch (\Throwable $e) {
-            $errorMessage = $e->getMessage(); // Define the error message variable
-            return view('errors.500', compact('errorMessage'));
-        }
+        //
     }
 
     /**

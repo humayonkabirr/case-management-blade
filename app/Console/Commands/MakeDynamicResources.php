@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class MakeDynamicResources extends Command
 {
@@ -91,26 +92,119 @@ class MakeDynamicResources extends Command
         $content = <<<EOT
         <?php
 
-            namespace App\Services;
+        namespace App\Services;
+        use App\Models\\{$name};
 
-            use App\Models\\{$name};
-
-            class {$name}Service
+        class {$name}Service
+        {
+            protected {$name} \$model;
+            
+            public function __construct({$name} \$model)
             {
-                protected \${$name} \$model;
-
-                public function __construct({$name} \$model)
-                {
-                    \$this->model = \$model;
-                }
-
-                public function list()
-                {
-                    return \$this->model::all(); // Example method to list all models
-                }
-
-                // Add your service methods here
+                \$this->model = \$model;
             }
+            
+
+            /**
+             * Get all {$name} data.
+             *
+             * @return \Illuminate\Database\Eloquent\Collection
+             */
+            public function list()
+            {
+                return \$this->model; // Get all records
+            }
+
+
+            /**
+             * Get a single {$name} data by its ID.
+             *
+             * @param int \$id
+             * @return \App\Models\\{{ $name }}|null
+             */
+            public function find(\$id)
+            {
+                return \$this->model->find(\$id); // Find by ID
+            }
+
+
+            /**
+             * Create a new {$name} .
+             *
+             * @param array \$data
+             * @return \App\Models\\{$name}
+             */
+            public function create(array \$data)
+            {
+                return \$this->model->create(\$data); // Create new record
+            }
+
+            
+            /** 
+             *  Update an {$name} data by its ID.
+             *
+             * @param int \$id
+             * @param array \$data
+             * @return \App\Models\\{$name}
+             */
+            public function update(\$id, array \$data)
+            {
+                \$findData = \$this->find(\$id);
+                if (\$findData) {
+                    \$findData->update(\$data); // Update record
+                }
+                return \$findData;
+            }
+
+
+            /**
+             * Delete an {$name} data by its ID.
+             *
+             * @param int \$id
+             * @return bool|null
+             */
+            public function delete(\$id)
+            {
+                \$findData = \$this->find(\$id);
+                if (\$findData) {
+                    return \$findData->delete(); // Soft delete record
+                }
+                return false; // Return false if not found
+            }
+
+
+            /**
+             * Soft delete an {$name} data by its ID.
+             *
+             * @param int \$id
+             * @return bool|null
+             */
+            public function forceDelete(\$id)
+            {
+                \$findData = \$this->find(\$id);
+                if (\$findData) {
+                    return \$findData->forceDelete(); // Delete record permanently
+                }
+                return false; // Return false if not found
+            }
+
+
+            /**
+             * Restore a soft-deleted {$name} data by its ID.
+             *
+             * @param int \$id
+             * @return bool|null
+             */
+            public function restore(\$id)
+            {
+                \$findData = \$this->model->onlyTrashed()->find(\$id);
+                if (\$findData) {
+                    return \$findData->restore(); // Restore soft deleted record
+                }
+                return false; // Return false if not found
+            }
+        }
+
         EOT;
 
         File::ensureDirectoryExists(app_path('Services'));
@@ -119,6 +213,7 @@ class MakeDynamicResources extends Command
 
     protected function createView($name)
     {
+        $name = Str::lower($name);
         $path = resource_path("views/{$name}/index.blade.php");
         $pathForm = resource_path("views/{$name}/form.blade.php");
 

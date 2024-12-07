@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RoleController;
+use App\Http\Controllers\Backend\CaseTypeController;
 use App\Http\Controllers\backend\DashboardController;
-use App\Http\Controllers\Backend\UserManageController;
+use App\Http\Controllers\Backend\UserManageController; 
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,9 @@ Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
 
     // User-Manage
     Route::resource('user', UserManageController::class);
+
+    // Case-Type-Manage
+    Route::resource('case-type', CaseTypeController::class);
 
 });
 
