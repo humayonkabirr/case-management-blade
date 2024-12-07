@@ -11,9 +11,10 @@ class CaseTypeRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return true; // Update this as needed for authorization checks
+        // You can add your custom authorization logic here.
+        return true;
     }
 
     /**
@@ -21,26 +22,34 @@ class CaseTypeRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:categories,name,' . $this->category,
-            'bn_name' => 'nullable|string|max:255|unique::categories,bn_name'. $this->category,
-            'serial' => 'nullable|integer|min:1',
-            'status' => 'nullable|integer',
+            'name'          => 'required|string|max:255|unique:case_types,name,' . $this->id,
+            'bn_name'       => 'nullable|string|max:255|unique:case_types,bn_name,' . $this->id,
+            'serial'        => 'nullable|integer|min:1',
+            'status'        => 'nullable|integer',
         ];
     }
 
     /**
-     * Custom error messages for validation.
+     * Get the custom validation messages.
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
-            'name.required' => 'The category name is required.',
-            'name.unique' => 'The category name must be unique.', 
+            'name.required'     => 'The case type name is required.',
+            'name.string'       => 'The case type name must be a string.',
+            'name.max'          => 'The case type name must not be longer than 255 characters.',
+            'name.unique'       => 'The case type name must be unique.',
+            'bn_name.string'    => 'The Bengali name must be a string.',
+            'bn_name.max'       => 'The Bengali name must not be longer than 255 characters.',
+            'bn_name.unique'    => 'The Bengali name must be unique.',
+            'serial.integer'    => 'The serial number must be an integer.',
+            'serial.min'        => 'The serial number must be at least 1.',
+            'status.integer'    => 'The status must be an integer.',
         ];
     }
 }

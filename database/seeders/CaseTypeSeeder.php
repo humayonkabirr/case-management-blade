@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\CaseType; 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +13,7 @@ class CaseTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        Category::create([ 
+        CaseType::insert([ 
             [
                 'name' => 'Family Matters',
                 'bn_name' => 'পারিবারিক ব্যাপার',
@@ -38,6 +38,7 @@ class CaseTypeSeeder extends Seeder
                 'name' => 'Corporate Cases',
                 'bn_name' => 'কর্পোরেট মামলা',
             ]
-            ]);
+        ]);
+        
     }
 }
