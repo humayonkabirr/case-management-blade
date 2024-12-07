@@ -1,9 +1,9 @@
 <div class="mb-4 {{ $class ?? '' }}">
     <label for="{{ $id ?? '' }}">{{ $label ?? '' }}</label>
-    <input type="date" class="form-control" id="{{ $id ?? '' }}" name="{{ old($name, $value ?? '') }}"
-        placeholder="{{ $placeholder ?? '' }}" {{ $otherattr ?? '' }} value="{{ $value ?? '' }}">
+    <input type="date" class="form-control @error($name) is-invalid @enderror" id="{{ $id ?? '' }}" name="{{ $name ?? '' }}"
+        placeholder="{{ $placeholder ?? '' }}" {{ $otherattr ?? '' }} value="{{ old($name, $value ?? '') }}">
 
     @error($name)
-        <div class="error">{{ $message }}</div>
+        <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>

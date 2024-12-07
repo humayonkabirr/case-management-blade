@@ -1,11 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RoleController;
-use App\Http\Controllers\SiteController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\Backend\UserManageController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +16,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 
 Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
     // Dashboard Route

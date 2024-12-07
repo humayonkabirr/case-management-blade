@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Models\EducationLevel;
+use App\Models\Experience;
 
-class EducationLevelService
+class ExperienceService
 {
     protected $model;
 
-    public function __construct(EducationLevel $model)
+    public function __construct(Experience $model)
     {
         $this->model = $model;
     }
@@ -27,7 +27,7 @@ class EducationLevelService
      * Get a single education level by its ID.
      *
      * @param int $id
-     * @return \App\Models\EducationLevel|null
+     * @return \App\Models\Experience|null
      */
     public function findById($id)
     {
@@ -38,7 +38,7 @@ class EducationLevelService
      * Create a new education level.
      *
      * @param array $data
-     * @return \App\Models\EducationLevel
+     * @return \App\Models\Experience
      */
     public function create(array $data)
     {
@@ -50,17 +50,17 @@ class EducationLevelService
      *
      * @param int $id
      * @param array $data
-     * @return \App\Models\EducationLevel
+     * @return \App\Models\Experience
      */
     public function update($id, array $data)
     {
-        $educationLevel = $this->findById($id);
+        $experience = $this->findById($id);
 
-        if ($educationLevel) {
-            $educationLevel->update($data); // Update record
+        if ($experience) {
+            $experience->update($data); // Update record
         }
 
-        return $educationLevel;
+        return $experience;
     }
 
     /**
@@ -71,10 +71,10 @@ class EducationLevelService
      */
     public function delete($id)
     {
-        $educationLevel = $this->findById($id);
+        $experience = $this->findById($id);
 
-        if ($educationLevel) {
-            return $educationLevel->delete(); // Soft delete record
+        if ($experience) {
+            return $experience->delete(); // Soft delete record
         }
 
         return false; // Return false if not found
@@ -88,10 +88,10 @@ class EducationLevelService
      */
     public function deletePermanently($id)
     {
-        $educationLevel = $this->findById($id);
+        $experience = $this->findById($id);
 
-        if ($educationLevel) {
-            return $educationLevel->forceDelete(); // Delete record permanently
+        if ($experience) {
+            return $experience->forceDelete(); // Delete record permanently
         }
 
         return false; // Return false if not found
@@ -105,10 +105,10 @@ class EducationLevelService
      */
     public function restore($id)
     {
-        $educationLevel = $this->model->onlyTrashed()->find($id);
+        $experience = $this->model->onlyTrashed()->find($id);
 
-        if ($educationLevel) {
-            return $educationLevel->restore(); // Restore soft deleted record
+        if ($experience) {
+            return $experience->restore(); // Restore soft deleted record
         }
 
         return false; // Return false if not found

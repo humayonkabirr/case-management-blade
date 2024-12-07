@@ -30,11 +30,11 @@ class ExperienceRequest extends FormRequest
             'experience.*.start_date'          => 'required|date|before_or_equal:today',
             'experience.*.end_date'            => 'nullable|date|after:start_date',
             'experience.*.location'            => 'nullable|string|max:255',
-            'experience.*.is_current'          => 'boolean',
+            'experience.*.is_current'          => 'nullable|boolean',
             'experience.*.supervisor_name'     => 'nullable|string|max:255',
             'experience.*.supervisor_mobile'   => 'nullable|string|max:20', // Depending on your validation preference
             'experience.*.supervisor_email'    => 'nullable|email|max:255',
-            'experience.*.employment_type'     => 'required|string|in:Full-time,Part-time,Contract',
+            'experience.*.employment_type'     => 'required|string',
             'experience.*.salary'              => 'nullable|numeric|min:0|max:9999999.99',
             'experience.*.status'              => 'nullable|integer|in:0,1',
         ];
@@ -53,7 +53,7 @@ class ExperienceRequest extends FormRequest
             'experience.*.start_date.required'          => 'The start date is required.',
             'experience.*.start_date.before_or_equal'   => 'The start date cannot be in the future.',
             'experience.*.end_date.after'               => 'The end date must be after the start date.',
-            'experience.*.employment_type.in'           => 'The employment type must be Full-time, Part-time, or Contract.',
+            'experience.*.employment_type'           => 'The employment type must be String.',
             'experience.*.salary.numeric'               => 'Salary must be a valid number.',
             'experience.*.salary.min'                   => 'Salary cannot be negative.',
             'experience.*.salary.max'                   => 'Salary cannot exceed 9,999,999.99.',

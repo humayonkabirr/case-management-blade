@@ -26,18 +26,18 @@ class AddressController extends Controller
            return response()->json($this->divisionService->list());
     }
 
-    public function districts()
+    public function districts($id = null)
     {
-        return response()->json($this->districtService->list());
+        return response()->json($this->districtService->listByDivision($id));
     }
 
-    public function upazilas()
+    public function upazilas($id = null)
     {
-        return response()->json($this->upazilaService->list());
+        return response()->json($this->upazilaService->listByDistrict($id));
     }
 
-    public function unions()
+    public function unions($id = null)
     {
-        return response()->json($this->unionService->list());
+        return response()->json($this->unionService->listByUpazila($id));
     }
 }

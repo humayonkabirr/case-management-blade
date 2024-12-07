@@ -13,6 +13,12 @@ class UnionService
         $this->model = $model;
     }
 
+    // List all upazilas
+    public function listByUpazila($id)
+    {
+        return $this->model::where('upazilla_id', $id)->get(['id', 'name']); // Method to list all upazilas
+    }
+
     // List all unions
     public function list()
     {

@@ -13,6 +13,12 @@ class UpazilaService
         $this->model = $model;
     }
 
+    // List all districts
+    public function listByDistrict($id)
+    {
+        return $this->model::where('district_id', $id)->get(['id', 'name']); // Method to list all districts
+    }
+
     // List all upazilas
     public function list()
     {

@@ -8,21 +8,27 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EmergencyContact extends Model
 {
-    use HasFactory, SoftDeletes; 
+    use HasFactory, SoftDeletes;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'user_id',
         'first_name',
         'last_name',
         'relationship',
         'mobile',
+        'gender',
         'email',
         'address',
         'status',
     ];
 
     /**
-     * Define the relationship with the User model.
+     * Define the relationship to the User model.
      */
     public function user()
     {

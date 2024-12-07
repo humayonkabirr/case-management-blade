@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
-            // $table->foreignId('division_id')->constrained()->onDelete('cascade');
-            // $table->foreignId('district_id')->constrained()->onDelete('cascade');
-            // $table->foreignId('_id')->constrained()->onDelete('cascade');
-            
+            $table->foreignId('division_id')->constrained()->onDelete('cascade')->nullable();
+            $table->foreignId('district_id')->constrained()->onDelete('cascade')->nullable();
+            $table->foreignId('upazila_id')->constrained()->onDelete('cascade')->nullable();
+            $table->foreignId('union_id')->constrained()->onDelete('cascade')->nullable();
+            $table->string('location')->nullable();
             $table->unsignedInteger('status')->default(1);
             $table->timestamps(); 
             $table->softDeletes();

@@ -12,56 +12,45 @@
             </div>
             <div class="widget-content widget-content-area">
                 <x-form action="{{ route('admin.role.update', $role->id) }}" method="POST" class="row">
-                    <x-input.number class="col-md-12" label="Name" name="name" value="" id="name"
+                    @method('PUT')
+                    <x-input.text class="col-md-12" label="Name" name="name" value="{{ $role->name }}" id="name"
                         placeholder="Enter Role Name" required />
-                        
+
                     <div class="mt-4 col-md-12">
                         <ul style="list-style: none">
                             @foreach ($modules as $key => $module)
-                                @if ($key != 0)
-                                    <li class="mb-4">
-                                        <input type="checkbox" class="form-check-input" value="{{ $module->id }}">
-                                        <label class=""><strong>{{ $module->name }}</strong> </label>
+                                <li class="mb-4">
+                                    <input type="checkbox" class="form-check-input" value="{{ $module->id }}"
+                                        id="module_{{ $module->id }}">
+                                    <label class=""
+                                        for="module_{{ $module->id }}"><strong>{{ $module->name }}</strong> </label>
 
-
-                                        <ul style="list-style: none" class="row">
-                                            @foreach ($module->permissionList as $key => $permission)
-                                                <li class="col-md-4">
-                                                    <input type="checkbox" class="form-check-input" id="permissions[]"
-                                                        name="permissions[]" value="{{ $permission->id }}"
-                                                        @if (isset($role) && $role->rolePermissions()->where('permission_id', $permission->id)->exists()) checked @endif>
-                                                    <label for="{{ $permission->id }}">
-                                                        {{ $permission->name }}
-                                                    </label>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                @endif
+                                    <ul style="list-style: none" class="row">
+                                        @foreach ($module->permissionList as $key => $permission)
+                                            <li class="col-md-4">
+                                                <input type="checkbox" class="form-check-input"
+                                                    id="permission_{{ $permission->id }}" name="permissions[]"
+                                                    value="{{ $permission->id }}"
+                                                    @if (isset($role) &&
+                                                            $role->rolePermissions()->where('permission_id', $permission->id)->exists()) checked @endif>
+                                                <label for="permission_{{ $permission->id }}">
+                                                    {{ $permission->name }}
+                                                </label>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
-
+                    <button type="submit" class="float-right btn btn-secondary">Submit</button>
                 </x-form>
             </div>
         </div>
     </div>
 @endsection
-@push('css')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css">
-@endpush
-@push('js')
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.js"></script>
-    <script>
-        $(".select2_dd").select2({
-            theme: 'bootstrap4',
-        });
-    </script>
 
+@push('js')
     <script>
         $('input[type="checkbox"]').change(function(e) {
 
@@ -102,12 +91,10 @@
                     checkSiblings(parent);
 
                 } else {
-
                     el.parents("li").children('input[type="checkbox"]').prop({
                         indeterminate: true,
                         checked: false
                     });
-
                 }
 
             }

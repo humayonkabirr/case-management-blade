@@ -1,3 +1,17 @@
-#sidebar .theme-brand { 
+#sidebar .theme-brand {
     background-image: linear-gradient(to right, #00051c 0%, #122b9d 86%);
+}
+.is-invalid {
+    border: 1px solid #e7515a;
+}
+
+.invalid-feedback {
+    color: #e7515a;
+}
+.text-nowrap {
+    text-wrap: nowrap;
+}
+
+.line-height-none {
+    line-height: normal;
 }

@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Address-Manage
 Route::group(['prefix'=>'address','as' => 'api.'],  function () {
     Route::get('divisions', [AddressController::class, 'divisions'])->name('divisions');
-    Route::get('districts', [AddressController::class, 'districts'])->name('districts');
-    Route::get('upazilas', [AddressController::class, 'upazilas'])->name('upazilas');
-    Route::get('unions', [AddressController::class, 'unions'])->name('unions');
+    Route::get('districts/{id?}', [AddressController::class, 'districts'])->name('districts');
+    Route::get('upazilas/{id?}', [AddressController::class, 'upazilas'])->name('upazilas');
+    Route::get('unions/{id?}', [AddressController::class, 'unions'])->name('unions');
 });
