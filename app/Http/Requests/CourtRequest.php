@@ -23,15 +23,17 @@ class CourtRequest extends FormRequest
      */
     public function rules()
     {
+        $id = $this->route('court');  // Get the 'id' from the route
+
         return [
-            'name' => 'required|string|max:255|unique:courts,name',  // Unique name
-            'bn_name' => 'nullable|string|max:255',  // Nullable Bengali name
-            'division_id' => 'nullable|exists:divisions,id',  // Valid division id
-            'district_id' => 'nullable|exists:districts,id',  // Valid district id
-            'location' => 'nullable|string|max:250',  // Optional location
-            'bn_location' => 'nullable|string|max:250',  // Optional Bengali location
-            'serial' => 'nullable|integer',  // Optional integer serial number
-            'status' => 'nullable',  // Either 1 or 2 for status (active or inactive)
+            'name'          => 'required|string|max:255|unique:courts,name,' . $id,
+            'bn_name'       => 'nullable|string|max:255|unique:courts,bn_name,' . $id,
+            'division_id'   => 'nullable|exists:divisions,id',
+            'district_id'   => 'nullable|exists:districts,id',
+            'location'      => 'nullable|string|max:250',
+            'bn_location'   => 'nullable|string|max:250',
+            'serial'        => 'nullable|integer',
+            'status'        => 'nullable',
         ];
     }
 
@@ -43,9 +45,9 @@ class CourtRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'The court name is required.',
-            'name.unique' => 'The court name must be unique.',
-            'status.in' => 'The status must be either Active (1) or Inactive (0).',
+            'name.required'     => 'The court name is required.',
+            'name.unique'       => 'The court name must be unique.',
+            'status.in'         => 'The status must be either Active (1) or Inactive (0).',
         ];
     }
 }

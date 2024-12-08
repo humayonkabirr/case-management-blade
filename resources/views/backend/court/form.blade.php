@@ -24,13 +24,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($caseTypes as $key => $type)
+                            @foreach ($courts as $key => $item)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $type->name }}</td>
-                                    <td>{{ $type->bn_name }}</td>
-                                    <td>{{ $type->serial }}</td>
-                                    <td>{{ $type->status }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->bn_name }}</td>
+                                    <td>{{ $item->serial }}</td>
+                                    <td>{{ $item->status }}</td>
                                     <td class="text-center">
                                         <div class="dropdown custom-dropdown">
                                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"
@@ -57,7 +57,7 @@
                         </tbody>
                     </table>
                     <div>
-                        {{ $caseTypes->links('pagination::bootstrap-5') }}
+                        {{ $courts->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
 
