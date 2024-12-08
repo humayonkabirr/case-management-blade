@@ -20,7 +20,7 @@
                                 <th>Name </th>
                                 <th>Name (bn)</th>
                                 <th>Serial</th>
-                                <th>Status</th>
+                                <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -31,7 +31,7 @@
                                     <td>{{ $type->name }}</td>
                                     <td>{{ $type->bn_name }}</td>
                                     <td>{{ $type->serial }}</td>
-                                    <td>{{ $type->status }}</td>
+                                    <td class="text-center"><x-status :status="$type->status" /></td>
                                     <td class="text-center">
                                         <div class="dropdown custom-dropdown">
                                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"

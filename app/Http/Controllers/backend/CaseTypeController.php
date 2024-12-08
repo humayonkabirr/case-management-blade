@@ -99,10 +99,10 @@ class CaseTypeController extends Controller
         try {
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
-            } 
+            }
 
             $data['caseTypes'] = $this->caseTypeService->list()->paginate(15);
-            $data['caseType'] = $this->caseTypeService->find($id); 
+            $data['caseType'] = $this->caseTypeService->find($id);
 
             return view('backend.case-type.form', $data);
         } catch (\Throwable $e) {
@@ -119,9 +119,31 @@ class CaseTypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CaseTypeRequest $caseTypeRequest, $id)
     {
-        //
+        try {
+            if (!Gate::allows('dashboard.index')) {
+                return view('errors.403');
+            }
+            // Validate incoming requests
+            $caseTypeData             = $caseTypeRequest->validated();
+
+            // Insert data into related services
+            $caseTypeData = $this->caseTypeService->update($id, $caseTypeData);
+
+            // Log the change
+            __activity('Create Case Type', $caseTypeData);
+
+            return redirect()->route('admin.case-type.index')->with('success', 'Case Type update successfully.');
+        } catch (\Throwable $e) {
+            DB::rollBack(); // Rollback the transaction if any exception occurs
+            Log::error('Error in store method', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return view('errors.500', ['errorMessage' => $e->getMessage()]);
+        }
     }
 
     /**

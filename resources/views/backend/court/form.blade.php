@@ -6,7 +6,7 @@
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        <h4>Case Type List</h4>
+                        <h4>Court List</h4>
                     </div>
                 </div>
             </div>
@@ -71,19 +71,19 @@
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        <h4>Create Case Type</h4>
+                        <h4>Court Type</h4>
                     </div>
                 </div>
             </div>
             <div class="widget-content widget-content-area">
-                <x-form class="row" action="admin.case-type" data="{{ $caseType->id ?? '' }}">
-                    <x-input.text class="col-md-12" label="Name" name="name" value="{{ $caseType->name ?? '' }}"
+                <x-form class="row" action="admin.court" data="{{ $court->id ?? '' }}">
+                    <x-input.text class="col-md-12" label="Name" name="name" value="{{ $court->name ?? '' }}"
                         id="name" placeholder="Enter Case Type Name" required />
 
-                    <x-input.text class="col-md-12" label="Name (BN)" name="bn_name" value="{{ $caseType->bn_name ?? '' }}"
+                    <x-input.text class="col-md-12" label="Name (BN)" name="bn_name" value="{{ $court->bn_name ?? '' }}"
                         id="bn_name" placeholder="Enter Case Type Name (bn)" required />
 
-                    <x-input.number class="col-md-12" label="Serial No" name="serial" value="{{ $caseType->serial ?? '' }}"
+                    <x-input.number class="col-md-12" label="Serial No" name="serial" value="{{ $court->serial ?? '' }}"
                         id="serial" placeholder="Enter Case Type Serial" required />
 
 

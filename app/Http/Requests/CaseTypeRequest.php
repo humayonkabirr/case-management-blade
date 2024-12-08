@@ -24,11 +24,13 @@ class CaseTypeRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('case_type');  // Get the 'id' from the route
+
         return [
-            'name'          => 'required|string|max:255|unique:case_types,name,' . $this->id,
-            'bn_name'       => 'nullable|string|max:255|unique:case_types,bn_name,' . $this->id,
-            'serial'        => 'nullable|integer|min:1',
-            'status'        => 'nullable|integer',
+            'name' => 'required|string|max:255|unique:case_types,name,' . $id,
+            'bn_name' => 'nullable|string|max:255|unique:case_types,bn_name,' . $id,
+            'serial' => 'nullable|integer|min:1',
+            'status' => 'nullable|integer',
         ];
     }
 
