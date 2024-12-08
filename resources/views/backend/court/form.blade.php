@@ -83,6 +83,17 @@
                     <x-input.text class="col-md-12" label="Name (BN)" name="bn_name" value="{{ $court->bn_name ?? '' }}"
                         id="bn_name" placeholder="Enter Case Type Name (bn)" required />
 
+                    <x-input.select class="col-md-6" label="Division" name="division_id" value="" id="division_id"
+                        placeholder="Select Division">
+                        @foreach ($divisions as $division)
+                            <option value="{{ $division->id }}">{{ $division->name }}</option>
+                        @endforeach
+                    </x-input.select>
+
+                    <x-input.select class="col-md-6" label="District" name="district_id" value="" id="district_id"
+                        placeholder="Select District">
+                    </x-input.select>
+
                     <x-input.number class="col-md-12" label="Serial No" name="serial" value="{{ $court->serial ?? '' }}"
                         id="serial" placeholder="Enter Case Type Serial" required />
 
@@ -95,3 +106,59 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+            // Generic function to populate any dropdown based on API response
+            function populateDropdown(triggerDropdownId, targetDropdownId, apiUrl, placeholder = "Select Option") {
+                $(triggerDropdownId).change(function() {
+                    let selectedValue = $(this).val();  
+
+                    // Clear the target dropdown before populating it
+                    $(targetDropdownId).html(`<option value="">${placeholder}</option>`);
+
+                    // Check if a value is selected in the trigger dropdown
+                    if (selectedValue) {
+                        // Construct the URL dynamically with the selected value
+                        let url = apiUrl.replace(':id', selectedValue); 
+
+                        // Make the API call
+                        $.ajax({
+                            url: url, // Dynamically constructed URL
+                            method: 'GET',
+                            dataType: 'json', // Expecting JSON response
+                            success: function(response) { 
+                                // Check if response contains data and populate the target dropdown
+                                if (Array.isArray(response) && response.length > 0) {
+                                    response.forEach(function(option) {
+                                        $(targetDropdownId).append(
+                                            `<option value="${option.id}">${option.name}</option>`
+                                        );
+                                    });
+                                } else {
+                                    $(targetDropdownId).append(
+                                        `<option value="">No data available</option>`
+                                    );
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(`Error fetching data for ${targetDropdownId}:`,
+                                    error);
+                            }
+                        });
+                    } else {
+                        // If no value is selected, clear the target dropdown
+                        $(targetDropdownId).html(`<option value="">${placeholder}</option>`);
+                    }
+                });
+            }
+
+            // Example usage:
+            // Populate districts based on selected division
+            populateDropdown('#division_id', '#district_id', `{{ route('api.districts', ':id') }}`,
+                'Select District');
+
+        });
+    </script>
+@endpush

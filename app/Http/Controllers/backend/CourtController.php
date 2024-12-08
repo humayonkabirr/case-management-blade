@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourtRequest;
+use App\Services\Api\DivisionService;
 use App\Services\CourtService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,11 +13,12 @@ use Illuminate\Support\Facades\Log;
 
 class CourtController extends Controller
 {
-    protected $courtService;
+    protected $courtService, $divisionService;
 
-    public function __construct(CourtService $courtService)
+    public function __construct(CourtService $courtService, DivisionService $divisionService)
     {
-        $this->courtService  = $courtService;
+        $this->courtService     = $courtService;
+        $this->divisionService  = $divisionService;
     }
 
     /**
@@ -43,6 +45,7 @@ class CourtController extends Controller
     {
         try {
             if (Gate::allows('dashboard.index')) {
+                $data['divisions'] = $this->divisionService->list();
                 $data['courts'] = $this->courtService->list()->paginate(15);
                 return view('backend.court.form', $data);
             }
@@ -71,7 +74,7 @@ class CourtController extends Controller
             // Log the change
             __activity('Create Court', $courtData);
 
-            return redirect()->route('admin.case-type.index')->with('success', 'Court create successfully.');
+            return redirect()->route('admin.court.index')->with('success', 'Court create successfully.');
         } catch (\Throwable $e) {
             DB::rollBack(); // Rollback the transaction if any exception occurs
             Log::error('Error in store method', [
@@ -97,7 +100,7 @@ class CourtController extends Controller
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
             }
-
+            $data['divisions'] = $this->divisionService->list();
             $data['courts'] = $this->courtService->list()->paginate(15);
             $data['court'] = $this->courtService->find($id);
 
