@@ -31,7 +31,7 @@ class EducationInfoService
      */
     public function findById($id)
     {
-        return $this->model->find($id); // Find by ID
+        return $this->model->findOrFail($id); // Find by ID
     }
 
     /**

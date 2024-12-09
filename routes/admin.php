@@ -5,7 +5,8 @@ use App\Http\Controllers\Auth\RoleController;
 use App\Http\Controllers\Backend\CaseTypeController;
 use App\Http\Controllers\Backend\CourtController;
 use App\Http\Controllers\backend\DashboardController;
-use App\Http\Controllers\Backend\UserManageController; 
+use App\Http\Controllers\Backend\OrganizationController;
+use App\Http\Controllers\Backend\UserManageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,9 @@ Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
 
     // Court-Manage
     Route::resource('court', CourtController::class);
+
+    // Organization-Manage
+    Route::resource('organization', OrganizationController::class);
 
 });
 

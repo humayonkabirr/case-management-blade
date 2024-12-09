@@ -120,11 +120,11 @@ class MakeDynamicResources extends Command
              * Get a single {$name} data by its ID.
              *
              * @param int \$id
-             * @return \App\Models\\{{ $name }}|null
+             * @return \App\Models\\$name|null
              */
             public function find(\$id)
             {
-                return \$this->model->find(\$id); // Find by ID
+                return \$this->model->findOrFail(\$id); // Find by ID
             }
 
 

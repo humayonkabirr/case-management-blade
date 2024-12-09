@@ -28,11 +28,11 @@ class CourtService
      * Get a single Court data by its ID.
      *
      * @param int $id
-     * @return \App\Models\{{ Court }}|null
+     * @return \App\Models\Court|null
      */
     public function find($id)
     {
-        return $this->model->find($id); // Find by ID
+        return $this->model->findOrFail($id); // Find by ID
     }
 
 
