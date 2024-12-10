@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('organizations', function (Blueprint $table) {
-            $table->id(); 
+            $table->id();
             $table->string('name')->uniqid();
-            $table->string('bn_name')->nullable(); 
-            $table->tinyInteger('type')->commit(['0=>privet, 1=>govt']); 
+            $table->string('bn_name')->nullable();
+            $table->tinyInteger('type')->commit(['0=>privet, 1=>govt']);
             $table->string('location', 250)->nullable();
             $table->string('bn_location', 250)->nullable();
             $table->unsignedInteger('serial')->default(1);
             $table->unsignedInteger('status')->default(1)->commit(['0=>Inactive, 1=>Active, 2=>Block, 3=>Band, 4=>Suspend']);
-            $table->timestamps(); 
+            $table->timestamps();
             $table->softDeletes();
         });
     }
