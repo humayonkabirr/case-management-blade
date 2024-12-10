@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('content')
-    <div id="tableDropdown" class="col-lg-8 col-8 layout-spacing">
+    <div id="tableDropdown" class="col-lg-8 col-md-8 col-sm-8 col-12 layout-spacing">
         <div class="statbox widget box box-shadow">
             <div class="widget-header">
                 <div class="row">
