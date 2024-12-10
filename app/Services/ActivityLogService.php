@@ -32,7 +32,7 @@ class ActivityLogService
      */
     public function find($id)
     {
-        return $this->model->find($id); // Find by ID
+        return $this->model->findOrFail($id); // Find by ID
     }
 
 

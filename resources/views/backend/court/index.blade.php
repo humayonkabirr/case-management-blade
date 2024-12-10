@@ -6,7 +6,7 @@
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        <h4>Case Type List</h4>
+                        <h4>Court List</h4>
                     </div>
                 </div>
             </div> 
@@ -25,13 +25,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($caseTypes as $key => $type)
+                            @foreach ($courtList as $key => $court)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $type->name }}</td>
-                                    <td>{{ $type->bn_name }}</td>
-                                    <td>{{ $type->serial }}</td>
-                                    <td class="text-center"><x-status :status="$type->status" /></td>
+                                    <td>{{ $court->name }}</td>
+                                    <td>{{ $court->bn_name }}</td>
+                                    <td>{{ $court->serial }}</td>
+                                    <td class="text-center"><x-status :status="$court->status" /></td>
                                     <td class="text-center">
                                         <div class="dropdown custom-dropdown">
                                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"
@@ -48,7 +48,7 @@
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                                                 <a class="dropdown-item" href="javascript:void(0);">View</a>
-                                                <a class="dropdown-item" href="{{ route('admin.case-type.edit', $type->id) }}">Edit</a>
+                                                <a class="dropdown-item" href="{{ route('admin.court.edit', $court->id) }}">Edit</a>
                                                 <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@
                         </tbody>
                     </table>
                     <div>
-                        {{ $caseTypes->links('pagination::bootstrap-5') }}
+                        {{ $courtList->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
 

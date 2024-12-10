@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('addresses', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-
+        Schema::create('courts', function (Blueprint $table) {
+            $table->id(); 
+            $table->string('name')->uniqid();
+            $table->string('bn_name')->nullable();
             $table->foreignId('division_id')->constrained()->onDelete('cascade')->nullable();
             $table->foreignId('district_id')->constrained()->onDelete('cascade')->nullable();
-            $table->foreignId('upazila_id')->constrained()->onDelete('cascade')->nullable();
-            $table->foreignId('union_id')->constrained()->onDelete('cascade')->nullable();
             $table->string('location', 250)->nullable();
             $table->string('bn_location', 250)->nullable();
-            $table->unsignedInteger('status')->default(1);
+            $table->unsignedInteger('serial')->default(1);
+            $table->unsignedInteger('status')->default(1)->commit(['0=>Inactive, 1=>Active, 2=>Block, 3=>Band, 4=>Suspend']);
             $table->timestamps(); 
             $table->softDeletes();
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('courts');
     }
 };

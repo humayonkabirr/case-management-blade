@@ -3,20 +3,22 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CaseTypeRequest;
-use App\Services\CaseTypeService;
+use App\Http\Requests\CourtRequest;
+use App\Services\Api\DivisionService;
+use App\Services\CourtService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 
-class CaseTypeController extends Controller
+class CourtController extends Controller
 {
-    protected $caseTypeService;
+    protected $courtService, $divisionService;
 
-    public function __construct(CaseTypeService $caseTypeService)
+    public function __construct(CourtService $courtService, DivisionService $divisionService)
     {
-        $this->caseTypeService  = $caseTypeService;
+        $this->courtService     = $courtService;
+        $this->divisionService  = $divisionService;
     }
 
     /**
@@ -26,8 +28,8 @@ class CaseTypeController extends Controller
     {
         try {
             if (Gate::allows('dashboard.index')) {
-                $data['caseTypes'] = $this->caseTypeService->list()->paginate(15);
-                return view('backend.case-type.index', $data);
+                $data['courtList'] = $this->courtService->list()->paginate(15);
+                return view('backend.court.index', $data);
             }
             return view('errors.403');
         } catch (\Throwable $e) {
@@ -43,8 +45,9 @@ class CaseTypeController extends Controller
     {
         try {
             if (Gate::allows('dashboard.index')) {
-                $data['caseTypes'] = $this->caseTypeService->list()->paginate(15);
-                return view('backend.case-type.form', $data);
+                $data['divisions'] = $this->divisionService->list();
+                $data['courts'] = $this->courtService->list()->paginate(15);
+                return view('backend.court.form', $data);
             }
             return view('errors.403');
         } catch (\Throwable $e) {
@@ -56,22 +59,22 @@ class CaseTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CaseTypeRequest $caseTypeRequest)
+    public function store(CourtRequest $courtRequest)
     {
         try {
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
             }
             // Validate incoming requests
-            $caseTypeData             = $caseTypeRequest->validated();
+            $courtData             = $courtRequest->validated();
 
             // Insert data into related services
-            $caseTypeData = $this->caseTypeService->create($caseTypeData);
+            $courtData = $this->courtService->create($courtData);
 
             // Log the change
-            __activity('Create Case Type', $caseTypeData);
+            __activity('Create Court', $courtData);
 
-            return redirect()->route('admin.case-type.index')->with('success', 'Case Type create successfully.');
+            return redirect()->route('admin.court.index')->with('success', 'Court create successfully.');
         } catch (\Throwable $e) {
             DB::rollBack(); // Rollback the transaction if any exception occurs
             Log::error('Error in store method', [
@@ -86,10 +89,7 @@ class CaseTypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -100,13 +100,12 @@ class CaseTypeController extends Controller
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
             }
+            $data['divisions'] = $this->divisionService->list();
+            $data['courts'] = $this->courtService->list()->paginate(15);
+            $data['court'] = $this->courtService->find($id);
 
-            $data['caseTypes'] = $this->caseTypeService->list()->paginate(15);
-            $data['caseType'] = $this->caseTypeService->find($id);
-
-            return view('backend.case-type.form', $data);
+            return view('backend.court.form', $data);
         } catch (\Throwable $e) {
-            DB::rollBack(); // Rollback the transaction if any exception occurs
             Log::error('Error in store method', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
@@ -119,24 +118,23 @@ class CaseTypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CaseTypeRequest $caseTypeRequest, $id)
+    public function update(CourtRequest $courtRequest, $id)
     {
         try {
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
             }
             // Validate incoming requests
-            $caseTypeData             = $caseTypeRequest->validated();
+            $courtData             = $courtRequest->validated();
 
             // Insert data into related services
-            $caseTypeData = $this->caseTypeService->update($id, $caseTypeData);
+            $courtData = $this->courtService->update($id, $courtData);
 
             // Log the change
-            __activity('Create Case Type', $caseTypeData);
+            __activity('Create Court', $courtData);
 
-            return redirect()->route('admin.case-type.index')->with('success', 'Case Type update successfully.');
-        } catch (\Throwable $e) {
-            DB::rollBack(); // Rollback the transaction if any exception occurs
+            return redirect()->route('admin.court.index')->with('success', 'Court update successfully.');
+        } catch (\Throwable $e) { 
             Log::error('Error in store method', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),

@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             EducationLevelSeeder::class,
             EducationInfoSeeder::class,
             CaseTypeSeeder::class,
+            CourtSeeder::class,
         ]);
     }
 }

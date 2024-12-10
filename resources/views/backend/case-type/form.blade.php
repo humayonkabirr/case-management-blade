@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('content')
-    <div id="tableDropdown" class="col-lg-8 col-8 layout-spacing">
+    <div id="tableDropdown" class="col-lg-8 col-md-8 col-sm-8 col-12 layout-spacing">
         <div class="statbox widget box box-shadow">
             <div class="widget-header">
                 <div class="row">
@@ -76,15 +76,15 @@
                 </div>
             </div>
             <div class="widget-content widget-content-area">
-                <x-form action="{{ route('admin.case-type.store') }}" method="POST" class="row">
-                    <x-input.text class="col-md-12" label="Name" name="name" value="{{ $caseType->name }}" id="name"
-                        placeholder="Enter Case Type Name" required />
-                    
-                        <x-input.text class="col-md-12" label="Name (BN)" name="bn_name" value="{{ $caseType->bn_name }}" id="bn_name"
-                        placeholder="Enter Case Type Name (bn)" required />
-                    
-                        <x-input.number class="col-md-12" label="Serial No" name="serial" value="{{ $caseType->serial }}" id="serial"
-                        placeholder="Enter Case Type Serial" required />
+                <x-form class="row" action="admin.case-type" data="{{ $caseType->id ?? '' }}">
+                    <x-input.text class="col-md-12" label="Name" name="name" value="{{ $caseType->name ?? '' }}"
+                        id="name" placeholder="Enter Case Type Name" required />
+
+                    <x-input.text class="col-md-12" label="Name (BN)" name="bn_name" value="{{ $caseType->bn_name ?? '' }}"
+                        id="bn_name" placeholder="Enter Case Type Name (bn)" required />
+
+                    <x-input.number class="col-md-12" label="Serial No" name="serial" value="{{ $caseType->serial ?? '' }}"
+                        id="serial" placeholder="Enter Case Type Serial" required />
 
 
                     <div class="col-md-12">

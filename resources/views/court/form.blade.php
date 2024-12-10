@@ -1,5 +1,5 @@
 @extends('layout.master')
 
 @section('content')
-    <h1>organization Form</h1>
+    <h1>court Form</h1>
 @endsection

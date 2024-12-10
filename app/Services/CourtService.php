@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Services;
-use App\Models\Organization;
+use App\Models\Court;
 
-class OrganizationService
+class CourtService
 {
-    protected Organization $model;
+    protected Court $model;
     
-    public function __construct(Organization $model)
+    public function __construct(Court $model)
     {
         $this->model = $model;
     }
     
 
     /**
-     * Get all Organization data.
+     * Get all Court data.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -25,10 +25,10 @@ class OrganizationService
 
 
     /**
-     * Get a single Organization data by its ID.
+     * Get a single Court data by its ID.
      *
      * @param int $id
-     * @return \App\Models\Organization|null
+     * @return \App\Models\Court|null
      */
     public function find($id)
     {
@@ -37,10 +37,10 @@ class OrganizationService
 
 
     /**
-     * Create a new Organization .
+     * Create a new Court .
      *
      * @param array $data
-     * @return \App\Models\Organization
+     * @return \App\Models\Court
      */
     public function create(array $data)
     {
@@ -49,11 +49,11 @@ class OrganizationService
 
     
     /** 
-     *  Update an Organization data by its ID.
+     *  Update an Court data by its ID.
      *
      * @param int $id
      * @param array $data
-     * @return \App\Models\Organization
+     * @return \App\Models\Court
      */
     public function update($id, array $data)
     {
@@ -66,7 +66,7 @@ class OrganizationService
 
 
     /**
-     * Delete an Organization data by its ID.
+     * Delete an Court data by its ID.
      *
      * @param int $id
      * @return bool|null
@@ -82,7 +82,7 @@ class OrganizationService
 
 
     /**
-     * Soft delete an Organization data by its ID.
+     * Soft delete an Court data by its ID.
      *
      * @param int $id
      * @return bool|null
@@ -98,7 +98,7 @@ class OrganizationService
 
 
     /**
-     * Restore a soft-deleted Organization data by its ID.
+     * Restore a soft-deleted Court data by its ID.
      *
      * @param int $id
      * @return bool|null

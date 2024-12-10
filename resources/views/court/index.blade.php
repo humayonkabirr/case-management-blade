@@ -1,5 +1,5 @@
 @extends('layout.master')
 
 @section('content')
-    <h1>organization Index</h1>
+    <h1>court Index</h1>
 @endsection

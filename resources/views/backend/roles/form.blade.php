@@ -11,8 +11,7 @@
                 </div>
             </div>
             <div class="widget-content widget-content-area">
-                <x-form action="{{ route('admin.role.update', $role->id) }}" method="POST" class="row">
-                    @method('PUT')
+                <x-form class="row" action="admin.role" data="{{ $role->id ?? '' }}">
                     <x-input.text class="col-md-12" label="Name" name="name" value="{{ $role->name }}" id="name"
                         placeholder="Enter Role Name" required />
 

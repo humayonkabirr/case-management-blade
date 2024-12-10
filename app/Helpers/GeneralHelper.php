@@ -20,9 +20,9 @@ function __activity($action, $model = null, $before = null, $after = null, $stat
   $afterData = $after ?? ($model ? $model->getAttributes() : null); // Get current data (new)
 
   // Retrieve the controller and function name
-  $routeAction = Route::currentRouteAction(); // e.g., App\Http\Controllers\UserController@update
-  $controller = class_basename(explode('@', $routeAction)[0]); // Extract the controller name
-  $method = explode('@', $routeAction)[1] ?? null; // Extract the method name
+  $routeAction = Route::currentRouteAction();
+  $controller = class_basename(explode('@', $routeAction)[0]);
+  $method = explode('@', $routeAction)[1] ?? null;
 
   // Log the activity
   ActivityLog::create([
