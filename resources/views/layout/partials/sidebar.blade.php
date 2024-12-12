@@ -97,7 +97,8 @@
                     </li>
 
                     <li class="menu {{ __isActive(['admin.case-type.create', 'admin.case-type.index']) }}">
-                        <a href="#caseTypeManage" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <a href="#caseTypeManage" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -159,7 +160,8 @@
                     </li>
 
                     <li class="menu {{ __isActive(['admin.organization.create', 'admin.organization.index']) }}">
-                        <a href="#organizationManage" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <a href="#organizationManage" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -189,7 +191,7 @@
                         </ul>
                     </li>
 
-                    <li class="menu {{ __isActive(['admin.organization.create', 'admin.organization.index']) }}">
+                    <li class="menu {{ __isActive(['admin.judge.create', 'admin.judge.index']) }}">
                         <a href="#judgeManage" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -209,19 +211,20 @@
                                 </svg>
                             </div>
                         </a>
-                        <ul class="collapse submenu list-unstyled {{ __isActive(['admin.organization.create', 'admin.organization.index'], 'show') }}"
+                        <ul class="collapse submenu list-unstyled {{ __isActive(['admin.judge.create', 'admin.judge.index'], 'show') }}"
                             id="judgeManage" data-parent="#accordionExample">
-                            <li class="{{ __isActive('admin.organization.create') }}">
-                                <a href="{{ route('admin.organization.create') }}"> Judge Add </a>
+                            <li class="{{ __isActive('admin.judge.create') }}">
+                                <a href="{{ route('admin.judge.create') }}"> Judge Add </a>
                             </li>
-                            <li class="{{ __isActive('admin.organization.index') }}">
-                                <a href="{{ route('admin.organization.index') }}"> Judge List </a>
+                            <li class="{{ __isActive('admin.judge.index') }}">
+                                <a href="{{ route('admin.judge.index') }}"> Judge List </a>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="menu {{ __isActive(['admin.organization.create', 'admin.organization.index']) }}">
-                        <a href="#advocateManage" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <li class="menu {{ __isActive(['admin.advocate.create', 'admin.advocate.index']) }}">
+                        <a href="#advocateManage" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -240,17 +243,78 @@
                                 </svg>
                             </div>
                         </a>
-                        <ul class="collapse submenu list-unstyled {{ __isActive(['admin.organization.create', 'admin.organization.index'], 'show') }}"
+                        <ul class="collapse submenu list-unstyled {{ __isActive(['admin.advocate.create', 'admin.advocate.index'], 'show') }}"
                             id="advocateManage" data-parent="#accordionExample">
-                            <li class="{{ __isActive('admin.organization.create') }}">
-                                <a href="{{ route('admin.organization.create') }}"> Advocate Add </a>
+                            <li class="{{ __isActive('admin.advocate.create') }}">
+                                <a href="{{ route('admin.advocate.create') }}"> Advocate Add </a>
                             </li>
-                            <li class="{{ __isActive('admin.organization.index') }}">
-                                <a href="{{ route('admin.organization.index') }}"> Advocate List </a>
+                            <li class="{{ __isActive('admin.advocate.index') }}">
+                                <a href="{{ route('admin.advocate.index') }}"> Advocate List </a>
                             </li>
                         </ul>
                     </li>
 
+                    <li class="menu {{ __isActive(['admin.organization.create', 'admin.organization.index']) }}">
+                        <a href="#caseManage" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                    <polyline points="13 2 13 9 20 9"></polyline>
+                                </svg>
+                                <span>Case Manage</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled {{ __isActive(['admin.organization.create', 'admin.organization.index'], 'show') }}"
+                            id="caseManage" data-parent="#accordionExample">
+                            <li class="{{ __isActive('admin.organization.create') }}">
+                                <a href="{{ route('admin.organization.create') }}"> Case Add </a>
+                            </li>
+                            <li class="{{ __isActive('admin.organization.index') }}">
+                                <a href="{{ route('admin.organization.index') }}"> Case List </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu {{ __isActive(['admin.organization.create', 'admin.organization.index']) }}">
+                        <a href="#generalSetting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                    <polyline points="13 2 13 9 20 9"></polyline>
+                                </svg>
+                                <span>General Setting</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled {{ __isActive(['admin.organization.create', 'admin.organization.index'], 'show') }}"
+                            id="generalSetting" data-parent="#accordionExample">
+                            <li class="{{ __isActive('admin.organization.create') }}">
+                                <a href="{{ route('admin.organization.create') }}">Site Manage </a>
+                            </li>
+                            <li class="{{ __isActive('admin.organization.index') }}">
+                                <a href="{{ route('admin.organization.index') }}"> Case List </a>
+                            </li>
+                        </ul>
+                    </li>
 
                 </ul>
             </nav>
