@@ -27,6 +27,8 @@ class AdvocateController extends Controller
         $this->addressService               = $addressService;
         $this->emergencyContactService      = $emergencyContactService;
     }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -43,6 +45,7 @@ class AdvocateController extends Controller
             return view('errors.500', compact('errorMessage'));
         }
     }
+    
 
     /**
      * Show the form for creating a new resource.
