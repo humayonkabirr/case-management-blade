@@ -45,7 +45,7 @@ class AdvocateController extends Controller
             return view('errors.500', compact('errorMessage'));
         }
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
