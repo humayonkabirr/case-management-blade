@@ -21,7 +21,7 @@ class AdvocateController extends Controller
     {
         $this->educationService             = $educationService;
         $this->divisionService              = $divisionService;
-        $this->advocateService                  = $advocateService;
+        $this->advocateService              = $advocateService;
         $this->educationInfoService         = $educationInfoService;
         $this->experienceService            = $experienceService;
         $this->addressService               = $addressService;
