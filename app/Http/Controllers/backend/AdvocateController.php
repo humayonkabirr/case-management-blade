@@ -7,7 +7,7 @@ use App\Services\Api\AddressService;
 use App\Services\Api\DivisionService;
 use App\Services\EducationInfoService;
 use App\Services\EducationLevelService;
-use App\Services\emergencyContactService;
+use App\Services\EmergencyContactService;
 use App\Services\ExperienceService;
 use App\Services\AdvocateService;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class AdvocateController extends Controller
 {
     protected $educationService, $divisionService, $advocateService, $educationInfoService, $experienceService, $addressService, $emergencyContactService;
 
-    public function __construct(EducationLevelService $educationService, DivisionService $divisionService, AdvocateService $advocateService, EducationInfoService $educationInfoService, ExperienceService $experienceService, AddressService $addressService, emergencyContactService $emergencyContactService)
+    public function __construct(EducationLevelService $educationService, DivisionService $divisionService, AdvocateService $advocateService, EducationInfoService $educationInfoService, ExperienceService $experienceService, AddressService $addressService, EmergencyContactService $emergencyContactService)
     {
         $this->educationService             = $educationService;
         $this->divisionService              = $divisionService;
@@ -27,7 +27,6 @@ class AdvocateController extends Controller
         $this->addressService               = $addressService;
         $this->emergencyContactService      = $emergencyContactService;
     }
-
 
     /**
      * Display a listing of the resource.

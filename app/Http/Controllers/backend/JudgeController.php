@@ -3,24 +3,66 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Services\JudgeService;
+use App\Services\Api\AddressService;
+use App\Services\Api\DivisionService;
+use App\Services\EducationInfoService;
+use App\Services\EducationLevelService;
+use App\Services\EmergencyContactService;
+use App\Services\ExperienceService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class JudgeController extends Controller
 {
+    protected $educationService, $divisionService, $judgeService, $educationInfoService, $experienceService, $addressService, $emergencyContactService;
+
+    public function __construct(EducationLevelService $educationService, DivisionService $divisionService, JudgeService $judgeService, EducationInfoService $educationInfoService, ExperienceService $experienceService, AddressService $addressService, EmergencyContactService $emergencyContactService)
+    {
+        $this->educationService             = $educationService;
+        $this->divisionService              = $divisionService;
+        $this->judgeService                 = $judgeService;
+        $this->educationInfoService         = $educationInfoService;
+        $this->experienceService            = $experienceService;
+        $this->addressService               = $addressService;
+        $this->emergencyContactService      = $emergencyContactService;
+    }
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        try {
+            if (Gate::allows('dashboard.index')) {
+                $data['judges'] = $this->judgeService->list()->paginate(15);
+                return view('backend.judge.index', $data);
+            }
+            return view('errors.403');
+        } catch (\Throwable $e) {
+            $errorMessage = $e->getMessage(); // Define the error message variable
+            return view('errors.500', compact('errorMessage'));
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        try {
+            if (Gate::allows('dashboard.index')) {
+                $data['educationLevels'] = $this->educationService->list();
+                $data['divisions'] = $this->divisionService->list();
+                return view('backend.judge.form', $data);
+            }
+            return view('errors.403');
+        } catch (\Throwable $e) {
+            $errorMessage = $e->getMessage(); // Define the error message variable
+            return view('errors.500', compact('errorMessage'));
+        }
     }
 
     /**

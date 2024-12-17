@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Services;
-use App\Models\Judge;
+use App\Models\User;
 
 class JudgeService
 {
-    protected Judge $model;
+    protected User $model;
     
-    public function __construct(Judge $model)
+    public function __construct(User $model)
     {
         $this->model = $model;
     }
