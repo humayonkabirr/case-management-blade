@@ -12,10 +12,10 @@
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                         <div class="user-profile-section">
                             <div class="mx-auto media">
-                                <img src="assets/img/90x90.jpg" class="mr-2 img-fluid" alt="avatar">
+                                <img src="{{ asset('backend/assets/img/90x90.jpg') }}" class="mr-2 img-fluid" alt="avatar">
                                 <div class="media-body">
-                                    <h5>Shaun Park</h5>
-                                    <p>Project Leader</p>
+                                    <h5>{{ auth()->user()->first_name }}</h5>
+                                    <p>{{ auth()->user()->type }}</p>
                                 </div>
                             </div>
                         </div>
