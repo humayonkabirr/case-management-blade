@@ -48,6 +48,9 @@ Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
     
     // Judge-Manage
     Route::resource('judge', JudgeController::class);
+    
+    // case-Manage
+    Route::resource('case', JudgeController::class);
 
 });
 

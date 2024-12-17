@@ -254,7 +254,7 @@
                         </ul>
                     </li>
 
-                    <li class="menu {{ __isActive(['admin.organization.create', 'admin.organization.index']) }}">
+                    <li class="menu {{ __isActive(['admin.case.create', 'admin.case.index']) }}">
                         <a href="#caseManage" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -274,13 +274,13 @@
                                 </svg>
                             </div>
                         </a>
-                        <ul class="collapse submenu list-unstyled {{ __isActive(['admin.organization.create', 'admin.organization.index'], 'show') }}"
+                        <ul class="collapse submenu list-unstyled {{ __isActive(['admin.case.create', 'admin.case.index'], 'show') }}"
                             id="caseManage" data-parent="#accordionExample">
-                            <li class="{{ __isActive('admin.organization.create') }}">
-                                <a href="{{ route('admin.organization.create') }}"> Case Add </a>
+                            <li class="{{ __isActive('admin.case.create') }}">
+                                <a href="{{ route('admin.case.create') }}"> Case Add </a>
                             </li>
-                            <li class="{{ __isActive('admin.organization.index') }}">
-                                <a href="{{ route('admin.organization.index') }}"> Case List </a>
+                            <li class="{{ __isActive('admin.case.index') }}">
+                                <a href="{{ route('admin.case.index') }}"> Case List </a>
                             </li>
                         </ul>
                     </li>
