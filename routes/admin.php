@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RoleController;
 use App\Http\Controllers\Backend\AdvocateController;
+use App\Http\Controllers\Backend\CaseInfoController;
 use App\Http\Controllers\Backend\CaseTypeController;
 use App\Http\Controllers\Backend\CourtController;
 use App\Http\Controllers\backend\DashboardController;
@@ -50,7 +51,7 @@ Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
     Route::resource('judge', JudgeController::class);
     
     // case-Manage
-    Route::resource('case', JudgeController::class);
+    Route::resource('case', CaseInfoController::class);
 
 });
 
