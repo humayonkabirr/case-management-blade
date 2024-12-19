@@ -1,5 +1,7 @@
 @extends('layout.master')
 
+@section('title', 'Add a new advocate')
+
 @push('css')
     <link href="{{ asset('backend/assets/css/components/tabs-accordian/custom-tabs.css') }}"
         rel="stylesheet"type="text/css" />
