@@ -60,7 +60,7 @@
                     </div>
                 @endif
 
-                <x-form action="{{ route('admin.user.store') }}" method="POST" class="form-example" id="form-submitted">
+                <x-form class="row" action="admin.user" data="{{ $court->id ?? '' }}" id="form-submitted">
                     <div id="circle-basic" class="">
                         <h3>Genarel Info</h3>
                         <section>
@@ -395,7 +395,7 @@
 
             // Populate upazilas based on selected district
             populateDropdown('#district_id', '#upazila_id', `{{ route('api.upazilas', ':id') }}`,
-            'Select Upazila');
+                'Select Upazila');
 
             // Populate unions based on selected upazila
             populateDropdown('#upazila_id', '#union_id', `{{ route('api.unions', ':id') }}`, 'Select Union');

@@ -34,6 +34,7 @@
 
      /*/<starter kit design>*/
  </style>
+
  <link href="{{ asset('backend/assets/css/custom.css') }}" rel="stylesheet" type="text/css" />
  <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
  
