@@ -1,7 +1,5 @@
 @extends('layout.master')
 
 @section('content')
-    @can(['afdaf',dafsaf])
-        
-    @endcan
+    <h1>caseinfo Form</h1>
 @endsection
