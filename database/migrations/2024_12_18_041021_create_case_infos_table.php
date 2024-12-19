@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('case_type_id')->constrained()->onDelete('cascade')->nullable();
             $table->unsignedBigInteger('advocate_id');
 			$table->foreign('advocate_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('Title')->uniqid();
+            $table->string('Title');
             $table->string('bn_Title')->nullable();
             $table->unsignedInteger('serial')->default(1);
             $table->unsignedInteger('status')->default(1)->commit(['0=>Inactive, 1=>Active, 2=>Block, 3=>Band, 4=>Suspend']);
