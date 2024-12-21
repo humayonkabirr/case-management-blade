@@ -73,7 +73,7 @@ class CaseInfoController extends Controller
 
             return redirect()->route('admin.case-info.index')->with('success', 'Case Type create successfully.');
         } catch (\Throwable $e) {
-            DB::rollBack(); // Rollback the transaction if any exception occurs
+            DB::rollBack();
             Log::error('Error in store method', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
