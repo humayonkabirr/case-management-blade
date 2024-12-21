@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('attachments', function (Blueprint $table) {
-           
+            $table->id();
+            $table->foreignId('case_info_id')->constrained()->onDelete('cascade')->nullable();
+            $table->string('file');
+            $table->unsignedInteger('status')->default(1)->commit(['0=>Inactive, 1=>Active, 2=>Block, 3=>Band, 4=>Suspend']);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
