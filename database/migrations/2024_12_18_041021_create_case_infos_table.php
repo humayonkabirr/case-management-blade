@@ -12,18 +12,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('case_infos', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('case_type_id')->constrained()->onDelete('cascade')->nullable();
-            $table->unsignedBigInteger('advocate_id');
-			$table->foreign('advocate_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('Title');
-            $table->string('bn_Title')->nullable();
+            $table->id(); // Primary key
+            $table->foreignId('case_type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('court_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('advocate_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
+            $table->string('title');
+            $table->string('bn_title')->nullable();
+            $table->string('case_no')->nullable();
+            $table->string('tender_no')->nullable();
+            $table->string('priority')->nullable();
+            $table->string('case_state')->nullable(); 
             $table->unsignedInteger('serial')->default(1);
-            $table->unsignedInteger('status')->default(1)->commit(['0=>Inactive, 1=>Active, 2=>Block, 3=>Band, 4=>Suspend']);
+            $table->unsignedTinyInteger('status')->default(1)->comment('0=>Inactive, 1=>Active, 2=>Block, 3=>Band, 4=>Suspend'); // Status
             $table->timestamps();
             $table->softDeletes();
         });
     }
+    
 
     /**
      * Reverse the migrations.
