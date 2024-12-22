@@ -22,12 +22,14 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('user');
+
         return [
             'first_name'    => 'required|string|max:30',
             'last_name'     => 'nullable|string|max:30',
-            'username'      => 'nullable|string|unique:users,username',
-            'mobile'        => 'nullable|string|unique:users,mobile',
-            'email'         => 'required|string|email|max:255|unique:users,email',
+            'username'      => 'nullable|string|unique:users,username,' . $id,
+            'mobile'        => 'nullable|string|min:11|max:15|regex:/^[0-9+\-\(\) ]+$/|unique:users,mobile,' . $id,
+            'email'         => 'required|string|email|max:255|unique:users,email,' . $id,
             'birthday'      => 'required|date',
             'blood_group'   => 'required|string|max:3',
             'religion'      => 'required|string|max:15',

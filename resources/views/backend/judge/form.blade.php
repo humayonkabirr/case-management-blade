@@ -68,53 +68,69 @@
 
                             <x-input.select class="col-md-2" label="Blood Group" name="blood_group" value=""
                                 id="blood_group" placeholder="Select Blood Group">
-                                <option value="A+" {{ __select('blood_group', 'A+', $judge->blood_group??'') }}> A+ </option>
-                                
-                                <option value="A-" {{ __select('blood_group', 'A-', $judge->blood_group??'') }}>A-
+                                <option value="A+" {{ __select('blood_group', 'A+', $judge->blood_group ?? '') }}> A+
                                 </option>
-                                <option value="B+" {{ __select('blood_group', 'B+', $judge->blood_group??'') }}>B+
+                                <option value="A-" {{ __select('blood_group', 'A-', $judge->blood_group ?? '') }}>A-
                                 </option>
-                                <option value="B-" {{ __select('blood_group', 'B-', $judge->blood_group??'') }}>B-
+                                <option value="B+" {{ __select('blood_group', 'B+', $judge->blood_group ?? '') }}>B+
                                 </option>
-                                <option value="AB+" {{ __select('blood_group', 'AB+', $judge->blood_group??'') }}>AB+
+                                <option value="B-" {{ __select('blood_group', 'B-', $judge->blood_group ?? '') }}>B-
                                 </option>
-                                <option value="AB-" {{ __select('blood_group', 'AB-', $judge->blood_group??'') }}>AB-
+                                <option value="AB+" {{ __select('blood_group', 'AB+', $judge->blood_group ?? '') }}>AB+
                                 </option>
-                                <option value="O+" {{ __select('blood_group', 'O+', $judge->blood_group??'') }}>O+
+                                <option value="AB-" {{ __select('blood_group', 'AB-', $judge->blood_group ?? '') }}>AB-
                                 </option>
-                                <option value="O-" {{ __select('blood_group', 'O-', $judge->blood_group??'') }}>O-
+                                <option value="O+" {{ __select('blood_group', 'O+', $judge->blood_group ?? '') }}>O+
+                                </option>
+                                <option value="O-" {{ __select('blood_group', 'O-', $judge->blood_group ?? '') }}>O-
                                 </option>
                             </x-input.select>
 
                             <x-input.select class="col-md-2" label="Religion" name="religion" value=""
                                 id="religion" placeholder="Select Religion">
-                                <option value="Islam" {{ __select('religion', 'Islam', $judge->religion??'') }}>Islam</option>
-                                <option value="Christianity" {{ __select('religion', 'Islam', $judge->religion??'') }}>Christianity</option>
-                                <option value="Hinduism" {{ __select('religion', 'Christianity', $judge->religion??'') }}>Hinduism</option>
-                                <option value="Buddhism" {{ __select('religion', 'Buddhism', $judge->religion??'') }}>Buddhism</option>
-                                <option value="Judaism" {{ __select('religion', 'Judaism', $judge->religion??'') }}>Judaism</option>
-                                <option value="Sikhism" {{ __select('religion', 'Sikhism', $judge->religion??'') }}>Sikhism</option>
-                                <option value="Other" {{ __select('religion', 'Other', $judge->religion??'') }}>Other</option>
+                                <option value="Islam" {{ __select('religion', 'Islam', $judge->religion ?? '') }}>Islam
+                                </option>
+                                <option value="Christianity" {{ __select('religion', 'Christianity', $judge->religion ?? '') }}>
+                                    Christianity</option>
+                                <option value="Hinduism" {{ __select('religion', 'Hinduism', $judge->religion ?? '') }}>
+                                    Hinduism</option>
+                                <option value="Buddhism" {{ __select('religion', 'Buddhism', $judge->religion ?? '') }}>
+                                    Buddhism</option>
+                                <option value="Judaism" {{ __select('religion', 'Judaism', $judge->religion ?? '') }}>
+                                    Judaism</option>
+                                <option value="Sikhism" {{ __select('religion', 'Sikhism', $judge->religion ?? '') }}>
+                                    Sikhism</option>
+                                <option value="Other" {{ __select('religion', 'Other', $judge->religion ?? '') }}>Other
+                                </option>
                             </x-input.select>
 
                             <x-input.select class="col-md-4" label="Gender" name="gender" value=""
                                 id="gender" placeholder="Select Gender">
-                                <option value="Male" {{ __select('gender', 'Male', $judge->gender??'') }}>Male</option>
-                                <option value="Female" {{ __select('gender', 'Female', $judge->gender??'') }}>Female</option>
-                                <option value="Others" {{ __select('gender', 'Others', $judge->gender??'') }}>Others</option>
+                                <option value="Male" {{ __select('gender', 'Male', $judge->gender ?? '') }}>Male</option>
+                                <option value="Female" {{ __select('gender', 'Female', $judge->gender ?? '') }}>Female
+                                </option>
+                                <option value="Others" {{ __select('gender', 'Others', $judge->gender ?? '') }}>Others
+                                </option>
                             </x-input.select>
 
                             <x-input.select class="col-md-4" label="Nationality" name="nationality" value=""
                                 id="nationality" placeholder="Select Nationality">
-                                <option value="0" {{ __select('nationality', 0, $judge->nationality??'') }}>Bangladeshi</option>
-                                <option value="1" {{ __select('nationality', 1, $judge->nationality??'') }}>Others</option>
+                                <option value="0" {{ __select('nationality', 0, $judge->nationality ?? '') }}>
+                                    Bangladeshi</option>
+                                <option value="1" {{ __select('nationality', 1, $judge->nationality ?? '') }}>Others
+                                </option>
                             </x-input.select>
 
                             <x-input.select class="col-md-4" label="Mother Tongue" name="mother_tongue" value=""
                                 id="mother_tongue" placeholder="Select Mother Tongue">
-                                <option value="Bangla" {{ __select('mother_tongue', 'Bangla', $judge->mother_tongue??'') }}>Bangla</option>
-                                <option value="English"{{ __select('mother_tongue', 'English', $judge->mother_tongue??'') }} >English</option>
-                                <option value="Others"{{ __select('mother_tongue', 'Others', $judge->mother_tongue??'') }} >Others</option>
+                                <option value="Bangla"
+                                    {{ __select('mother_tongue', 'Bangla', $judge->mother_tongue ?? '') }}>Bangla</option>
+                                <option
+                                    value="English"{{ __select('mother_tongue', 'English', $judge->mother_tongue ?? '') }}>
+                                    English</option>
+                                <option
+                                    value="Others"{{ __select('mother_tongue', 'Others', $judge->mother_tongue ?? '') }}>
+                                    Others</option>
                             </x-input.select>
 
                             <div class="col-md-12">

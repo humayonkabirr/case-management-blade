@@ -27,7 +27,7 @@ class JudgeRequest extends FormRequest
             'first_name'    => 'required|string|max:30',
             'last_name'     => 'nullable|string|max:30',
             'username'      => 'nullable|string|unique:users,username,' . $id,
-            'mobile'        => 'nullable|string|max:15|regex:/^[0-9+\-\(\) ]+$/|unique:users,mobile,' . $id,
+            'mobile'        => 'nullable|string|min:11|max:15|regex:/^[0-9+\-\(\) ]+$/|unique:users,mobile,' . $id,
             'email'         => 'required|string|email|max:255|unique:users,email,' . $id,
             'birthday'      => 'required|date',
             'blood_group'   => 'required|string|max:3',
