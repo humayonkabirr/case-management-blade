@@ -36,8 +36,9 @@
 
                     <x-input.select class="col-md-4" label="Case State" name="state" id="state"
                         placeholder="Select Case state">
-                        <option value="0" {{ ($case->state ?? '') == 0 ? 'selected' : '' }}>Privet</option>
-                        <option value="1" {{ ($case->state ?? '') == 1 ? 'selected' : '' }}>Government</option>
+                        <option value="Closed">Closed</option>
+                        <option value="In Process">In Process </option>
+                        <option value="Open">Open</option>
                     </x-input.select>
 
                     <x-input.text class="col-md-4" label="Case No" name="case_no" value="{{ $case->case_no ?? '' }}"
