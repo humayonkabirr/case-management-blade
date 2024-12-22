@@ -20,14 +20,18 @@
 
                     <x-input.select class="col-md-4" label="Court Name" name="court_id" id="court_id"
                         placeholder="Select Court Name">
-                        <option value="0" {{ ($case->court_id ?? '') == 0 ? 'selected' : '' }}>Privet</option>
-                        <option value="1" {{ ($case->court_id ?? '') == 1 ? 'selected' : '' }}>Government</option>
+                        @foreach ($courts as $court)
+                            <option value="{{ $court->court_id ?? '' }}">{{ $court->name ?? '' }}
+                            </option>
+                        @endforeach
                     </x-input.select>
 
                     <x-input.select class="col-md-4" label="Case Type" name="type" id="type"
                         placeholder="Select Case Type">
-                        <option value="0" {{ ($case->type ?? '') == 0 ? 'selected' : '' }}>Privet</option>
-                        <option value="1" {{ ($case->type ?? '') == 1 ? 'selected' : '' }}>Government</option>
+                        @foreach ($caseTypes as $caseType)
+                            <option value="{{ $caseType->id ?? '' }}">
+                                {{ $caseType->name ?? '' }}</option>
+                        @endforeach
                     </x-input.select>
 
                     <x-input.select class="col-md-4" label="Case State" name="state" id="state"
@@ -45,8 +49,8 @@
                     <x-input.number class="col-md-4" label="Serial No" name="serial" value="{{ $case->serial ?? '' }}"
                         id="serial" placeholder="Enter Case Serial" />
 
-                    <x-input.textarea class="col-md-12" label="Description" otherattr="rows=10" name="description" value="{{ $case->description ?? '' }}"
-                        id="description" placeholder="Enter description" />
+                    <x-input.textarea class="col-md-12" label="Description" otherattr="rows=10" name="description"
+                        value="{{ $case->description ?? '' }}" id="description" placeholder="Enter description" />
 
                     <div class="col-md-12">
                         <button type="submit" class="float-right btn btn-secondary">Submit</button>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CaseInfoRequest;
 use App\Services\CaseInfoService;
+use App\Services\CaseTypeService;
+use App\Services\CourtService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -12,11 +14,13 @@ use Illuminate\Support\Facades\Log;
 
 class CaseInfoController extends Controller
 {
-    protected $caseInfoService;
+    protected $caseInfoService, $courtService, $caseTypeService;
 
-    public function __construct(CaseInfoService $caseInfoService)
+    public function __construct(CaseInfoService $caseInfoService, CourtService $courtService, CaseTypeService $caseTypeService)
     {
-        $this->caseInfoService  = $caseInfoService;
+        $this->caseInfoService   = $caseInfoService;
+        $this->courtService      = $courtService;
+        $this->caseTypeService   = $caseTypeService;
     }
 
     /**
@@ -42,8 +46,10 @@ class CaseInfoController extends Controller
     public function create()
     {
         try {
-            if (Gate::allows('dashboard.index')) {
-                $data['caseInfos'] = $this->caseInfoService->list()->paginate(15);
+            if (Gate::allows('dashboard.index')) { 
+                $data['courts'] = $this->courtService->get();
+                $data['caseTypes'] = $this->caseTypeService->get();
+
                 return view('backend.case-info.form', $data);
             }
             return view('errors.403');

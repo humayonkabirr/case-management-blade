@@ -18,6 +18,16 @@ class CourtService
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
+    public function get()
+    {
+        return $this->model->get(); // Get all records
+    }
+
+    /**
+     * Get all Court data.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function list()
     {
         return $this->model; // Get all records
