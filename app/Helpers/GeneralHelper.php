@@ -40,3 +40,8 @@ function __activity($action, $model = null, $before = null, $after = null, $stat
     'status' => $status,
   ]);
 }
+
+function __select($name, $value, $currentValue){
+  
+  return old($name, $currentValue ?? '') == $value ? 'selected' : '';
+}

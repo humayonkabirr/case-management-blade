@@ -1,30 +1,20 @@
 <?php
 
 namespace App\Services;
-use App\Models\Court;
+use App\Models\Attachment;
 
-class CourtService
+class AttachmentService
 {
-    protected Court $model;
+    protected Attachment $model;
     
-    public function __construct(Court $model)
+    public function __construct(Attachment $model)
     {
         $this->model = $model;
     }
     
 
     /**
-     * Get all Court data.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function get()
-    {
-        return $this->model->get(); // Get all records
-    }
-
-    /**
-     * Get all Court data.
+     * Get all Attachment data.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -35,10 +25,10 @@ class CourtService
 
 
     /**
-     * Get a single Court data by its ID.
+     * Get a single Attachment data by its ID.
      *
      * @param int $id
-     * @return \App\Models\Court|null
+     * @return \App\Models\Attachment|null
      */
     public function find($id)
     {
@@ -47,10 +37,10 @@ class CourtService
 
 
     /**
-     * Create a new Court .
+     * Create a new Attachment .
      *
      * @param array $data
-     * @return \App\Models\Court
+     * @return \App\Models\Attachment
      */
     public function create(array $data)
     {
@@ -59,11 +49,11 @@ class CourtService
 
     
     /** 
-     *  Update an Court data by its ID.
+     *  Update an Attachment data by its ID.
      *
      * @param int $id
      * @param array $data
-     * @return \App\Models\Court
+     * @return \App\Models\Attachment
      */
     public function update($id, array $data)
     {
@@ -76,7 +66,7 @@ class CourtService
 
 
     /**
-     * Delete an Court data by its ID.
+     * Delete an Attachment data by its ID.
      *
      * @param int $id
      * @return bool|null
@@ -92,7 +82,7 @@ class CourtService
 
 
     /**
-     * Soft delete an Court data by its ID.
+     * Soft delete an Attachment data by its ID.
      *
      * @param int $id
      * @return bool|null
@@ -108,7 +98,7 @@ class CourtService
 
 
     /**
-     * Restore a soft-deleted Court data by its ID.
+     * Restore a soft-deleted Attachment data by its ID.
      *
      * @param int $id
      * @return bool|null

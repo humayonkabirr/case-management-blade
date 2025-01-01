@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Welcome to Landing Page.</title>
     @vite('resources/css/app.css')
 
 
@@ -26,18 +25,18 @@
 <body class="bg-slate-950">
 
     <!-- nav bar -->
-    <nav class="absolute sticky top-0 py-4 text-gray-300 shadow-md shadow-slate-950 backdrop-blur-md bg-slate-950/30">
+    <nav class="sticky top-0 py-4 text-gray-300 border-b shadow-md shadow-slate-950 backdrop-blur-md bg-slate-950/30 border-slate-900">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="flex items-center justify-between space-x-4 text-lg font-bold">
                 <div>
-                    <a href="#">Kabir.dev</a>
+                    <a href="#">kabir.dev</a>
                 </div>
                 <div>
                     <ul class="flex items-center justify-between space-x-4">
                         <li>Home</li>
                         <li>About</li>
                         <li>Services</li>
-                        <li>Protfolio</li>
+                        <li>portfolio</li>
                         <li>Contact</li>
                     </ul>
                 </div>
@@ -111,7 +110,7 @@
 
     <section class="w-full">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="w-full py-16 space-x-2">
+            <div class="w-full py-16">
 
                 <div class="py-4 text-center">
                     <h1 class="text-4xl font-bold text-gray-300">My Services</h1>
@@ -192,7 +191,6 @@
                             <p>In nisi tortor, consequat eu semper ut, consequat in massa. Maecenas at odio a felis commodo pulvinar quis eu neque.</p>
                         </div>
                     </div>
-
                 </div>
 
             </div>
@@ -200,12 +198,9 @@
     </section>
 
 
-
-
-
     <section class="w-full bg-slate-900">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="w-full py-16 space-x-2">
+            <div class="w-full py-16">
 
                 <div class="py-4 text-center">
                     <h1 class="text-4xl font-bold text-gray-300">Let's Work Together!</h1>
@@ -224,7 +219,7 @@
 
     <section class="w-full">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="w-full py-16 space-x-2">
+            <div class="w-full py-16">
 
                 <div class="py-4 text-center">
                     <h1 class="text-4xl font-bold text-gray-300">My Latest Portfolio</h1>
@@ -232,9 +227,7 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet maximus est.
                     </p>
                 </div>
-
-
-
+ 
                 <div class="grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-3">
                     <div class="p-4 py-6 border hover:shadow-lg border-slate-700">
                         <div class="flex items-center justify-center py-2">
@@ -308,12 +301,8 @@
                             <p>In nisi tortor, consequat eu semper ut, consequat in massa. Maecenas at odio a felis commodo pulvinar quis eu neque.</p>
                         </div>
                     </div>
-
                 </div>
-
-
-
-
+ 
 
             </div>
         </div>
@@ -323,7 +312,7 @@
 
     <section class="w-full bg-slate-900">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="w-full py-16 space-x-2">
+            <div class="w-full py-16">
 
                 <div class="py-4 text-center">
                     <h1 class="text-2xl font-bold text-gray-300">ANY QUESTION YOU HAVE</h1>
@@ -342,7 +331,7 @@
 
     <section class="w-full">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="w-full space-x-2">
+            <div class="w-full">
 
                 <div class="py-4 text-center text-slate-300">
                     <p>
