@@ -64,7 +64,7 @@
 
                 <div class="w-full text-[40px] text-gray-300 text-right">
                     <div class="flex justify-end w-full">
-                        <img class="w-full" src="{{ asset('assets/images/undraw_programming_65t2.svg') }}" alt="">
+                        <img class="w-full" src="{{ asset('assets/images/undraw_programming_65t2.svg') }}" alt="about">
                     </div>
                 </div>
 
