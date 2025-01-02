@@ -70,7 +70,7 @@
 
             </div>
         </div>
-    </section>
+    </section> 
 
 
     <section class="w-full bg-slate-900">
