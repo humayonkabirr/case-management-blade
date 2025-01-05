@@ -15,7 +15,7 @@ class DashboardController extends Controller
     {
         try {
             if (Gate::allows('dashboard.index')) {
-                return view('layout.master');
+                return view('backend.dashboard.index');
             }
             return view('errors.403');
         } catch (\Throwable $e) {

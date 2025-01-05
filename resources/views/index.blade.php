@@ -64,13 +64,13 @@
 
                 <div class="w-full text-[40px] text-gray-300 text-right">
                     <div class="flex justify-end w-full">
-                        <img class="w-full" src="{{ asset('assets/images/doodles_mixed_round.svg') }}" alt="">
+                        <img class="w-full" src="{{ asset('assets/images/undraw_programming_65t2.svg') }}" alt="about">
                     </div>
                 </div>
 
             </div>
         </div>
-    </section>
+    </section> 
 
 
     <section class="w-full bg-slate-900">
@@ -79,7 +79,7 @@
 
                 <div class="w-2/4 text-right text-gray-300">
                     <div class="">
-                        <img class="w-full" src="{{ asset('assets/images/about.png') }}" alt="">
+                        <img class="w-full" src="{{ asset('assets/images/undraw_firmware_3fxd.svg') }}" alt="about">
                     </div>
                 </div>
 
