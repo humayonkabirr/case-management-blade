@@ -11,15 +11,9 @@ class AddressController extends Controller
           echo 'echo';
      }
 
-     public function districts() {
+     public function districts() {}
 
-     }
+     public function upazilas() {}
 
-     public function upazilas() {
-
-     }
-
-     public function unions() {
-
-     }
+     public function unions() {     }
 }
