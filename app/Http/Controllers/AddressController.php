@@ -15,5 +15,5 @@ class AddressController extends Controller
 
      public function upazilas() {}
 
-     public function unions() {     }
+     public function unions() {}
 }
