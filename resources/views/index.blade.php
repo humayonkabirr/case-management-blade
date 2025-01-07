@@ -45,7 +45,7 @@
     </nav>
     <!-- nav bar end -->
 
-
+    <!-- start banner section -->
     <section class="w-full">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="flex items-center justify-center w-full py-24 space-x-2">
@@ -71,7 +71,7 @@
             </div>
         </div>
     </section> 
-
+    <!-- end banner section -->
 
     <section class="w-full bg-slate-900">
         <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
