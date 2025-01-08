@@ -144,7 +144,7 @@
 
                     <div class="tab-pane fade" id="educational-info" role="tabpanel"
                         aria-labelledby="educational-info-tab">
-                        <x-form class="row" action="admin.advocate" data="{{ $advocate->id ?? '' }}">
+                        <x-form class="row" action="admin.judge" data="{{ $judge->id ?? '' }}">
                             <x-input.text class="mt-2 col-md-12" label="Institute Name"
                                 name="educationInfo[0][institute]" value="" id="educationInfo[0][institute]"
                                 placeholder="Enter institute name" />
@@ -191,6 +191,11 @@
 
                             <x-input.text class="col-md-12" label="Location" name="educationInfo[0][location]"
                                 value="" id="educationInfo[0][location]" placeholder="Enter location" />
+
+                            <div class="col-md-12">
+                                <button type="submit"
+                                    class="float-right btn btn-info">{{ $judge->id ?? '' ? 'Update' : 'Submit' }}</button>
+                            </div>
 
                         </x-form>
                     </div>
