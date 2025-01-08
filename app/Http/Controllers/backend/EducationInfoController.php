@@ -52,7 +52,7 @@ class EducationInfoController extends Controller
             // Insert data into related services
             $educationInfo = $this->educationInfoService->create($educationInfoData);
 
-            return redirect()->route('admin.education-info.edit', $educationInfo->id)->with('success', 'Education Info Store successfully.');
+            return redirect()->back()->with('success', 'Education Info Store successfully.');
         } catch (\Throwable $e) {
             Log::error('Error in store method', [
                 'error' => $e->getMessage(),

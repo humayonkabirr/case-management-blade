@@ -23,7 +23,7 @@ class EducationInfoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'user_id'                            => 'required|exists:users,id',
+            'user_id'               => 'required|exists:users,id',
             'institute'             => 'required|string|max:255',
             'degree'                => 'required|string|max:255',
             'education_level_id'    => 'required|exists:education_levels,id',
@@ -45,8 +45,8 @@ class EducationInfoRequest extends FormRequest
     public function messages(): array
     {
         return [
-            // 'user_id.required'                              => 'The user ID is required.',
-            // 'user_id.exists'                                => 'The selected user does not exist.',
+            'user_id.required'              => 'The user ID is required.',
+            'user_id.exists'                => 'The selected user does not exist.',
             'institute.required'            => 'The institute name is required.',
             'institute.string'              => 'The institute name must be a string.',
             'institute.max'                 => 'The institute name may not be greater than 255 characters.',
