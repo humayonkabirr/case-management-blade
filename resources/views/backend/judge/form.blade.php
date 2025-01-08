@@ -145,6 +145,9 @@
                     <div class="tab-pane fade" id="educational-info" role="tabpanel"
                         aria-labelledby="educational-info-tab">
                         <x-form class="row" action="admin.education-info" data="">
+
+                            <input type="hidden" name="user_id" value="{{ $judge->id }}">
+                            
                             <x-input.text class="mt-2 col-md-12" label="Institute Name"
                                 name="institute" value="" id="institute"
                                 placeholder="Enter institute name" />

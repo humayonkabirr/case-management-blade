@@ -41,8 +41,7 @@ class EducationInfoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(EducationInfoRequest $educationInfoRequest)
-    {
-        dd('hello!');
+    { 
         try {
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
