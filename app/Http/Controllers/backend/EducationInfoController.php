@@ -42,6 +42,7 @@ class EducationInfoController extends Controller
      */
     public function store(EducationInfoRequest $educationInfoRequest)
     {
+        dd('hello!');
         try {
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
