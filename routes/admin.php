@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
     // Judge-Manage
     Route::resource('judge', JudgeController::class);
     
-    // education-info-Manage
+    // Education-info-Manage
     Route::resource('education-info', EducationInfoController::class);
     
     // case-Manage
