@@ -53,6 +53,7 @@ class EducationInfoController extends Controller
             $educationInfo = $this->educationInfoService->create($educationInfoData);
 
             return redirect()->back()->with('success', 'Education Info Store successfully.');
+
         } catch (\Throwable $e) {
             Log::error('Error in store method', [
                 'error' => $e->getMessage(),
@@ -68,7 +69,8 @@ class EducationInfoController extends Controller
      */
     public function show(EducationInfo $educationInfo)
     {
-        //
+        // Insert data into related services
+        return $educationInfo;
     }
 
     /**
