@@ -68,8 +68,7 @@ class EducationInfoController extends Controller
      * Display the specified resource.
      */
     public function show(EducationInfo $educationInfo)
-    {
-        // Insert data into related services
+    { 
         return $educationInfo;
     }
 
