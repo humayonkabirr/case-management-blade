@@ -7,9 +7,11 @@ use App\Http\Controllers\Backend\CaseInfoController;
 use App\Http\Controllers\Backend\CaseTypeController;
 use App\Http\Controllers\Backend\CourtController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\Backend\EducationInfoController;
 use App\Http\Controllers\Backend\JudgeController;
 use App\Http\Controllers\Backend\OrganizationController;
 use App\Http\Controllers\Backend\UserManageController;
+use App\Models\EducationInfo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +51,9 @@ Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
     
     // Judge-Manage
     Route::resource('judge', JudgeController::class);
+    
+    // Education-info-Manage
+    Route::resource('education-info', EducationInfoController::class);
     
     // case-Manage
     Route::resource('case', CaseInfoController::class);
