@@ -12,10 +12,11 @@
             </div>
             <div class="widget-content widget-content-area">
                 <x-form class="row" action="admin.case" data="{{ $case->id ?? '' }}">
-                    <x-input.text class="col-md-12" label="Name" name="title" value="{{ $case->title ?? '' }}"
+                    
+                    <x-input.text class="col-md-6" label="Name" name="title" value="{{ $case->title ?? '' }}"
                         id="name" placeholder="Enter Case Type Name" />
 
-                    <x-input.text class="col-md-12" label="Title (BN)" name="bn_title" value="{{ $case->bn_title ?? '' }}"
+                    <x-input.text class="col-md-6" label="Title (BN)" name="bn_title" value="{{ $case->bn_title ?? '' }}"
                         id="bn_title" placeholder="Enter Case Name (BN)" />
 
                     <x-input.select class="col-md-4" label="Court Name" name="court_id" id="court_id"
