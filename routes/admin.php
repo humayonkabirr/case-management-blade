@@ -11,7 +11,6 @@ use App\Http\Controllers\Backend\EducationInfoController;
 use App\Http\Controllers\Backend\JudgeController;
 use App\Http\Controllers\Backend\OrganizationController;
 use App\Http\Controllers\Backend\UserManageController;
-use App\Models\EducationInfo;
 use Illuminate\Support\Facades\Route;
 
 /*
