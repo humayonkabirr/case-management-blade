@@ -146,32 +146,29 @@
                         aria-labelledby="educational-info-tab">
                         <x-form class="row" action="admin.education-info" data="">
 
-                            <input type="hidden" name="user_id" value="{{ $judge->id }}">
-                            
-                            <x-input.text class="mt-2 col-md-12" label="Institute Name"
-                                name="institute" value="" id="institute"
-                                placeholder="Enter institute name" />
+                            <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
-                            <x-input.select class="col-md-4" label="Education Level"
-                                name="education_level_id" value=""
-                                id="education_level_id" placeholder="Select Education Level">
+                            <x-input.text class="mt-2 col-md-12" label="Institute Name" name="institute" value=""
+                                id="institute" placeholder="Enter institute name" />
+
+                            <x-input.select class="col-md-4" label="Education Level" name="education_level_id"
+                                value="" id="education_level_id" placeholder="Select Education Level">
                                 @foreach ($educationLevels as $item)
                                     <option value="{{ $item->id }}">{{ $item->level }}</option>
                                 @endforeach
                             </x-input.select>
 
-                            <x-input.text class="col-md-4" label="Degree" name="degree" value=""
-                                id="degree" placeholder="Enter degree" />
+                            <x-input.text class="col-md-4" label="Degree" name="degree" value="" id="degree"
+                                placeholder="Enter degree" />
 
-                            <x-input.text class="col-md-4" label="Major Subject" name="major_subject"
-                                value="" id="major_subject" placeholder="Enter major subject" />
+                            <x-input.text class="col-md-4" label="Major Subject" name="major_subject" value=""
+                                id="major_subject" placeholder="Enter major subject" />
 
-                            <x-input.text class="col-md-8" label="Board/University"
-                                name="board_university" value=""
-                                id="board_university" placeholder="Enter board/university" />
+                            <x-input.text class="col-md-8" label="Board/University" name="board_university"
+                                value="" id="board_university" placeholder="Enter board/university" />
 
-                            <x-input.select class="col-md-4" label="Accreditation" name="accreditation"
-                                value="" id="accreditation" placeholder="Select Accreditation">
+                            <x-input.select class="col-md-4" label="Accreditation" name="accreditation" value=""
+                                id="accreditation" placeholder="Select Accreditation">
                                 <option value="Private">Private</option>
                                 <option value="Public">Public</option>
                                 <option value="National">National</option>
@@ -179,21 +176,18 @@
                                 <option value="Others">Others</option>
                             </x-input.select>
 
-                            <x-input.number class="col-md-4" label="GPA/CGPA" name="gpa_cgpa"
-                                value="" id="gpa_cgpa"
-                                otherattr='min="2.00" max="5.00" step="0.01"'
+                            <x-input.number class="col-md-4" label="GPA/CGPA" name="gpa_cgpa" value=""
+                                id="gpa_cgpa" otherattr='min="2.00" max="5.00" step="0.01"'
                                 placeholder="enter GPA/CGPA (2.00 to 5.00)" />
 
-                            <x-input.years class="col-md-4" label="Admission Year"
-                                name="admission_year" value=""
+                            <x-input.years class="col-md-4" label="Admission Year" name="admission_year" value=""
                                 id="admission_year" placeholder="Enter admission year" />
 
-                            <x-input.years class="col-md-4" label="Graduation Year"
-                                name="graduation_year" value=""
-                                id="graduation_year" placeholder="Enter graduation year" />
+                            <x-input.years class="col-md-4" label="Graduation Year" name="graduation_year"
+                                value="" id="graduation_year" placeholder="Enter graduation year" />
 
-                            <x-input.text class="col-md-12" label="Location" name="location"
-                                value="" id="location" placeholder="Enter location" />
+                            <x-input.text class="col-md-12" label="Location" name="location" value=""
+                                id="location" placeholder="Enter location" />
 
                             <div class="col-md-12">
                                 <button type="submit"
@@ -205,6 +199,9 @@
 
                     <div class="tab-pane fade" id="experience" role="tabpanel" aria-labelledby="experience-tab">
                         <x-form class="row" action="admin.judge" data="{{ $judge->id ?? '' }}">
+
+                            <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
+
                             <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
                                 id="first_name" placeholder="enter first name" />
 
@@ -268,6 +265,9 @@
                     <div class="tab-pane fade" id="emergency-contact" role="tabpanel"
                         aria-labelledby="emergency-contact-tab">
                         <x-form class="row" action="admin.judge" data="{{ $judge->id ?? '' }}">
+
+                            <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
+
                             <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
                                 id="first_name" placeholder="enter first name" />
 
@@ -330,6 +330,9 @@
 
                     <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
                         <x-form class="row" action="admin.judge" data="{{ $judge->id ?? '' }}">
+
+                            <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
+
                             <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
                                 id="first_name" placeholder="enter first name" />
 
