@@ -83,9 +83,29 @@ class EducationInfoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, EducationInfo $educationInfo)
+    public function update(EducationInfoRequest $educationInfoRequest, $id)
     {
-        //
+        try {
+            if (!Gate::allows('dashboard.index')) {
+                return view('errors.403');
+            }
+            // Validate incoming requests
+            $educationInfoData             = $educationInfoRequest->validated();
+
+            // update data into related services
+            $educationInfo = $this->educationInfoService->find($id);
+            
+            $educationInfo->update($educationInfoData);
+
+            return redirect()->back()->with('success', 'Education Info update Successfully.');
+        } catch (\Throwable $e) {
+            Log::error('Error in store method', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return view('errors.500', ['errorMessage' => $e->getMessage()]);
+        }
     }
 
     /**

@@ -147,7 +147,7 @@
                         aria-labelledby="educational-info-tab">
 
                         @foreach ($judge->education as $edu)
-                            <x-form class="row" action="admin.education-info" data="{{ $judge->id ?? '' }}">
+                            <x-form class="row" action="admin.education-info" data="{{ $edu->id ?? '' }}">
 
                                 <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
@@ -212,7 +212,7 @@
 
                                 <div class="col-md-12">
                                     <button type="submit"
-                                        class="float-right btn btn-info">{{ $judge->id ?? '' ? 'Update' : 'Submit' }}</button>
+                                        class="float-right btn btn-success">{{ $edu->id ?? '' ? 'Update' : 'Submit' }}</button>
                                 </div>
 
                                 <div class="col-md-12">
