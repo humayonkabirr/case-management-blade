@@ -113,7 +113,7 @@ class JudgeController extends Controller
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
             }
-            
+
             $data['educationLevels'] = $this->educationService->list();
             $data['divisions'] = $this->divisionService->list();
             $data['judge'] = $this->judgeService->find($id);
