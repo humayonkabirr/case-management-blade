@@ -141,60 +141,65 @@
                             </div>
                         </x-form>
                     </div>
-                    <pre>{{ dd($judge) }}</pre>
+
+
                     <div class="tab-pane fade" id="educational-info" role="tabpanel"
                         aria-labelledby="educational-info-tab">
-                        <x-form class="row" action="admin.education-info" data="">
 
-                            <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
+                        @foreach ($judge->education as $edu)
+                            <x-form class="row" action="admin.education-info" data="">
 
-                            <x-input.text class="mt-2 col-md-12" label="Institute Name" name="institute"
-                                value="{{ $judge->id ?? '' }}" id="institute" placeholder="Enter institute name" />
+                                <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
-                            <x-input.select class="col-md-4" label="Education Level" name="education_level_id"
-                                value="" id="education_level_id" placeholder="Select Education Level">
-                                @foreach ($educationLevels as $item)
-                                    <option value="{{ $item->id }}">{{ $item->level }}</option>
-                                @endforeach
-                            </x-input.select>
+                                <x-input.text class="mt-2 col-md-12" label="Institute Name" name="institute"
+                                    value="{{ $edu->institute ?? '' }}" id="institute"
+                                    placeholder="Enter institute name" />
 
-                            <x-input.text class="col-md-4" label="Degree" name="degree" value="" id="degree"
-                                placeholder="Enter degree" />
+                                <x-input.select class="col-md-4" label="Education Level" name="education_level_id"
+                                    value="" id="education_level_id" placeholder="Select Education Level">
+                                    @foreach ($educationLevels as $item)
+                                        <option value="{{ $item->id }}">{{ $item->level }}</option>
+                                    @endforeach
+                                </x-input.select>
 
-                            <x-input.text class="col-md-4" label="Major Subject" name="major_subject" value=""
-                                id="major_subject" placeholder="Enter major subject" />
+                                <x-input.text class="col-md-4" label="Degree" name="degree" value="{{ $edu->degree ?? '' }}"
+                                    id="degree" placeholder="Enter degree" />
 
-                            <x-input.text class="col-md-8" label="Board/University" name="board_university"
-                                value="" id="board_university" placeholder="Enter board/university" />
+                                <x-input.text class="col-md-4" label="Major Subject" name="major_subject" value="{{ $edu->major_subject ?? '' }}"
+                                    id="major_subject" placeholder="Enter major subject" />
 
-                            <x-input.select class="col-md-4" label="Accreditation" name="accreditation" value=""
-                                id="accreditation" placeholder="Select Accreditation">
-                                <option value="Private">Private</option>
-                                <option value="Public">Public</option>
-                                <option value="National">National</option>
-                                <option value="International">International</option>
-                                <option value="Others">Others</option>
-                            </x-input.select>
+                                <x-input.text class="col-md-8" label="Board/University" name="board_university"
+                                    value="{{ $edu->board_university ?? '' }}" id="board_university" placeholder="Enter board/university" />
 
-                            <x-input.number class="col-md-4" label="GPA/CGPA" name="gpa_cgpa" value=""
-                                id="gpa_cgpa" otherattr='min="2.00" max="5.00" step="0.01"'
-                                placeholder="enter GPA/CGPA (2.00 to 5.00)" />
+                                <x-input.select class="col-md-4" label="Accreditation" name="accreditation" id="accreditation" placeholder="Select Accreditation">
+                                    <option value="Private">Private</option>
+                                    <option value="Public">Public</option>
+                                    <option value="National">National</option>
+                                    <option value="International">International</option>
+                                    <option value="Others">Others</option>
+                                </x-input.select>
 
-                            <x-input.years class="col-md-4" label="Admission Year" name="admission_year" value=""
-                                id="admission_year" placeholder="Enter admission year" />
+                                <x-input.number class="col-md-4" label="GPA/CGPA" name="gpa_cgpa" value="{{ $edu->gpa_cgpa ?? '' }}"
+                                    id="gpa_cgpa" otherattr='min="2.00" max="5.00" step="0.01"'
+                                    placeholder="enter GPA/CGPA (2.00 to 5.00)" />
 
-                            <x-input.years class="col-md-4" label="Graduation Year" name="graduation_year"
-                                value="" id="graduation_year" placeholder="Enter graduation year" />
+                                <x-input.years class="col-md-4" label="Admission Year" name="admission_year"
+                                    value="{{ $edu->admission_year ?? '' }}" id="admission_year" placeholder="Enter admission year" />
 
-                            <x-input.text class="col-md-12" label="Location" name="location" value=""
-                                id="location" placeholder="Enter location" />
+                                <x-input.years class="col-md-4" label="Graduation Year" name="graduation_year"
+                                    value="{{ $edu->graduation_year ?? '' }}" id="graduation_year" placeholder="Enter graduation year" />
 
-                            <div class="col-md-12">
-                                <button type="submit"
-                                    class="float-right btn btn-info">{{ $judge->id ?? '' ? 'Update' : 'Submit' }}</button>
-                            </div>
+                                <x-input.text class="col-md-12" label="Location" name="location" value="{{ $edu->location ?? '' }}"
+                                    id="location" placeholder="Enter location" />
 
-                        </x-form>
+                                <div class="col-md-12">
+                                    <button type="submit"
+                                        class="float-right btn btn-info">{{ $judge->id ?? '' ? 'Update' : 'Submit' }}</button>
+                                </div>
+
+                            </x-form>
+                        @endforeach
+
                     </div>
 
                     <div class="tab-pane fade" id="experience" role="tabpanel" aria-labelledby="experience-tab">
