@@ -29,7 +29,7 @@ class EducationInfoService
      * @param int $id
      * @return \App\Models\EducationInfo|null
      */
-    public function findById($id)
+    public function find($id)
     {
         return $this->model->findOrFail($id); // Find by ID
     }
@@ -54,7 +54,7 @@ class EducationInfoService
      */
     public function update($id, array $data)
     {
-        $educationInfo = $this->findById($id);
+        $educationInfo = $this->find($id);
 
         if ($educationInfo) {
             $educationInfo->update($data); // Update record
@@ -71,7 +71,7 @@ class EducationInfoService
      */
     public function delete($id)
     {
-        $educationInfo = $this->findById($id);
+        $educationInfo = $this->find($id);
 
         if ($educationInfo) {
             return $educationInfo->delete(); // Soft delete record
@@ -88,7 +88,7 @@ class EducationInfoService
      */
     public function deletePermanently($id)
     {
-        $educationInfo = $this->findById($id);
+        $educationInfo = $this->find($id);
 
         if ($educationInfo) {
             return $educationInfo->forceDelete(); // Delete record permanently
