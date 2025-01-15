@@ -109,9 +109,11 @@ class JudgeController extends Controller
     public function edit(string $id)
     {
         try {
+
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
             }
+            
             $data['educationLevels'] = $this->educationService->list();
             $data['divisions'] = $this->divisionService->list();
             $data['judge'] = $this->judgeService->find($id);
