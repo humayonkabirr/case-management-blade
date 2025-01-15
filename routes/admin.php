@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 
 Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
+    
     // Dashboard Route
     Route::resource('/', DashboardController::class);
 
