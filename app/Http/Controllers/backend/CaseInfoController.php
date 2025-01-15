@@ -70,7 +70,7 @@ class CaseInfoController extends Controller
             }
             // Validate incoming requests
             $caseInfoData             = $caseInfoRequest->validated();
-            dd($caseInfoData);
+            
             // Insert data into related services
             $caseInfoData = $this->caseInfoService->create($caseInfoData);
 
