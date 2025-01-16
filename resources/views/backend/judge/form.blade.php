@@ -425,62 +425,45 @@
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
                             <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
-                                id="first_name" placeholder="enter first name" />
+                                    id="first_name" placeholder="enter first name" />
 
-                            <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
-                                id="last_name" placeholder="enter last name" />
+                                <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
+                                    id="last_name" placeholder="enter last name" />
 
-                            <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value=""
-                                id="mobile" placeholder="enter moble no" />
+                                <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value=""
+                                    id="mobile" placeholder="enter moble no" />
 
-                            <x-input.email class="col-md-4" label="Email" name="email" value="" id="email"
-                                placeholder="enter email" />
+                                <x-input.email class="col-md-4" label="Email" name="email" value=""
+                                    id="email" placeholder="enter email" />
 
-                            <x-input.date class="col-md-4" label="Birth of Date" name="birthday" value=""
-                                id="birthday" placeholder="enter birth of date" />
+                                <x-input.select class="col-md-4" label="Relationship" name="relationship" value=""
+                                    id="relationship" placeholder="Select Relationship">
+                                    <option value="Father">Father</option>
+                                    <option value="Mother">Mother</option>
+                                    <option value="Brother">Brother</option>
+                                    <option value="Sister">Sister</option>
+                                    <option value="Spouse">Spouse</option>
+                                    <option value="Uncle">Uncle</option>
+                                    <option value="Aunty">Aunty</option>
+                                    <option value="Cousin">Cousin</option>
+                                    <option value="Friend">Friend</option>
+                                    <option value="Neighbor">Neighbor</option>
+                                    <option value="Colleague">Colleague</option>
+                                    <option value="Guardian">Guardian</option>
+                                    <option value="Other">Other</option>
+                                </x-input.select>
 
-                            <x-input.select class="col-md-2" label="Blood Group" name="blood_group" value=""
-                                id="blood_group" placeholder="Select Blood Group">
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                            </x-input.select>
+                                <x-input.select class="col-md-4" label="Gender" name="gender" value=""
+                                    id="gender" placeholder="Select Gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+                                </x-input.select>
 
-                            <x-input.select class="col-md-2" label="Religion" name="religion" value=""
-                                id="religion" placeholder="Select Religion">
-                                <option value="Islam">Islam</option>
-                                <option value="Christianity">Christianity</option>
-                                <option value="Hinduism">Hinduism</option>
-                                <option value="Buddhism">Buddhism</option>
-                                <option value="Judaism">Judaism</option>
-                                <option value="Sikhism">Sikhism</option>
-                                <option value="Other">Other</option>
-                            </x-input.select>
+                                <x-input.email class="col-md-12" label="Address" name="address" value=""
+                                    id="address" placeholder="enter address" />
 
-                            <x-input.select class="col-md-4" label="Gender" name="gender" value=""
-                                id="gender" placeholder="Select Gender">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Others">Others</option>
-                            </x-input.select>
-
-                            <x-input.select class="col-md-4" label="Nationality" name="nationality" value=""
-                                id="nationality" placeholder="Select Nationality">
-                                <option value="0">Bangladeshi</option>
-                                <option value="1">Others</option>
-                            </x-input.select>
-
-                            <x-input.select class="col-md-4" label="Mother Tongue" name="mother_tongue" value=""
-                                id="mother_tongue" placeholder="Select Mother Tongue">
-                                <option value="Bangla">Bangla</option>
-                                <option value="English">English</option>
-                                <option value="Others">Others</option>
-                            </x-input.select>
+                                    
                         </x-form>
                     </div>
 
