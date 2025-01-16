@@ -355,7 +355,7 @@
                         @endisset
 
 
-                        <x-form class="row" action="admin.experience" data="{{ $judge->id ?? '' }}">
+                        <x-form class="row" action="admin.experience" data="">
 
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
@@ -410,6 +410,10 @@
 
                             <x-input.number class="col-md-12" label="Location" name="experience[0][location]"
                                 value="" id="experience[0][location]" placeholder="enter location" />
+
+                            <div class="col-md-12">
+                                <button type="submit" class="float-right btn btn-info">Create</button>
+                            </div>
 
                         </x-form>
                     </div>
