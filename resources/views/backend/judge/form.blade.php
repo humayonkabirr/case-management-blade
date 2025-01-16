@@ -280,67 +280,137 @@
                     </div>
 
                     <div class="tab-pane fade" id="experience" role="tabpanel" aria-labelledby="experience-tab">
-                        <x-form class="row" action="admin.judge" data="{{ $judge->id ?? '' }}">
+
+                        @isset($judge)
+                            @foreach ($judge->experience as $edu)
+                                <x-form class="row" action="admin.experience" data="{{ $judge->id ?? '' }}">
+
+                                    <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
+
+                                    <x-input.text class="col-md-8" label="Company Name" name="experience[0][company_name]"
+                                        value="" id="experience[0][company_name]" placeholder="Enter Company Name" />
+
+                                    <x-input.text class="col-md-4" label="Job Title" name="experience[0][job_title]"
+                                        value="" id="experience[0][job_title]" placeholder="Enter Job Title" />
+
+                                    <x-input.text class="col-md-4" label="Supervisor Name"
+                                        name="experience[0][supervisor_name]" value=""
+                                        id="experience[0][supervisor_name]" placeholder="enter supervisor name" />
+
+                                    <x-input.tel class="col-md-4" label="Supervisor Mobile"
+                                        name="experience[0][supervisor_mobile]" value=""
+                                        id="experience[0][supervisor_mobile]" placeholder="enter supervisor mobile" />
+
+                                    <x-input.email class="col-md-4" label="Supervisor Email"
+                                        name="experience[0][supervisor_email]" value=""
+                                        id="experience[0][supervisor_email]" placeholder="enter supervisor email" />
+
+                                    <x-input.select class="col-md-4" label="Employment Type"
+                                        name="experience[0][employment_type]" value=""
+                                        id="experience[0][employment_type]" placeholder="Select employment type">
+                                        <option value="" disabled selected>Select Employment Type</option>
+                                        <option value="Full-time">Full-time</option>
+                                        <option value="Part-time">Part-time</option>
+                                        <option value="Contract">Contract</option>
+                                        <option value="Freelance">Freelance</option>
+                                        <option value="Temporary">Temporary</option>
+                                        <option value="Internship">Internship</option>
+                                        <option value="Volunteer">Volunteer</option>
+                                    </x-input.select>
+
+                                    <x-input.select class="col-md-2" label="Is Current" name="experience[0][is_current]"
+                                        value="" id="experience[0][is_current]" placeholder="Select One">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </x-input.select>
+
+                                    <x-input.date class="col-md-2" label="Start Date" name="experience[0][start_date]"
+                                        value="" id="experience[0][start_date]" placeholder="Enter start date" />
+
+                                    <x-input.date class="col-md-2" label="End Date" name="experience[0][end_date]"
+                                        value="" id="experience[0][end_date]" placeholder="Enter End Date" />
+
+                                    <x-input.number class="col-md-2" label="Salary" name="experience[0][salary]"
+                                        value="" id="experience[0][salary]" placeholder="Enter Salary" />
+
+                                    <x-input.textarea class="col-md-12" label="Responsibilities"
+                                        name="experience[0][responsibilities]" value=""
+                                        id="experience[0][responsibilities]" placeholder="enter responsibilities" />
+
+                                    <x-input.number class="col-md-12" label="Location" name="experience[0][location]"
+                                        value="" id="experience[0][location]" placeholder="enter location" />
+
+                                    <div class="col-md-12">
+                                        <button type="submit"
+                                            class="float-right btn btn-success">{{ $edu->id ?? '' ? 'Update' : 'Submit' }}</button>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <hr
+                                            style="border: none; height: 2px; background: linear-gradient(to right, #2196f3, #4caf50);">
+                                    </div>
+
+                                </x-form>
+                            @endforeach
+                        @endisset
+
+
+                        <x-form class="row" action="admin.experience" data="{{ $judge->id ?? '' }}">
 
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
-                            <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
-                                id="first_name" placeholder="enter first name" />
+                            <x-input.text class="col-md-8" label="Company Name" name="experience[0][company_name]"
+                                value="" id="experience[0][company_name]" placeholder="Enter Company Name" />
 
-                            <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
-                                id="last_name" placeholder="enter last name" />
+                            <x-input.text class="col-md-4" label="Job Title" name="experience[0][job_title]"
+                                value="" id="experience[0][job_title]" placeholder="Enter Job Title" />
 
-                            <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value=""
-                                id="mobile" placeholder="enter moble no" />
+                            <x-input.text class="col-md-4" label="Supervisor Name" name="experience[0][supervisor_name]"
+                                value="" id="experience[0][supervisor_name]" placeholder="enter supervisor name" />
 
-                            <x-input.email class="col-md-4" label="Email" name="email" value="" id="email"
-                                placeholder="enter email" />
+                            <x-input.tel class="col-md-4" label="Supervisor Mobile"
+                                name="experience[0][supervisor_mobile]" value=""
+                                id="experience[0][supervisor_mobile]" placeholder="enter supervisor mobile" />
 
-                            <x-input.date class="col-md-4" label="Birth of Date" name="birthday" value=""
-                                id="birthday" placeholder="enter birth of date" />
+                            <x-input.email class="col-md-4" label="Supervisor Email"
+                                name="experience[0][supervisor_email]" value=""
+                                id="experience[0][supervisor_email]" placeholder="enter supervisor email" />
 
-                            <x-input.select class="col-md-2" label="Blood Group" name="blood_group" value=""
-                                id="blood_group" placeholder="Select Blood Group">
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
+                            <x-input.select class="col-md-4" label="Employment Type"
+                                name="experience[0][employment_type]" value="" id="experience[0][employment_type]"
+                                placeholder="Select employment type">
+                                <option value="" disabled selected>Select Employment Type</option>
+                                <option value="Full-time">Full-time</option>
+                                <option value="Part-time">Part-time</option>
+                                <option value="Contract">Contract</option>
+                                <option value="Freelance">Freelance</option>
+                                <option value="Temporary">Temporary</option>
+                                <option value="Internship">Internship</option>
+                                <option value="Volunteer">Volunteer</option>
                             </x-input.select>
 
-                            <x-input.select class="col-md-2" label="Religion" name="religion" value=""
-                                id="religion" placeholder="Select Religion">
-                                <option value="Islam">Islam</option>
-                                <option value="Christianity">Christianity</option>
-                                <option value="Hinduism">Hinduism</option>
-                                <option value="Buddhism">Buddhism</option>
-                                <option value="Judaism">Judaism</option>
-                                <option value="Sikhism">Sikhism</option>
-                                <option value="Other">Other</option>
+                            <x-input.select class="col-md-2" label="Is Current" name="experience[0][is_current]"
+                                value="" id="experience[0][is_current]" placeholder="Select One">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
                             </x-input.select>
 
-                            <x-input.select class="col-md-4" label="Gender" name="gender" value=""
-                                id="gender" placeholder="Select Gender">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Others">Others</option>
-                            </x-input.select>
+                            <x-input.date class="col-md-2" label="Start Date" name="experience[0][start_date]"
+                                value="" id="experience[0][start_date]" placeholder="Enter start date" />
 
-                            <x-input.select class="col-md-4" label="Nationality" name="nationality" value=""
-                                id="nationality" placeholder="Select Nationality">
-                                <option value="0">Bangladeshi</option>
-                                <option value="1">Others</option>
-                            </x-input.select>
+                            <x-input.date class="col-md-2" label="End Date" name="experience[0][end_date]"
+                                value="" id="experience[0][end_date]" placeholder="Enter End Date" />
 
-                            <x-input.select class="col-md-4" label="Mother Tongue" name="mother_tongue" value=""
-                                id="mother_tongue" placeholder="Select Mother Tongue">
-                                <option value="Bangla">Bangla</option>
-                                <option value="English">English</option>
-                                <option value="Others">Others</option>
-                            </x-input.select>
+                            <x-input.number class="col-md-2" label="Salary" name="experience[0][salary]" value=""
+                                id="experience[0][salary]" placeholder="Enter Salary" />
+
+                            <x-input.textarea class="col-md-12" label="Responsibilities"
+                                name="experience[0][responsibilities]" value=""
+                                id="experience[0][responsibilities]" placeholder="enter responsibilities" />
+
+                            <x-input.number class="col-md-12" label="Location" name="experience[0][location]"
+                                value="" id="experience[0][location]" placeholder="enter location" />
+
                         </x-form>
                     </div>
 
