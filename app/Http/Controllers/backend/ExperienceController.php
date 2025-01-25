@@ -39,14 +39,14 @@ class ExperienceController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(ExperienceRequest $experienceRequest)
-    {
+    { 
         try {
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
             }
             // Validate incoming requests
             $experienceData             = $experienceRequest->validated();
-
+            
             // Insert data into related services
             $experience = $this->experienceService->create($experienceData);
 

@@ -23,7 +23,7 @@ class ExperienceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'user_id'          => 'required|exists:users,id',
+            'user_id'          => 'required|exists:users,id',
             'company_name'        => 'required|string|max:255',
             'job_title'           => 'required|string|max:255', 
             'responsibilities'    => 'nullable|string',
@@ -46,8 +46,8 @@ class ExperienceRequest extends FormRequest
     public function messages(): array
     {
         return [
-            // 'user_id.required'                          => 'The user ID is required.',
-            // 'user_id.exists'                            => 'The selected user does not exist.',
+            'user_id.required'                          => 'The user ID is required.',
+            'user_id.exists'                            => 'The selected user does not exist.',
             'company_name.required'        => 'The company name is required.',
             'job_title.required'           => 'The job title is required.', 
             'start_date.required'          => 'The start date is required.',
