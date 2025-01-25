@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\EmergencyContact;
 
-class emergencyContactService
+class EmergencyContactService
 {
     protected $model;
 
