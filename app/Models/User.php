@@ -87,4 +87,9 @@ class User extends Authenticatable
         return $this->hasMany(Experience::class , 'user_id');
     }
 
+    public function emergencyContact ()
+    {
+        return $this->hasMany(EmergencyContact::class , 'user_id');
+    }
+
 }

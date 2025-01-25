@@ -32,7 +32,7 @@ class JudgeService
      */
     public function find($id)
     {
-        return $this->model->with('education')->findOrFail($id); // Find by ID
+        return $this->model->with('education', 'experience', 'emergencyContact')->findOrFail($id); // Find by ID
     }
 
 

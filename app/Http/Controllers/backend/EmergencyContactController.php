@@ -3,20 +3,21 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ExperienceRequest;
-use App\Models\Experience;
-use App\Services\ExperienceService;
+use App\Http\Requests\EmergencyContactRequest;
+use App\Models\EmergencyContact;
+use App\Services\EmergencyContactService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 
-class ExperienceController extends Controller
+class EmergencyContactController extends Controller
 {
-    protected $experienceService;
 
-    public function __construct(ExperienceService $experienceService)
+    protected $emergencyContactService;
+
+    public function __construct(EmergencyContactService $emergencyContactService)
     {
-        $this->experienceService         = $experienceService;
+        $this->emergencyContactService         = $emergencyContactService;
     }
 
     /**
@@ -38,20 +39,19 @@ class ExperienceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ExperienceRequest $experienceRequest)
-    { 
+    public function store(EmergencyContactRequest $emergencyContactRequest)
+    {
         try {
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
             }
             // Validate incoming requests
-            $experienceData             = $experienceRequest->validated();
-            
+            $emergencyContactData             = $emergencyContactRequest->validated();
+
             // Insert data into related services
-            $experience = $this->experienceService->create($experienceData);
+            $this->emergencyContactService->create($emergencyContactData);
 
-            return redirect()->back()->with('success', 'Experience Store successfully.');
-
+            return redirect()->back()->with('success', 'Education Info Store successfully.');
         } catch (\Throwable $e) {
             Log::error('Error in store method', [
                 'error' => $e->getMessage(),
@@ -65,7 +65,7 @@ class ExperienceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Experience $experience)
+    public function show(EmergencyContact $emergencyContact)
     {
         //
     }
@@ -73,7 +73,7 @@ class ExperienceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Experience $experience)
+    public function edit(EmergencyContact $emergencyContact)
     {
         //
     }
@@ -81,20 +81,19 @@ class ExperienceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ExperienceRequest $experienceRequest, $id)
+    public function update(EmergencyContactRequest $emergencyContactRequest, $id)
     {
         try {
             if (!Gate::allows('dashboard.index')) {
                 return view('errors.403');
             }
             // Validate incoming requests
-            $experienceData             = $experienceRequest->validated();
-            
-            // Insert data into related services
-            $experience = $this->experienceService->update($id, $experienceData);
+            $emergencyContactData             = $emergencyContactRequest->validated();
 
-            return redirect()->back()->with('success', 'Experience Store successfully.');
+            // update data into related services
+            $this->emergencyContactService->update($id, $emergencyContactData); 
 
+            return redirect()->back()->with('success', 'Education Info update Successfully.');
         } catch (\Throwable $e) {
             Log::error('Error in store method', [
                 'error' => $e->getMessage(),
@@ -108,7 +107,7 @@ class ExperienceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Experience $experience)
+    public function destroy(EmergencyContact $emergencyContact)
     {
         //
     }
