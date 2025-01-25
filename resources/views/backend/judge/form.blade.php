@@ -417,52 +417,52 @@
                     <div class="tab-pane fade" id="emergency-contact" role="tabpanel"
                         aria-labelledby="emergency-contact-tab">
                         @isset($judge)
-                            @foreach ($judge->experience as $edu)
-                                <x-form class="row" action="admin.experience" data="{{ $judge->id ?? '' }}">
+                            @foreach ($judge->experience as $emc)
+                                <x-form class="row" action="admin.experience" data="{{ $emc->id ?? '' }}">
 
                                     <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
-                                    <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
+                                    <x-input.text class="col-md-4" label="First Name" name="first_name" value="{{ $emc->first_name ?? '' }}"
                                         id="first_name" placeholder="enter first name" />
 
-                                    <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
+                                    <x-input.text class="col-md-4" label="Last Name" name="last_name" value="{{ $emc->last_name ?? '' }}"
                                         id="last_name" placeholder="enter last name" />
 
-                                    <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value=""
+                                    <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value="{{ $emc->mobile ?? '' }}"
                                         id="mobile" placeholder="enter moble no" />
 
-                                    <x-input.email class="col-md-4" label="Email" name="email" value=""
+                                    <x-input.email class="col-md-4" label="Email" name="email" value="{{ $emc->email ?? '' }}"
                                         id="email" placeholder="enter email" />
 
-                                    <x-input.select class="col-md-4" label="Relationship" name="relationship" value=""
+                                    <x-input.select class="col-md-4" label="Relationship" name="relationship"
                                         id="relationship" placeholder="Select Relationship">
-                                        <option value="Father">Father</option>
-                                        <option value="Mother">Mother</option>
-                                        <option value="Brother">Brother</option>
-                                        <option value="Sister">Sister</option>
-                                        <option value="Spouse">Spouse</option>
-                                        <option value="Uncle">Uncle</option>
-                                        <option value="Aunty">Aunty</option>
-                                        <option value="Cousin">Cousin</option>
-                                        <option value="Friend">Friend</option>
-                                        <option value="Neighbor">Neighbor</option>
-                                        <option value="Colleague">Colleague</option>
-                                        <option value="Guardian">Guardian</option>
-                                        <option value="Other">Other</option>
+                                        <option value="Father" {{ __select('relationship', 'Father', $emc->relationship ?? '') }}>Father</option>
+                                        <option value="Mother" {{ __select('relationship', 'Mother', $emc->relationship ?? '') }}>Mother</option>
+                                        <option value="Brother" {{ __select('relationship', 'Brother', $emc->relationship ?? '') }}>Brother</option>
+                                        <option value="Sister" {{ __select('relationship', 'Sister', $emc->relationship ?? '') }}>Sister</option>
+                                        <option value="Spouse" {{ __select('relationship', 'Spouse', $emc->relationship ?? '') }}>Spouse</option>
+                                        <option value="Uncle" {{ __select('relationship', 'Uncle', $emc->relationship ?? '') }}>Uncle</option>
+                                        <option value="Aunty" {{ __select('relationship', 'Aunty', $emc->relationship ?? '') }}>Aunty</option>
+                                        <option value="Cousin" {{ __select('relationship', 'Cousin', $emc->relationship ?? '') }}>Cousin</option>
+                                        <option value="Friend" {{ __select('relationship', 'Friend', $emc->relationship ?? '') }}>Friend</option>
+                                        <option value="Neighbor" {{ __select('relationship', 'Neighbor', $emc->relationship ?? '') }}>Neighbor</option>
+                                        <option value="Colleague" {{ __select('relationship', 'Colleague', $emc->relationship ?? '') }}>Colleague</option>
+                                        <option value="Guardian" {{ __select('relationship', 'Guardian', $emc->relationship ?? '') }}>Guardian</option>
+                                        <option value="Other" {{ __select('relationship', 'Other', $emc->relationship ?? '') }}>Other</option>
                                     </x-input.select>
 
-                                    <x-input.select class="col-md-4" label="Gender" name="gender" value=""
+                                    <x-input.select class="col-md-4" label="Gender" name="gender" value="{{ $emc->first_name ?? '' }}"
                                         id="gender" placeholder="Select Gender">
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                         <option value="Others">Others</option>
                                     </x-input.select>
 
-                                    <x-input.email class="col-md-12" label="Address" name="address" value=""
+                                    <x-input.email class="col-md-12" label="Address" name="address" value="{{ $emc->first_name ?? '' }}"
                                         id="address" placeholder="enter address" />
                                     <div class="col-md-12">
                                         <button type="submit"
-                                            class="float-right btn btn-success">{{ $edu->id ?? '' ? 'Update' : 'Submit' }}</button>
+                                            class="float-right btn btn-success">{{ $emc->id ?? '' ? 'Update' : 'Submit' }}</button>
                                     </div>
 
                                     <div class="col-md-12">
