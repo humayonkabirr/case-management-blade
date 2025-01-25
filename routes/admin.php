@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\CaseTypeController;
 use App\Http\Controllers\Backend\CourtController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\Backend\EducationInfoController;
+use App\Http\Controllers\Backend\EmergencyContactController;
 use App\Http\Controllers\Backend\ExperienceController;
 use App\Http\Controllers\Backend\JudgeController;
 use App\Http\Controllers\Backend\OrganizationController;
@@ -58,6 +59,9 @@ Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
     
     // Experience-Manage
     Route::resource('experience', ExperienceController::class);
+    
+    // Emergency-Contact-Manage
+    Route::resource('emergency-contact', EmergencyContactController::class);
     
     // case-Manage
     Route::resource('case', CaseInfoController::class);
