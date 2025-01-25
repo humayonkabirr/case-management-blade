@@ -81,9 +81,28 @@ class ExperienceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Experience $experience)
+    public function update(ExperienceRequest $experienceRequest, $id)
     {
-        //
+        try {
+            if (!Gate::allows('dashboard.index')) {
+                return view('errors.403');
+            }
+            // Validate incoming requests
+            $experienceData             = $experienceRequest->validated();
+            
+            // Insert data into related services
+            $experience = $this->experienceService->update($id, $experienceData);
+
+            return redirect()->back()->with('success', 'Experience Store successfully.');
+
+        } catch (\Throwable $e) {
+            Log::error('Error in store method', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return view('errors.500', ['errorMessage' => $e->getMessage()]);
+        }
     }
 
     /**

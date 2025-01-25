@@ -30,7 +30,7 @@ class ExperienceRequest extends FormRequest
             'start_date'          => 'required|date|before_or_equal:today',
             'end_date'            => 'nullable|date|after:start_date',
             'location'            => 'nullable|string|max:255',
-            'is_current'          => 'nullable|boolean',
+            'is_current'          => 'required|boolean',
             'supervisor_name'     => 'nullable|string|max:255',
             'supervisor_mobile'   => 'nullable|string|max:20', // Depending on your validation preference
             'supervisor_email'    => 'nullable|email|max:255',
@@ -46,14 +46,14 @@ class ExperienceRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'user_id.required'                          => 'The user ID is required.',
-            'user_id.exists'                            => 'The selected user does not exist.',
+            'user_id.required'             => 'The user ID is required.',
+            'user_id.exists'               => 'The selected user does not exist.',
             'company_name.required'        => 'The company name is required.',
             'job_title.required'           => 'The job title is required.', 
             'start_date.required'          => 'The start date is required.',
             'start_date.before_or_equal'   => 'The start date cannot be in the future.',
             'end_date.after'               => 'The end date must be after the start date.',
-            'employment_type'           => 'The employment type must be String.',
+            'employment_type'              => 'The employment type field is required.',
             'salary.numeric'               => 'Salary must be a valid number.',
             'salary.min'                   => 'Salary cannot be negative.',
             'salary.max'                   => 'Salary cannot exceed 9,999,999.99.',
