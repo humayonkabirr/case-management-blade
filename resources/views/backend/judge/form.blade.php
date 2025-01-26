@@ -14,15 +14,6 @@
                         <h4>Judge Create</h4>
                     </div>
                 </div>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
             </div>
             <div class="widget-content widget-content-area simple-tab">
                 <ul class="mt-3 mb-3 nav nav-tabs" id="simpletab" role="tablist">
@@ -569,14 +560,14 @@
                     </div>
 
                     <div class="tab-pane fade" id="address-form" role="tabpanel" aria-labelledby="address-form-tab">
-                        <x-form class="row" action="admin.address" data="{{ $judge->address->id ?? '' }}">
+                        <x-form class="row" action="admin.address" data="{{ $judge->address[0]->id ?? '' }}">
 
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
                             <x-input.select class="col-md-4" label="Division" name="division_id" value=""
                                 id="division_id" placeholder="Select Division">
                                 @foreach ($divisions as $division)
-                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                    <option value="{{ $division->id }}" {{ __select('division_id', $division->id, $judge->address[0]->division_id ?? '') }}>{{ $division->name }}</option>
                                 @endforeach
                             </x-input.select>
 
@@ -592,7 +583,7 @@
                                 id="union_id" placeholder="Select Union">
                             </x-input.select>
 
-                            <x-input.text class="col-md-8" label="Location" name="location" value=""
+                            <x-input.text class="col-md-8" label="Location" name="location" value="{{ $judge->address[0]->location }}"
                                 id="location" placeholder="enter location" />
 
                             <div class="col-md-12">
@@ -612,7 +603,15 @@
 @push('js')
 <script>
     $(document).ready(function() {
-        // Generic function to populate any dropdown based on API response
+        /**
+         * Generic function to populate a target dropdown based on the selection
+         * in a trigger dropdown and API response.
+         *
+         * @param {string} triggerDropdownId - ID of the dropdown triggering the change event.
+         * @param {string} targetDropdownId - ID of the dropdown to populate with data.
+         * @param {string} apiUrl - URL to fetch data (use ":id" as a placeholder for dynamic values).
+         * @param {string} placeholder - Placeholder text for the target dropdown.
+         */
         function populateDropdown(triggerDropdownId, targetDropdownId, apiUrl, placeholder = "Select Option") {
             $(triggerDropdownId).change(function() {
                 let selectedValue = $(this).val(); // Get the selected value from the trigger dropdown
@@ -621,21 +620,20 @@
                 // Clear the target dropdown before populating it
                 $(targetDropdownId).html(`<option value="">${placeholder}</option>`);
 
-                // Check if a value is selected in the trigger dropdown
                 if (selectedValue) {
-                    // Construct the URL dynamically with the selected value
+                    // Replace ":id" in the API URL with the selected value
                     let url = apiUrl.replace(':id', selectedValue);
                     console.log(`API Request URL: ${url}`);
 
-                    // Make the API call
+                    // Make an AJAX call to fetch data
                     $.ajax({
-                        url: url, // Dynamically constructed URL
+                        url: url,
                         method: 'GET',
                         dataType: 'json', // Expecting JSON response
                         success: function(response) {
                             console.log(`API Response for ${targetDropdownId}:`, response);
 
-                            // Check if response contains data and populate the target dropdown
+                            // Check if response is valid and populate the target dropdown
                             if (Array.isArray(response) && response.length > 0) {
                                 response.forEach(function(option) {
                                     $(targetDropdownId).append(
@@ -649,28 +647,28 @@
                             }
                         },
                         error: function(xhr, status, error) {
-                            console.error(`Error fetching data for ${targetDropdownId}:`,
-                                error);
+                            console.error(`Error fetching data for ${targetDropdownId}:`, error);
+                            $(targetDropdownId).append(
+                                `<option value="">Error loading data</option>`
+                            );
                         }
                     });
                 } else {
-                    // If no value is selected, clear the target dropdown
+                    // Reset target dropdown if no value is selected in the trigger dropdown
                     $(targetDropdownId).html(`<option value="">${placeholder}</option>`);
                 }
             });
         }
 
-        // Example usage:
-        // Populate districts based on selected division
-        populateDropdown('#division_id', '#district_id', `{{ route('api.districts', ':id') }}`,
-            'Select District');
+        // Populate districts based on the selected division
+        populateDropdown('#division_id', '#district_id', `{{ route('api.districts', ':id') }}`, 'Select District');
 
-        // Populate upazilas based on selected district
-        populateDropdown('#district_id', '#upazila_id', `{{ route('api.upazilas', ':id') }}`,
-            'Select Upazila');
+        // Populate upazilas based on the selected district
+        populateDropdown('#district_id', '#upazila_id', `{{ route('api.upazilas', ':id') }}`, 'Select Upazila');
 
-        // Populate unions based on selected upazila
+        // Populate unions based on the selected upazila
         populateDropdown('#upazila_id', '#union_id', `{{ route('api.unions', ':id') }}`, 'Select Union');
     });
 </script>
+
 @endpush
