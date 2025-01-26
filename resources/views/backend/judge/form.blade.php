@@ -595,6 +595,37 @@
                                 </div>
                             </x-form>
                         @endforeach
+                        <x-form class="row" action="admin.address" data="{{ $address->id ?? '' }}">
+
+                            <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
+
+                            <x-input.select class="col-md-4" label="Division" name="division_id" value=""
+                                id="division_id" placeholder="Select Division">
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->name??'N/A' }}</option>
+                                @endforeach
+                            </x-input.select>
+
+                            <x-input.select class="col-md-4" label="District" name="district_id" value=""
+                                id="district_id" placeholder="Select District">
+                            </x-input.select>
+
+                            <x-input.select class="col-md-4" label="Upazila" name="upazila_id" value=""
+                                id="upazila_id" placeholder="Select Upazila">
+                            </x-input.select>
+
+                            <x-input.select class="col-md-4" label="Union" name="union_id" value=""
+                                id="union_id" placeholder="Select Union">
+                            </x-input.select>
+
+                            <x-input.text class="col-md-8" label="Location" name="location"
+                                value="" id="location" placeholder="enter location" />
+
+                            <div class="col-md-12">
+                                <button type="submit"
+                                    class="float-right btn btn-info">Create</button>
+                            </div>
+                        </x-form>
                     </div>
                 </div>
 
@@ -627,14 +658,14 @@
                     if (selectedTriggerValue) {
                         let url = apiUrl.replace(':id',
                             selectedTriggerValue); // Replace ":id" in the API URL
-                        console.log(`API Request URL: ${url}`);
+                        // console.log(`API Request URL: ${url}`);
 
                         $.ajax({
                             url: url,
                             method: 'GET',
                             dataType: 'json',
                             success: function(response) {
-                                console.log(`API Response for ${targetDropdownId}:`, response);
+                                // console.log(`API Response for ${targetDropdownId}:`, response);
 
                                 if (Array.isArray(response) && response.length > 0) {
                                     response.forEach(function(option) {
@@ -654,8 +685,8 @@
                                 if (callback) callback();
                             },
                             error: function(xhr, status, error) {
-                                console.error(`Error fetching data for ${targetDropdownId}:`,
-                                    error);
+                                // console.error(`Error fetching data for ${targetDropdownId}:`,
+                                //     error);
                                 $(targetDropdownId).append(
                                     `<option value="">Error loading data</option>`
                                 );
