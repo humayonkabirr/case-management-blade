@@ -87,7 +87,7 @@ class AddressController extends Controller
                  return view('errors.403');
              }
              // Validate incoming requests
-             $addressData             = $addressRequest->validated();
+             $addressData             = $addressRequest->validated(); 
              
              // Insert data into related services
              $address = $this->addressService->update($id, $addressData);

@@ -569,7 +569,7 @@
                     </div>
 
                     <div class="tab-pane fade" id="address-form" role="tabpanel" aria-labelledby="address-form-tab">
-                        <x-form class="row" action="admin.address" data="{{ $judge->id ?? '' }}">
+                        <x-form class="row" action="admin.address" data="{{ $judge->address->id ?? '' }}">
 
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 

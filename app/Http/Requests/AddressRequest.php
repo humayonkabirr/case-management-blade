@@ -23,7 +23,7 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'user_id'           => 'required|exists:users,id',
+            'user_id'           => 'required|exists:users,id',
             'division_id'       => 'nullable|exists:divisions,id',
             'district_id'       => 'nullable|exists:districts,id',
             'upazila_id'        => 'nullable|exists:upazilas,id',
@@ -41,8 +41,8 @@ class AddressRequest extends FormRequest
     public function messages()
     {
         return [
-            // 'user_id.required'          => 'The user ID is required.',
-            // 'user_id.exists'            => 'The selected user is invalid.',
+            'user_id.required'          => 'The user ID is required.',
+            'user_id.exists'            => 'The selected user is invalid.',
             'division_id.exists'        => 'The selected division is invalid.',
             'district_id.exists'        => 'The selected district is invalid.',
             'upazila_id.exists'         => 'The selected upazila is invalid.',
