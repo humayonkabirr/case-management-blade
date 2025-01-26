@@ -622,8 +622,7 @@
                                 value="" id="location" placeholder="enter location" />
 
                             <div class="col-md-12">
-                                <button type="submit"
-                                    class="float-right btn btn-info">Create</button>
+                                <button type="submit" class="float-right btn btn-info">Create</button>
                             </div>
                         </x-form>
                     </div>
