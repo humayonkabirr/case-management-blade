@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\RoleController;
+use App\Http\Controllers\Backend\AddressController;
 use App\Http\Controllers\Backend\AdvocateController;
 use App\Http\Controllers\Backend\CaseInfoController;
 use App\Http\Controllers\Backend\CaseTypeController;
@@ -62,6 +63,9 @@ Route::group(['middleware' => ['auth:sanctum'],'as' => 'admin.'],  function () {
     
     // Emergency-Contact-Manage
     Route::resource('emergency-contact', EmergencyContactController::class);
+    
+    // Address-Manage
+    Route::resource('address', AddressController::class);
     
     // case-Manage
     Route::resource('case', CaseInfoController::class);

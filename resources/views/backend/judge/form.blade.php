@@ -45,12 +45,12 @@
                         <a class="nav-link font-weight-bold {{ $judge?->id ?? 'disabled' }}" id="emergency-contact-tab"
                             data-toggle="tab" href="#emergency-contact" role="tab" aria-controls="emergency-contact"
                             aria-selected="false">Emergency Contact</a>
-                    </li> 
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link font-weight-bold {{ $judge?->id ?? 'disabled' }}" id="address-form-tab"
                             data-toggle="tab" href="#address-form" role="tab" aria-controls="address-form"
                             aria-selected="false">Address</a>
-                    </li> 
+                    </li>
                 </ul>
                 <div class="tab-content" id="simpletabContent">
                     <div class="tab-pane fade show active" id="general-info" role="tabpanel"
@@ -435,7 +435,8 @@
                         </x-form>
                     </div>
 
-                    <div class="tab-pane fade" id="emergency-contact" role="tabpanel" aria-labelledby="emergency-contact-tab">
+                    <div class="tab-pane fade" id="emergency-contact" role="tabpanel"
+                        aria-labelledby="emergency-contact-tab">
                         @isset($judge)
                             @foreach ($judge->emergencyContact as $emc)
                                 <x-form class="row" action="admin.emergency-contact" data="{{ $emc->id ?? '' }}">
@@ -568,33 +569,36 @@
                     </div>
 
                     <div class="tab-pane fade" id="address-form" role="tabpanel" aria-labelledby="address-form-tab">
-                        <x-form class="row" action="admin.judge" data="{{ $judge->id ?? '' }}">
+                        <x-form class="row" action="admin.address" data="{{ $judge->id ?? '' }}">
 
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
                             <x-input.select class="col-md-4" label="Division" name="division_id" value=""
-                                    id="division_id" placeholder="Select Division">
-                                    @foreach ($divisions as $division)
-                                        <option value="{{ $division->id }}">{{ $division->name }}</option>
-                                    @endforeach
-                                </x-input.select>
+                                id="division_id" placeholder="Select Division">
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                @endforeach
+                            </x-input.select>
 
-                                <x-input.select class="col-md-4" label="District" name="district_id" value=""
-                                    id="district_id" placeholder="Select District">
-                                </x-input.select>
+                            <x-input.select class="col-md-4" label="District" name="district_id" value=""
+                                id="district_id" placeholder="Select District">
+                            </x-input.select>
 
-                                <x-input.select class="col-md-4" label="Upazila" name="upazila_id" value=""
-                                    id="upazila_id" placeholder="Select Upazila">
-                                </x-input.select>
+                            <x-input.select class="col-md-4" label="Upazila" name="upazila_id" value=""
+                                id="upazila_id" placeholder="Select Upazila">
+                            </x-input.select>
 
-                                <x-input.select class="col-md-4" label="Union" name="union_id" value=""
-                                    id="union_id" placeholder="Select Union">
-                                </x-input.select>
+                            <x-input.select class="col-md-4" label="Union" name="union_id" value=""
+                                id="union_id" placeholder="Select Union">
+                            </x-input.select>
 
-                                <x-input.text class="col-md-8" label="Location" name="location" value=""
-                                    id="location" placeholder="enter location" />
-                                
-                                
+                            <x-input.text class="col-md-8" label="Location" name="location" value=""
+                                id="location" placeholder="enter location" />
+
+                            <div class="col-md-12">
+                                <button type="submit" class="float-right btn btn-info">Create</button>
+                            </div>
+                            
                         </x-form>
                     </div>
                 </div>
@@ -603,3 +607,70 @@
         </div>
     </div>
 @endsection
+
+
+@push('js')
+<script>
+    $(document).ready(function() {
+        // Generic function to populate any dropdown based on API response
+        function populateDropdown(triggerDropdownId, targetDropdownId, apiUrl, placeholder = "Select Option") {
+            $(triggerDropdownId).change(function() {
+                let selectedValue = $(this).val(); // Get the selected value from the trigger dropdown
+                console.log(`Selected value from ${triggerDropdownId}: ${selectedValue}`);
+
+                // Clear the target dropdown before populating it
+                $(targetDropdownId).html(`<option value="">${placeholder}</option>`);
+
+                // Check if a value is selected in the trigger dropdown
+                if (selectedValue) {
+                    // Construct the URL dynamically with the selected value
+                    let url = apiUrl.replace(':id', selectedValue);
+                    console.log(`API Request URL: ${url}`);
+
+                    // Make the API call
+                    $.ajax({
+                        url: url, // Dynamically constructed URL
+                        method: 'GET',
+                        dataType: 'json', // Expecting JSON response
+                        success: function(response) {
+                            console.log(`API Response for ${targetDropdownId}:`, response);
+
+                            // Check if response contains data and populate the target dropdown
+                            if (Array.isArray(response) && response.length > 0) {
+                                response.forEach(function(option) {
+                                    $(targetDropdownId).append(
+                                        `<option value="${option.id}">${option.name}</option>`
+                                    );
+                                });
+                            } else {
+                                $(targetDropdownId).append(
+                                    `<option value="">No data available</option>`
+                                );
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(`Error fetching data for ${targetDropdownId}:`,
+                                error);
+                        }
+                    });
+                } else {
+                    // If no value is selected, clear the target dropdown
+                    $(targetDropdownId).html(`<option value="">${placeholder}</option>`);
+                }
+            });
+        }
+
+        // Example usage:
+        // Populate districts based on selected division
+        populateDropdown('#division_id', '#district_id', `{{ route('api.districts', ':id') }}`,
+            'Select District');
+
+        // Populate upazilas based on selected district
+        populateDropdown('#district_id', '#upazila_id', `{{ route('api.upazilas', ':id') }}`,
+            'Select Upazila');
+
+        // Populate unions based on selected upazila
+        populateDropdown('#upazila_id', '#union_id', `{{ route('api.unions', ':id') }}`, 'Select Union');
+    });
+</script>
+@endpush
