@@ -45,16 +45,12 @@
                         <a class="nav-link font-weight-bold {{ $judge?->id ?? 'disabled' }}" id="emergency-contact-tab"
                             data-toggle="tab" href="#emergency-contact" role="tab" aria-controls="emergency-contact"
                             aria-selected="false">Emergency Contact</a>
-                    </li>
+                    </li> 
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold {{ $judge?->id ?? 'disabled' }}" id="address-tab"
-                            data-toggle="tab" href="#address" role="tab" aria-controls="address"
+                        <a class="nav-link font-weight-bold {{ $judge?->id ?? 'disabled' }}" id="address-form-tab"
+                            data-toggle="tab" href="#address-form" role="tab" aria-controls="address-form"
                             aria-selected="false">Address</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold disabled" href="#" tabindex="-1"
-                            aria-disabled="true">Disabled</a>
-                    </li>
+                    </li> 
                 </ul>
                 <div class="tab-content" id="simpletabContent">
                     <div class="tab-pane fade show active" id="general-info" role="tabpanel"
@@ -150,7 +146,6 @@
                             </div>
                         </x-form>
                     </div>
-
 
                     <div class="tab-pane fade" id="educational-info" role="tabpanel"
                         aria-labelledby="educational-info-tab">
@@ -440,8 +435,7 @@
                         </x-form>
                     </div>
 
-                    <div class="tab-pane fade" id="emergency-contact" role="tabpanel"
-                        aria-labelledby="emergency-contact-tab">
+                    <div class="tab-pane fade" id="emergency-contact" role="tabpanel" aria-labelledby="emergency-contact-tab">
                         @isset($judge)
                             @foreach ($judge->emergencyContact as $emc)
                                 <x-form class="row" action="admin.emergency-contact" data="{{ $emc->id ?? '' }}">
@@ -573,68 +567,34 @@
                         </x-form>
                     </div>
 
-                    <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
+                    <div class="tab-pane fade" id="address-form" role="tabpanel" aria-labelledby="address-form-tab">
                         <x-form class="row" action="admin.judge" data="{{ $judge->id ?? '' }}">
 
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
-                            <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
-                                id="first_name" placeholder="enter first name" />
+                            <x-input.select class="col-md-4" label="Division" name="division_id" value=""
+                                    id="division_id" placeholder="Select Division">
+                                    @foreach ($divisions as $division)
+                                        <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                    @endforeach
+                                </x-input.select>
 
-                            <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
-                                id="last_name" placeholder="enter last name" />
+                                <x-input.select class="col-md-4" label="District" name="district_id" value=""
+                                    id="district_id" placeholder="Select District">
+                                </x-input.select>
 
-                            <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value=""
-                                id="mobile" placeholder="enter moble no" />
+                                <x-input.select class="col-md-4" label="Upazila" name="upazila_id" value=""
+                                    id="upazila_id" placeholder="Select Upazila">
+                                </x-input.select>
 
-                            <x-input.email class="col-md-4" label="Email" name="email" value="" id="email"
-                                placeholder="enter email" />
+                                <x-input.select class="col-md-4" label="Union" name="union_id" value=""
+                                    id="union_id" placeholder="Select Union">
+                                </x-input.select>
 
-                            <x-input.date class="col-md-4" label="Birth of Date" name="birthday" value=""
-                                id="birthday" placeholder="enter birth of date" />
-
-                            <x-input.select class="col-md-2" label="Blood Group" name="blood_group" value=""
-                                id="blood_group" placeholder="Select Blood Group">
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                            </x-input.select>
-
-                            <x-input.select class="col-md-2" label="Religion" name="religion" value=""
-                                id="religion" placeholder="Select Religion">
-                                <option value="Islam">Islam</option>
-                                <option value="Christianity">Christianity</option>
-                                <option value="Hinduism">Hinduism</option>
-                                <option value="Buddhism">Buddhism</option>
-                                <option value="Judaism">Judaism</option>
-                                <option value="Sikhism">Sikhism</option>
-                                <option value="Other">Other</option>
-                            </x-input.select>
-
-                            <x-input.select class="col-md-4" label="Gender" name="gender" value=""
-                                id="gender" placeholder="Select Gender">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Others">Others</option>
-                            </x-input.select>
-
-                            <x-input.select class="col-md-4" label="Nationality" name="nationality" value=""
-                                id="nationality" placeholder="Select Nationality">
-                                <option value="0">Bangladeshi</option>
-                                <option value="1">Others</option>
-                            </x-input.select>
-
-                            <x-input.select class="col-md-4" label="Mother Tongue" name="mother_tongue" value=""
-                                id="mother_tongue" placeholder="Select Mother Tongue">
-                                <option value="Bangla">Bangla</option>
-                                <option value="English">English</option>
-                                <option value="Others">Others</option>
-                            </x-input.select>
+                                <x-input.text class="col-md-8" label="Location" name="location" value=""
+                                    id="location" placeholder="enter location" />
+                                
+                                
                         </x-form>
                     </div>
                 </div>
