@@ -50,7 +50,7 @@
                                     </td>
                                     <td>320</td>
                                     <td class="text-center">
-                                        <x-action url="admin.judge" id="{{ $judge->id }}" />
+                                        <x-action-btn url="admin.judge" :id="$judge->id" />
                                     </td>
                                 </tr>
                             @endforeach

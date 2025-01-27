@@ -12,6 +12,6 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
       <a class="dropdown-item" href="{{ $viewUrl }}">View</a>
       <a class="dropdown-item" href="{{ $editUrl }}">Edit</a>
-      <a class="dropdown-item" href="{{ $deleteUrl }}">Delete</a>
+      <a class="dropdown-item" href="javascript:void(0);">Delete</a> 
   </div>
 </div>
