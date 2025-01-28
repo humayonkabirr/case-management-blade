@@ -17,7 +17,7 @@
                             <tr>
                                 <th>Name / Type</th>
                                 <th>Mobile / Email</th>
-                                <th>Sale</th>
+                                <th>Gender / Religion</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -48,7 +48,14 @@
                                             {{ $judge->email ?? 'N/A' }}
                                         </small>
                                     </td>
-                                    <td>320</td>
+                                    <td>
+                                        <p class="mb-0 font-weight-bold text-nowrap">
+                                            {{ $judge->gender ?? 'N/A' }}
+                                        </p>
+                                        <small class="text-muted">
+                                            {{ $judge->religion ?? 'N/A' }}
+                                        </small>
+                                    </td>
                                     <td class="text-center">
                                         <x-action-btn url="admin.judge" :id="$judge->id" />
                                     </td>
