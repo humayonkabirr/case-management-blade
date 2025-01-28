@@ -560,41 +560,43 @@
                     </div>
 
                     <div class="tab-pane fade" id="address-form" role="tabpanel" aria-labelledby="address-form-tab">
-                        @foreach ($judge->address as $address)
-                            <x-form class="row" action="admin.address" data="{{ $address->id ?? '' }}">
+                        @isset($judge)
+                            @foreach ($judge->address as $address)
+                                <x-form class="row" action="admin.address" data="{{ $address->id ?? '' }}">
 
-                                <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
+                                    <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
-                                <x-input.select class="col-md-4" label="Division" name="division_id" value=""
-                                    id="division_id" placeholder="Select Division">
-                                    @foreach ($divisions as $division)
-                                        <option value="{{ $division->id }}"
-                                            {{ __select('division_id', $division->id, $address->division_id ?? '') }}>
-                                            {{ $division->name }}</option>
-                                    @endforeach
-                                </x-input.select>
+                                    <x-input.select class="col-md-4" label="Division" name="division_id" value=""
+                                        id="division_id" placeholder="Select Division">
+                                        @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}"
+                                                {{ __select('division_id', $division->id, $address->division_id ?? '') }}>
+                                                {{ $division->name }}</option>
+                                        @endforeach
+                                    </x-input.select>
 
-                                <x-input.select class="col-md-4" label="District" name="district_id" value=""
-                                    id="district_id" placeholder="Select District">
-                                </x-input.select>
+                                    <x-input.select class="col-md-4" label="District" name="district_id" value=""
+                                        id="district_id" placeholder="Select District">
+                                    </x-input.select>
 
-                                <x-input.select class="col-md-4" label="Upazila" name="upazila_id" value=""
-                                    id="upazila_id" placeholder="Select Upazila">
-                                </x-input.select>
+                                    <x-input.select class="col-md-4" label="Upazila" name="upazila_id" value=""
+                                        id="upazila_id" placeholder="Select Upazila">
+                                    </x-input.select>
 
-                                <x-input.select class="col-md-4" label="Union" name="union_id" value=""
-                                    id="union_id" placeholder="Select Union">
-                                </x-input.select>
+                                    <x-input.select class="col-md-4" label="Union" name="union_id" value=""
+                                        id="union_id" placeholder="Select Union">
+                                    </x-input.select>
 
-                                <x-input.text class="col-md-8" label="Location" name="location"
-                                    value="{{ $address->location }}" id="location" placeholder="enter location" />
+                                    <x-input.text class="col-md-8" label="Location" name="location"
+                                        value="{{ $address->location }}" id="location" placeholder="enter location" />
 
-                                <div class="col-md-12">
-                                    <button type="submit"
-                                        class="float-right btn btn-success">{{ $address->id ?? '' ? 'Update' : 'Submit' }}</button>
-                                </div>
-                            </x-form>
-                        @endforeach
+                                    <div class="col-md-12">
+                                        <button type="submit"
+                                            class="float-right btn btn-success">{{ $address->id ?? '' ? 'Update' : 'Submit' }}</button>
+                                    </div>
+                                </x-form>
+                            @endforeach
+                        @endisset
                         <x-form class="row" action="admin.address" data="{{ $address->id ?? '' }}">
 
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
@@ -602,7 +604,7 @@
                             <x-input.select class="col-md-4" label="Division" name="division_id" value=""
                                 id="division_id" placeholder="Select Division">
                                 @foreach ($divisions as $division)
-                                    <option value="{{ $division->id }}">{{ $division->name??'N/A' }}</option>
+                                    <option value="{{ $division->id }}">{{ $division->name ?? 'N/A' }}</option>
                                 @endforeach
                             </x-input.select>
 
@@ -618,8 +620,8 @@
                                 id="union_id" placeholder="Select Union">
                             </x-input.select>
 
-                            <x-input.text class="col-md-8" label="Location" name="location"
-                                value="" id="location" placeholder="enter location" />
+                            <x-input.text class="col-md-8" label="Location" name="location" value=""
+                                id="location" placeholder="enter location" />
 
                             <div class="col-md-12">
                                 <button type="submit" class="float-right btn btn-info">Create</button>

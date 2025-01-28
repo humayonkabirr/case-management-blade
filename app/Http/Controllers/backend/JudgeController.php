@@ -81,7 +81,7 @@ class JudgeController extends Controller
             $judgeData             = $judgeRequest->validated();
 
             // Insert data into related services
-            $judge = $this->judgeService->create($judgeData + ['password' => Hash::make(12345678)]);
+            $judge = $this->judgeService->create($judgeData + ['type' =>3 ,'password' => Hash::make(12345678)]);
  
             return redirect()->route('admin.judge.edit', $judge->id)->with('success', 'Judge create successfully.');
         } catch (\Throwable $e) {

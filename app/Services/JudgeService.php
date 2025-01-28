@@ -8,7 +8,7 @@ class JudgeService
     protected User $model;
     
     public function __construct(User $model)
-    {
+    { 
         $this->model = $model;
     }
     
@@ -20,7 +20,7 @@ class JudgeService
      */
     public function list()
     {
-        return $this->model; // Get all records
+        return $this->model->where('type', 3); // Get all records
     }
 
 
@@ -32,7 +32,7 @@ class JudgeService
      */
     public function find($id)
     {
-        return $this->model->with('education', 'experience', 'emergencyContact', 'address')->findOrFail($id); // Find by ID
+        return $this->model->where('type', 3)->with('education', 'experience', 'emergencyContact', 'address')->findOrFail($id); // Find by ID
     }
 
 
