@@ -133,7 +133,7 @@ class JudgeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(JudgeRequest $judgeRequest, string $id)
+    public function update(JudgeRequest $judgeRequest, $id)
     {
         try {
             if (!Gate::allows('dashboard.index')) {
