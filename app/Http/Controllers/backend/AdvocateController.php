@@ -80,7 +80,7 @@ class AdvocateController extends Controller
             $advocateData             = $advocateRequest->validated();
 
             // Insert data into related services
-            $advocate = $this->advocateService->create($advocateData + ['type' =>3 ,'password' => Hash::make(12345678)]);
+            $advocate = $this->advocateService->create($advocateData + ['type' =>2 ,'password' => Hash::make(12345678)]);
  
             return redirect()->route('admin.advocate.edit', $advocate->id)->with('success', 'Advocate create successfully.');
         } catch (\Throwable $e) {
