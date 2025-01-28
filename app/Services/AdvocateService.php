@@ -20,7 +20,7 @@ class AdvocateService
      */
     public function list()
     {
-        return $this->model; // Get all records
+        return $this->model->where('type', 2); // Get all records
     }
 
 
@@ -32,7 +32,7 @@ class AdvocateService
      */
     public function find($id)
     {
-        return $this->model->findOrFail($id); // Find by ID
+        return $this->model->where('type', 2)->findOrFail($id); // Find by ID
     }
 
 

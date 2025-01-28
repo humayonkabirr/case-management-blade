@@ -1,5 +1,7 @@
 @extends('layout.master')
 
+@section('title', 'Add a New Judge')
+
 @section('content')
     <div id="tableDropdown" class="col-lg-12 col-12 layout-spacing">
         <div class="statbox widget box box-shadow">

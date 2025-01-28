@@ -1,5 +1,7 @@
 @extends('layout.master')
 
+@section('title', 'Add a New Advocate')
+
 @section('content')
     <div id="tableDropdown" class="col-lg-12 col-12 layout-spacing">
         <div class="statbox widget box box-shadow">
@@ -17,7 +19,7 @@
                             <tr>
                                 <th>Name / Type</th>
                                 <th>Mobile / Email</th>
-                                <th>Sale</th>
+                                <th>Gender / Religion</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -48,27 +50,16 @@
                                             {{ $advocate->email ?? 'N/A' }}
                                         </small>
                                     </td>
-                                    <td>320</td>
+                                    <td>
+                                        <p class="mb-0 font-weight-bold text-nowrap">
+                                            {{ $advocate->gender ?? 'N/A' }}
+                                        </p>
+                                        <small class="text-muted">
+                                            {{ $advocate->religion ?? 'N/A' }}
+                                        </small>
+                                    </td>
                                     <td class="text-center">
-                                        <div class="dropdown custom-dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-more-horizontal">
-                                                    <circle cx="12" cy="12" r="1"></circle>
-                                                    <circle cx="19" cy="12" r="1"></circle>
-                                                    <circle cx="5" cy="12" r="1"></circle>
-                                                </svg>
-                                            </a>
-
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                                <a class="dropdown-item" href="javascript:void(0);">View</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                            </div>
-                                        </div>
+                                        <x-action-btn url="admin.advocate" :id="$advocate->id" />
                                     </td>
                                 </tr>
                             @endforeach
