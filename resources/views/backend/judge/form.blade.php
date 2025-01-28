@@ -48,19 +48,19 @@
                         aria-labelledby="general-info-tab">
                         <x-form class="row" action="admin.judge" data="{{ $judge->id ?? '' }}">
                             <x-input.text class="col-md-4" label="First Name" name="first_name"
-                                value="{{ $judge->first_name ?? '' }}" id="first_name" placeholder="enter first name" />
+                                value="{{ $judge->first_name ?? '' }}" id="first_name" placeholder="Enter first name" />
 
                             <x-input.text class="col-md-4" label="Last Name" name="last_name"
-                                value="{{ $judge->last_name ?? '' }}" id="last_name" placeholder="enter last name" />
+                                value="{{ $judge->last_name ?? '' }}" id="last_name" placeholder="Enter last name" />
 
                             <x-input.tel class="col-md-4" label="Mobile No" name="mobile"
-                                value="{{ $judge->mobile ?? '' }}" id="mobile" placeholder="enter mobile no" />
+                                value="{{ $judge->mobile ?? '' }}" id="mobile" placeholder="Enter mobile no" />
 
                             <x-input.email class="col-md-4" label="Email" name="email" value="{{ $judge->email ?? '' }}"
-                                id="email" placeholder="enter email" />
+                                id="email" placeholder="Enter email" />
 
                             <x-input.date class="col-md-4" label="Birth of Date" name="birthday"
-                                value="{{ $judge->birthday ?? '' }}" id="birthday" placeholder="enter birth of date" />
+                                value="{{ $judge->birthday ?? '' }}" id="birthday" placeholder="Enter birth of date" />
 
                             <x-input.select class="col-md-2" label="Blood Group" name="blood_group" value=""
                                 id="blood_group" placeholder="Select Blood Group">
@@ -192,7 +192,7 @@
                                     <x-input.number class="col-md-4" label="GPA/CGPA" name="gpa_cgpa"
                                         value="{{ $edu->gpa_cgpa ?? '' }}" id="gpa_cgpa"
                                         otherattr='min="2.00" max="5.00" step="0.01"'
-                                        placeholder="enter GPA/CGPA (2.00 to 5.00)" />
+                                        placeholder="Enter GPA/CGPA (2.00 to 5.00)" />
 
                                     <x-input.years class="col-md-4" label="Admission Year" name="admission_year"
                                         value="{{ $edu->admission_year ?? '' }}" id="admission_year"
@@ -255,7 +255,7 @@
 
                             <x-input.number class="col-md-4" label="GPA/CGPA" name="gpa_cgpa" value=""
                                 id="gpa_cgpa" otherattr='min="2.00" max="5.00" step="0.01"'
-                                placeholder="enter GPA/CGPA (2.00 to 5.00)" />
+                                placeholder="Enter GPA/CGPA (2.00 to 5.00)" />
 
                             <x-input.years class="col-md-4" label="Admission Year" name="admission_year" value=""
                                 id="admission_year" placeholder="Enter admission year" />
@@ -291,15 +291,15 @@
 
                                     <x-input.text class="col-md-4" label="Supervisor Name" name="supervisor_name"
                                         value="{{ $exp->supervisor_name }}" id="supervisor_name"
-                                        placeholder="enter supervisor name" />
+                                        placeholder="Enter supervisor name" />
 
                                     <x-input.tel class="col-md-4" label="Supervisor Mobile" name="supervisor_mobile"
                                         value="{{ $exp->supervisor_mobile }}" id="supervisor_mobile"
-                                        placeholder="enter supervisor mobile" />
+                                        placeholder="Enter supervisor mobile" />
 
                                     <x-input.email class="col-md-4" label="Supervisor Email" name="supervisor_email"
                                         value="{{ $exp->supervisor_email }}" id="supervisor_email"
-                                        placeholder="enter supervisor email" />
+                                        placeholder="Enter supervisor email" />
 
                                     <x-input.select class="col-md-4" label="Employment Type" name="employment_type"
                                         value="" id="employment_type" placeholder="Select employment type">
@@ -347,10 +347,10 @@
 
                                     <x-input.textarea class="col-md-12" label="Responsibilities" name="responsibilities"
                                         value="{{ $exp->responsibilities }}" id="responsibilities"
-                                        placeholder="enter responsibilities" />
+                                        placeholder="Enter responsibilities" />
 
                                     <x-input.number class="col-md-12" label="Location" name="location"
-                                        value="{{ $exp->location }}" id="location" placeholder="enter location" />
+                                        value="{{ $exp->location }}" id="location" placeholder="Enter location" />
 
                                     <div class="col-md-12">
                                         <button type="submit"
@@ -378,13 +378,13 @@
                                 id="job_title" placeholder="Enter Job Title" />
 
                             <x-input.text class="col-md-4" label="Supervisor Name" name="supervisor_name" value=""
-                                id="supervisor_name" placeholder="enter supervisor name" />
+                                id="supervisor_name" placeholder="Enter supervisor name" />
 
                             <x-input.tel class="col-md-4" label="Supervisor Mobile" name="supervisor_mobile"
-                                value="" id="supervisor_mobile" placeholder="enter supervisor mobile" />
+                                value="" id="supervisor_mobile" placeholder="Enter supervisor mobile" />
 
                             <x-input.email class="col-md-4" label="Supervisor Email" name="supervisor_email"
-                                value="" id="supervisor_email" placeholder="enter supervisor email" />
+                                value="" id="supervisor_email" placeholder="Enter supervisor email" />
 
                             <x-input.select class="col-md-4" label="Employment Type" name="employment_type"
                                 value="" id="employment_type" placeholder="Select employment type">
@@ -414,10 +414,10 @@
                                 id="salary" placeholder="Enter Salary" />
 
                             <x-input.textarea class="col-md-12" label="Responsibilities" name="responsibilities"
-                                value="" id="responsibilities" placeholder="enter responsibilities" />
+                                value="" id="responsibilities" placeholder="Enter responsibilities" />
 
                             <x-input.number class="col-md-12" label="Location" name="location" value=""
-                                id="location" placeholder="enter location" />
+                                id="location" placeholder="Enter location" />
 
                             <div class="col-md-12">
                                 <button type="submit" class="float-right btn btn-info">Create</button>
@@ -436,16 +436,16 @@
 
                                     <x-input.text class="col-md-4" label="First Name" name="first_name"
                                         value="{{ $emc->first_name ?? '' }}" id="first_name"
-                                        placeholder="enter first name" />
+                                        placeholder="Enter first name" />
 
                                     <x-input.text class="col-md-4" label="Last Name" name="last_name"
-                                        value="{{ $emc->last_name ?? '' }}" id="last_name" placeholder="enter last name" />
+                                        value="{{ $emc->last_name ?? '' }}" id="last_name" placeholder="Enter last name" />
 
                                     <x-input.tel class="col-md-4" label="Mobile No" name="mobile"
-                                        value="{{ $emc->mobile ?? '' }}" id="mobile" placeholder="enter moble no" />
+                                        value="{{ $emc->mobile ?? '' }}" id="mobile" placeholder="Enter moble no" />
 
                                     <x-input.email class="col-md-4" label="Email" name="email"
-                                        value="{{ $emc->email ?? '' }}" id="email" placeholder="enter email" />
+                                        value="{{ $emc->email ?? '' }}" id="email" placeholder="Enter email" />
 
                                     <x-input.select class="col-md-4" label="Relationship" name="relationship"
                                         id="relationship" placeholder="Select Relationship">
@@ -492,7 +492,7 @@
                                     </x-input.select>
 
                                     <x-input.text class="col-md-12" label="Address" name="address"
-                                        value="{{ $emc->address ?? '' }}" id="address" placeholder="enter address" />
+                                        value="{{ $emc->address ?? '' }}" id="address" placeholder="Enter address" />
 
                                     <div class="col-md-12">
                                         <button type="submit"
@@ -514,16 +514,16 @@
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
                             <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
-                                id="first_name" placeholder="enter first name" />
+                                id="first_name" placeholder="Enter first name" />
 
                             <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
-                                id="last_name" placeholder="enter last name" />
+                                id="last_name" placeholder="Enter last name" />
 
                             <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value=""
-                                id="mobile" placeholder="enter moble no" />
+                                id="mobile" placeholder="Enter moble no" />
 
                             <x-input.email class="col-md-4" label="Email" name="email" value="" id="email"
-                                placeholder="enter email" />
+                                placeholder="Enter email" />
 
                             <x-input.select class="col-md-4" label="Relationship" name="relationship" value=""
                                 id="relationship" placeholder="Select Relationship">
@@ -550,7 +550,7 @@
                             </x-input.select>
 
                             <x-input.text class="col-md-12" label="Address" name="address" value=""
-                                id="address" placeholder="enter address" />
+                                id="address" placeholder="Enter address" />
 
                             <div class="col-md-12">
                                 <button type="submit" class="float-right btn btn-info">Create</button>
@@ -588,7 +588,7 @@
                                     </x-input.select>
 
                                     <x-input.text class="col-md-8" label="Location" name="location"
-                                        value="{{ $address->location }}" id="location" placeholder="enter location" />
+                                        value="{{ $address->location }}" id="location" placeholder="Enter location" />
 
                                     <div class="col-md-12">
                                         <button type="submit"
@@ -621,7 +621,7 @@
                             </x-input.select>
 
                             <x-input.text class="col-md-8" label="Location" name="location" value=""
-                                id="location" placeholder="enter location" />
+                                id="location" placeholder="Enter location" />
 
                             <div class="col-md-12">
                                 <button type="submit" class="float-right btn btn-info">Create</button>
