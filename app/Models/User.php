@@ -43,6 +43,29 @@ class User extends Authenticatable
     ];
 
 
+
+    public function education()
+    {
+        return $this->hasMany(EducationInfo::class, 'user_id');
+    }
+
+    public function experience()
+    {
+        return $this->hasMany(Experience::class, 'user_id');
+    }
+
+    public function emergencyContact()
+    {
+        return $this->hasMany(EmergencyContact::class, 'user_id');
+    }
+
+    public function address()
+    {
+        return $this->hasMany(Address::class, 'user_id');
+    }
+
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -74,22 +97,15 @@ class User extends Authenticatable
     ];
 
 
-
- 
-
-    public function education()
+    // Define the accessor for the `type` attribute
+    public function getTypeAttribute($value)
     {
-        return $this->hasMany(EducationInfo::class , 'user_id');
-    }
+        $types = [
+            1 => 'Admin/Staff',
+            2 => 'Advocate',
+            3 => 'Judge',
+        ];
 
-    public function experience ()
-    {
-        return $this->hasMany(Experience::class , 'user_id');
+        return $types[$value] ?? 'Unknown';
     }
-
-    public function emergencyContact ()
-    {
-        return $this->hasMany(EmergencyContact::class , 'user_id');
-    }
-
 }

@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
             'last_name' => 'Kabir',
             'email' => 'humayonkobir8@gmail.com',
             'mobile' => '01766169534',
-            'type' => 'Super Admin',
             'password' => Hash::make('humayonkobir8@gmail.com'),
             'status' => '1',
             'created_at' => now()
@@ -29,7 +28,6 @@ class UserSeeder extends Seeder
             'last_name' => '',
             'email' => 'kabir@gmail.com',
             'mobile' => '01766169533',
-            'type' => 'Super Admin',
             'password' => Hash::make('kabir@gmail.com'),
             'status' => '1',
             'created_at' => now()

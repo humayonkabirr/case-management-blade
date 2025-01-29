@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('nationality', 20)->nullable();
             $table->string('mother_tongue', 20)->nullable();
             $table->text('avatar')->nullable();
-            $table->string('type')->nullable();
+            $table->tinyInteger('type')->default(1)->commit(['1=>Admin/Staff, 2=>Advocate, 3=>Judge']);
 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

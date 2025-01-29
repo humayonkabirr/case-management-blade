@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdvocateRequest;
 use App\Services\Api\AddressService;
 use App\Services\Api\DivisionService;
 use App\Services\EducationInfoService;
@@ -12,6 +13,8 @@ use App\Services\ExperienceService;
 use App\Services\AdvocateService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AdvocateController extends Controller
 {
@@ -67,9 +70,27 @@ class AdvocateController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AdvocateRequest $advocateRequest)
     {
-        //
+        try {
+            if (!Gate::allows('dashboard.index')) {
+                return view('errors.403');
+            }
+            // Validate incoming requests
+            $advocateData             = $advocateRequest->validated();
+
+            // Insert data into related services
+            $advocate = $this->advocateService->create($advocateData + ['type' =>2 ,'password' => Hash::make(12345678)]);
+ 
+            return redirect()->route('admin.advocate.edit', $advocate->id)->with('success', 'Advocate create successfully.');
+        } catch (\Throwable $e) {
+            Log::error('Error in store method', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return view('errors.500', ['errorMessage' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -85,15 +106,56 @@ class AdvocateController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try {
+
+            if (!Gate::allows('dashboard.index')) {
+                return view('errors.403');
+            }
+
+            $data['educationLevels'] = $this->educationService->list();
+            $data['divisions'] = $this->divisionService->list();
+            $data['advocate'] = $this->advocateService->find($id);
+
+
+            return view('backend.advocate.form', $data);
+
+        } catch (\Throwable $e) {
+            Log::error('Error in store method', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return view('errors.500', ['errorMessage' => $e->getMessage()]);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AdvocateRequest $advocateRequest, $id)
     {
-        //
+        try {
+            if (!Gate::allows('dashboard.index')) {
+                return view('errors.403');
+            }
+            // Validate incoming requests
+            $advocateData             = $advocateRequest->validated();
+
+            // Insert data into related services
+            $advocate = $this->advocateService->update($id, $advocateData);
+
+            // Log the change
+            __activity('Create Court', $advocate);
+
+            return redirect()->route('admin.advocate.edit', $advocate->id)->with('success', 'Advocate update successfully.');
+        } catch (\Throwable $e) { 
+            Log::error('Error in store method', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return view('errors.500', ['errorMessage' => $e->getMessage()]);
+        }
     }
 
     /**

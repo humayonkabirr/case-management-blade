@@ -1,5 +1,7 @@
 @extends('layout.master')
 
+@section('title', 'Add a New Judge')
+
 @push('css')
     <link href="{{ asset('backend/assets/css/components/tabs-accordian/custom-tabs.css') }}"
         rel="stylesheet"type="text/css" />
@@ -14,15 +16,6 @@
                         <h4>Judge Create</h4>
                     </div>
                 </div>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
             </div>
             <div class="widget-content widget-content-area simple-tab">
                 <ul class="mt-3 mb-3 nav nav-tabs" id="simpletab" role="tablist">
@@ -47,13 +40,9 @@
                             aria-selected="false">Emergency Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold {{ $judge?->id ?? 'disabled' }}" id="address-tab"
-                            data-toggle="tab" href="#address" role="tab" aria-controls="address"
+                        <a class="nav-link font-weight-bold {{ $judge?->id ?? 'disabled' }}" id="address-form-tab"
+                            data-toggle="tab" href="#address-form" role="tab" aria-controls="address-form"
                             aria-selected="false">Address</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold disabled" href="#" tabindex="-1"
-                            aria-disabled="true">Disabled</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="simpletabContent">
@@ -61,19 +50,19 @@
                         aria-labelledby="general-info-tab">
                         <x-form class="row" action="admin.judge" data="{{ $judge->id ?? '' }}">
                             <x-input.text class="col-md-4" label="First Name" name="first_name"
-                                value="{{ $judge->first_name ?? '' }}" id="first_name" placeholder="enter first name" />
+                                value="{{ $judge->first_name ?? '' }}" id="first_name" placeholder="Enter first name" />
 
                             <x-input.text class="col-md-4" label="Last Name" name="last_name"
-                                value="{{ $judge->last_name ?? '' }}" id="last_name" placeholder="enter last name" />
+                                value="{{ $judge->last_name ?? '' }}" id="last_name" placeholder="Enter last name" />
 
                             <x-input.tel class="col-md-4" label="Mobile No" name="mobile"
-                                value="{{ $judge->mobile ?? '' }}" id="mobile" placeholder="enter mobile no" />
+                                value="{{ $judge->mobile ?? '' }}" id="mobile" placeholder="Enter mobile no" />
 
                             <x-input.email class="col-md-4" label="Email" name="email" value="{{ $judge->email ?? '' }}"
-                                id="email" placeholder="enter email" />
+                                id="email" placeholder="Enter email" />
 
                             <x-input.date class="col-md-4" label="Birth of Date" name="birthday"
-                                value="{{ $judge->birthday ?? '' }}" id="birthday" placeholder="enter birth of date" />
+                                value="{{ $judge->birthday ?? '' }}" id="birthday" placeholder="Enter birth of date" />
 
                             <x-input.select class="col-md-2" label="Blood Group" name="blood_group" value=""
                                 id="blood_group" placeholder="Select Blood Group">
@@ -151,7 +140,6 @@
                         </x-form>
                     </div>
 
-
                     <div class="tab-pane fade" id="educational-info" role="tabpanel"
                         aria-labelledby="educational-info-tab">
                         @isset($judge)
@@ -206,7 +194,7 @@
                                     <x-input.number class="col-md-4" label="GPA/CGPA" name="gpa_cgpa"
                                         value="{{ $edu->gpa_cgpa ?? '' }}" id="gpa_cgpa"
                                         otherattr='min="2.00" max="5.00" step="0.01"'
-                                        placeholder="enter GPA/CGPA (2.00 to 5.00)" />
+                                        placeholder="Enter GPA/CGPA (2.00 to 5.00)" />
 
                                     <x-input.years class="col-md-4" label="Admission Year" name="admission_year"
                                         value="{{ $edu->admission_year ?? '' }}" id="admission_year"
@@ -269,7 +257,7 @@
 
                             <x-input.number class="col-md-4" label="GPA/CGPA" name="gpa_cgpa" value=""
                                 id="gpa_cgpa" otherattr='min="2.00" max="5.00" step="0.01"'
-                                placeholder="enter GPA/CGPA (2.00 to 5.00)" />
+                                placeholder="Enter GPA/CGPA (2.00 to 5.00)" />
 
                             <x-input.years class="col-md-4" label="Admission Year" name="admission_year" value=""
                                 id="admission_year" placeholder="Enter admission year" />
@@ -305,15 +293,15 @@
 
                                     <x-input.text class="col-md-4" label="Supervisor Name" name="supervisor_name"
                                         value="{{ $exp->supervisor_name }}" id="supervisor_name"
-                                        placeholder="enter supervisor name" />
+                                        placeholder="Enter supervisor name" />
 
                                     <x-input.tel class="col-md-4" label="Supervisor Mobile" name="supervisor_mobile"
                                         value="{{ $exp->supervisor_mobile }}" id="supervisor_mobile"
-                                        placeholder="enter supervisor mobile" />
+                                        placeholder="Enter supervisor mobile" />
 
                                     <x-input.email class="col-md-4" label="Supervisor Email" name="supervisor_email"
                                         value="{{ $exp->supervisor_email }}" id="supervisor_email"
-                                        placeholder="enter supervisor email" />
+                                        placeholder="Enter supervisor email" />
 
                                     <x-input.select class="col-md-4" label="Employment Type" name="employment_type"
                                         value="" id="employment_type" placeholder="Select employment type">
@@ -361,10 +349,10 @@
 
                                     <x-input.textarea class="col-md-12" label="Responsibilities" name="responsibilities"
                                         value="{{ $exp->responsibilities }}" id="responsibilities"
-                                        placeholder="enter responsibilities" />
+                                        placeholder="Enter responsibilities" />
 
                                     <x-input.number class="col-md-12" label="Location" name="location"
-                                        value="{{ $exp->location }}" id="location" placeholder="enter location" />
+                                        value="{{ $exp->location }}" id="location" placeholder="Enter location" />
 
                                     <div class="col-md-12">
                                         <button type="submit"
@@ -392,13 +380,13 @@
                                 id="job_title" placeholder="Enter Job Title" />
 
                             <x-input.text class="col-md-4" label="Supervisor Name" name="supervisor_name" value=""
-                                id="supervisor_name" placeholder="enter supervisor name" />
+                                id="supervisor_name" placeholder="Enter supervisor name" />
 
                             <x-input.tel class="col-md-4" label="Supervisor Mobile" name="supervisor_mobile"
-                                value="" id="supervisor_mobile" placeholder="enter supervisor mobile" />
+                                value="" id="supervisor_mobile" placeholder="Enter supervisor mobile" />
 
                             <x-input.email class="col-md-4" label="Supervisor Email" name="supervisor_email"
-                                value="" id="supervisor_email" placeholder="enter supervisor email" />
+                                value="" id="supervisor_email" placeholder="Enter supervisor email" />
 
                             <x-input.select class="col-md-4" label="Employment Type" name="employment_type"
                                 value="" id="employment_type" placeholder="Select employment type">
@@ -428,10 +416,10 @@
                                 id="salary" placeholder="Enter Salary" />
 
                             <x-input.textarea class="col-md-12" label="Responsibilities" name="responsibilities"
-                                value="" id="responsibilities" placeholder="enter responsibilities" />
+                                value="" id="responsibilities" placeholder="Enter responsibilities" />
 
                             <x-input.number class="col-md-12" label="Location" name="location" value=""
-                                id="location" placeholder="enter location" />
+                                id="location" placeholder="Enter location" />
 
                             <div class="col-md-12">
                                 <button type="submit" class="float-right btn btn-info">Create</button>
@@ -450,16 +438,16 @@
 
                                     <x-input.text class="col-md-4" label="First Name" name="first_name"
                                         value="{{ $emc->first_name ?? '' }}" id="first_name"
-                                        placeholder="enter first name" />
+                                        placeholder="Enter first name" />
 
                                     <x-input.text class="col-md-4" label="Last Name" name="last_name"
-                                        value="{{ $emc->last_name ?? '' }}" id="last_name" placeholder="enter last name" />
+                                        value="{{ $emc->last_name ?? '' }}" id="last_name" placeholder="Enter last name" />
 
                                     <x-input.tel class="col-md-4" label="Mobile No" name="mobile"
-                                        value="{{ $emc->mobile ?? '' }}" id="mobile" placeholder="enter moble no" />
+                                        value="{{ $emc->mobile ?? '' }}" id="mobile" placeholder="Enter moble no" />
 
                                     <x-input.email class="col-md-4" label="Email" name="email"
-                                        value="{{ $emc->email ?? '' }}" id="email" placeholder="enter email" />
+                                        value="{{ $emc->email ?? '' }}" id="email" placeholder="Enter email" />
 
                                     <x-input.select class="col-md-4" label="Relationship" name="relationship"
                                         id="relationship" placeholder="Select Relationship">
@@ -506,7 +494,7 @@
                                     </x-input.select>
 
                                     <x-input.text class="col-md-12" label="Address" name="address"
-                                        value="{{ $emc->address ?? '' }}" id="address" placeholder="enter address" />
+                                        value="{{ $emc->address ?? '' }}" id="address" placeholder="Enter address" />
 
                                     <div class="col-md-12">
                                         <button type="submit"
@@ -528,16 +516,16 @@
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
                             <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
-                                id="first_name" placeholder="enter first name" />
+                                id="first_name" placeholder="Enter first name" />
 
                             <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
-                                id="last_name" placeholder="enter last name" />
+                                id="last_name" placeholder="Enter last name" />
 
                             <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value=""
-                                id="mobile" placeholder="enter moble no" />
+                                id="mobile" placeholder="Enter moble no" />
 
                             <x-input.email class="col-md-4" label="Email" name="email" value="" id="email"
-                                placeholder="enter email" />
+                                placeholder="Enter email" />
 
                             <x-input.select class="col-md-4" label="Relationship" name="relationship" value=""
                                 id="relationship" placeholder="Select Relationship">
@@ -564,7 +552,7 @@
                             </x-input.select>
 
                             <x-input.text class="col-md-12" label="Address" name="address" value=""
-                                id="address" placeholder="enter address" />
+                                id="address" placeholder="Enter address" />
 
                             <div class="col-md-12">
                                 <button type="submit" class="float-right btn btn-info">Create</button>
@@ -573,68 +561,73 @@
                         </x-form>
                     </div>
 
-                    <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
-                        <x-form class="row" action="admin.judge" data="{{ $judge->id ?? '' }}">
+                    <div class="tab-pane fade" id="address-form" role="tabpanel" aria-labelledby="address-form-tab">
+                        @isset($judge)
+                            @foreach ($judge->address as $address)
+                                <x-form class="row" action="admin.address" data="{{ $address->id ?? '' }}">
+
+                                    <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
+
+                                    <x-input.select class="col-md-4" label="Division" name="division_id" value=""
+                                        id="division_id" placeholder="Select Division">
+                                        @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}"
+                                                {{ __select('division_id', $division->id, $address->division_id ?? '') }}>
+                                                {{ $division->name }}</option>
+                                        @endforeach
+                                    </x-input.select>
+
+                                    <x-input.select class="col-md-4" label="District" name="district_id" value=""
+                                        id="district_id" placeholder="Select District">
+                                    </x-input.select>
+
+                                    <x-input.select class="col-md-4" label="Upazila" name="upazila_id" value=""
+                                        id="upazila_id" placeholder="Select Upazila">
+                                    </x-input.select>
+
+                                    <x-input.select class="col-md-4" label="Union" name="union_id" value=""
+                                        id="union_id" placeholder="Select Union">
+                                    </x-input.select>
+
+                                    <x-input.text class="col-md-8" label="Location" name="location"
+                                        value="{{ $address->location }}" id="location" placeholder="Enter location" />
+
+                                    <div class="col-md-12">
+                                        <button type="submit"
+                                            class="float-right btn btn-success">{{ $address->id ?? '' ? 'Update' : 'Submit' }}</button>
+                                    </div>
+                                </x-form>
+                            @endforeach
+                        @endisset
+                        <x-form class="row" action="admin.address" data="{{ $address->id ?? '' }}">
 
                             <input type="hidden" name="user_id" value="{{ $judge->id ?? '' }}">
 
-                            <x-input.text class="col-md-4" label="First Name" name="first_name" value=""
-                                id="first_name" placeholder="enter first name" />
-
-                            <x-input.text class="col-md-4" label="Last Name" name="last_name" value=""
-                                id="last_name" placeholder="enter last name" />
-
-                            <x-input.tel class="col-md-4" label="Mobile No" name="mobile" value=""
-                                id="mobile" placeholder="enter moble no" />
-
-                            <x-input.email class="col-md-4" label="Email" name="email" value="" id="email"
-                                placeholder="enter email" />
-
-                            <x-input.date class="col-md-4" label="Birth of Date" name="birthday" value=""
-                                id="birthday" placeholder="enter birth of date" />
-
-                            <x-input.select class="col-md-2" label="Blood Group" name="blood_group" value=""
-                                id="blood_group" placeholder="Select Blood Group">
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
+                            <x-input.select class="col-md-4" label="Division" name="division_id" value=""
+                                id="division_id" placeholder="Select Division">
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->name ?? 'N/A' }}</option>
+                                @endforeach
                             </x-input.select>
 
-                            <x-input.select class="col-md-2" label="Religion" name="religion" value=""
-                                id="religion" placeholder="Select Religion">
-                                <option value="Islam">Islam</option>
-                                <option value="Christianity">Christianity</option>
-                                <option value="Hinduism">Hinduism</option>
-                                <option value="Buddhism">Buddhism</option>
-                                <option value="Judaism">Judaism</option>
-                                <option value="Sikhism">Sikhism</option>
-                                <option value="Other">Other</option>
+                            <x-input.select class="col-md-4" label="District" name="district_id" value=""
+                                id="district_id" placeholder="Select District">
                             </x-input.select>
 
-                            <x-input.select class="col-md-4" label="Gender" name="gender" value=""
-                                id="gender" placeholder="Select Gender">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Others">Others</option>
+                            <x-input.select class="col-md-4" label="Upazila" name="upazila_id" value=""
+                                id="upazila_id" placeholder="Select Upazila">
                             </x-input.select>
 
-                            <x-input.select class="col-md-4" label="Nationality" name="nationality" value=""
-                                id="nationality" placeholder="Select Nationality">
-                                <option value="0">Bangladeshi</option>
-                                <option value="1">Others</option>
+                            <x-input.select class="col-md-4" label="Union" name="union_id" value=""
+                                id="union_id" placeholder="Select Union">
                             </x-input.select>
 
-                            <x-input.select class="col-md-4" label="Mother Tongue" name="mother_tongue" value=""
-                                id="mother_tongue" placeholder="Select Mother Tongue">
-                                <option value="Bangla">Bangla</option>
-                                <option value="English">English</option>
-                                <option value="Others">Others</option>
-                            </x-input.select>
+                            <x-input.text class="col-md-8" label="Location" name="location" value=""
+                                id="location" placeholder="Enter location" />
+
+                            <div class="col-md-12">
+                                <button type="submit" class="float-right btn btn-info">Create</button>
+                            </div>
                         </x-form>
                     </div>
                 </div>
@@ -643,3 +636,102 @@
         </div>
     </div>
 @endsection
+
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+            /**
+             * Populate a target dropdown dynamically and pre-select a value if provided.
+             *
+             * @param {string} triggerDropdownId - ID of the dropdown triggering the event.
+             * @param {string} targetDropdownId - ID of the dropdown to populate with data.
+             * @param {string} apiUrl - API URL with ":id" as a placeholder.
+             * @param {string} placeholder - Placeholder text for the target dropdown.
+             * @param {string|null} preSelectedValue - Value to pre-select in the target dropdown.
+             * @param {function|null} callback - Optional callback to trigger after populating the dropdown.
+             */
+            function populateDropdown(triggerDropdownId, targetDropdownId, apiUrl, placeholder = "Select Option",
+                preSelectedValue = null, callback = null) {
+                $(triggerDropdownId).change(function() {
+                    let selectedTriggerValue = $(this).val();
+                    $(targetDropdownId).html(
+                        `<option value="">${placeholder}</option>`); // Clear target dropdown
+
+                    if (selectedTriggerValue) {
+                        let url = apiUrl.replace(':id',
+                            selectedTriggerValue); // Replace ":id" in the API URL
+                        // console.log(`API Request URL: ${url}`);
+
+                        $.ajax({
+                            url: url,
+                            method: 'GET',
+                            dataType: 'json',
+                            success: function(response) {
+                                // console.log(`API Response for ${targetDropdownId}:`, response);
+
+                                if (Array.isArray(response) && response.length > 0) {
+                                    response.forEach(function(option) {
+                                        let isSelected = preSelectedValue == option.id ?
+                                            'selected' : '';
+                                        $(targetDropdownId).append(
+                                            `<option value="${option.id}" ${isSelected}>${option.name}</option>`
+                                        );
+                                    });
+                                } else {
+                                    $(targetDropdownId).append(
+                                        `<option value="">No data available</option>`
+                                    );
+                                }
+
+                                // Trigger callback after populating dropdown
+                                if (callback) callback();
+                            },
+                            error: function(xhr, status, error) {
+                                // console.error(`Error fetching data for ${targetDropdownId}:`,
+                                //     error);
+                                $(targetDropdownId).append(
+                                    `<option value="">Error loading data</option>`
+                                );
+                            }
+                        });
+                    }
+                });
+
+                // Trigger the change event to populate on page load if there's a pre-selected value
+                if (preSelectedValue) {
+                    $(triggerDropdownId).trigger('change');
+                }
+            }
+
+            // Populate districts based on the selected division
+            populateDropdown(
+                '#division_id',
+                '#district_id',
+                `{{ route('api.districts', ':id') }}`,
+                'Select District',
+                `{{ $judge->address[0]->district_id ?? '' }}`,
+                function() {
+                    // Populate upazilas after districts are populated
+                    populateDropdown(
+                        '#district_id',
+                        '#upazila_id',
+                        `{{ route('api.upazilas', ':id') }}`,
+                        'Select Upazila',
+                        `{{ $judge->address[0]->upazila_id ?? '' }}`,
+                        function() {
+                            // Populate unions after upazilas are populated
+                            populateDropdown(
+                                '#upazila_id',
+                                '#union_id',
+                                `{{ route('api.unions', ':id') }}`,
+                                'Select Union',
+                                `{{ $judge->address[0]->union_id ?? '' }}`
+                            );
+                        }
+                    );
+                }
+            );
+        });
+    </script>
+@endpush

@@ -10,8 +10,7 @@ use App\Services\Api\DivisionService;
 use App\Services\EducationInfoService;
 use App\Services\EducationLevelService;
 use App\Services\EmergencyContactService;
-use App\Services\ExperienceService;
-use Illuminate\Http\Request;
+use App\Services\ExperienceService; 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -82,8 +81,8 @@ class JudgeController extends Controller
             $judgeData             = $judgeRequest->validated();
 
             // Insert data into related services
-            $judge = $this->judgeService->create($judgeData + ['password' => Hash::make(12345678)]);
-
+            $judge = $this->judgeService->create($judgeData + ['type' =>3 ,'password' => Hash::make(12345678)]);
+ 
             return redirect()->route('admin.judge.edit', $judge->id)->with('success', 'Judge create successfully.');
         } catch (\Throwable $e) {
             Log::error('Error in store method', [
@@ -118,6 +117,7 @@ class JudgeController extends Controller
             $data['divisions'] = $this->divisionService->list();
             $data['judge'] = $this->judgeService->find($id);
 
+
             return view('backend.judge.form', $data);
 
         } catch (\Throwable $e) {
@@ -133,7 +133,7 @@ class JudgeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(JudgeRequest $judgeRequest, string $id)
+    public function update(JudgeRequest $judgeRequest, $id)
     {
         try {
             if (!Gate::allows('dashboard.index')) {
